@@ -1,0 +1,29 @@
+<!-- myservice/index.html -->
+<!-- 로그인 후 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width" charset="EUC-KR">
+<title>My First Web Service</title>
+</head>
+<body>
+<div id="viwType">
+	<a herf="/myservice/me.html" id="meLink">me</a>
+	<a herf="/myservice/all.html" id="allLink">all</a>
+</div>
+<header>
+	<div id="myService"> My First Web Service</div>
+	<!-- 로그인 후 -->
+	<div id="myName">
+		<p>안녕하세요 전채경님</p>
+		<div id="logoutBox">
+			<input type="button" id="logoutBtn" value="로그아웃"/>
+		</div>
+	</div>
+	<!-- 로그인 전 -->
+	<div id="loginForm">
+		<form name="loginForm" method="post" action="./login.jsp"></form>
+	</div>
+</header>
+</body>
+</html>
