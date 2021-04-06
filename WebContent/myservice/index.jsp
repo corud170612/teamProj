@@ -1,4 +1,6 @@
-<!-- myservice/index.html -->
+<!-- myservice/index.jsp -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!-- 로그인 후 -->
 <!DOCTYPE html>
 <html>
@@ -24,6 +26,7 @@
 	<div id="loginForm">
 		<form name="loginForm" method="post" action="./login.jsp"></form>
 	</div>
+	ha.....
 </header>
 </body>
 </html>
