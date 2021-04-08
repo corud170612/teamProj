@@ -3,20 +3,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name = "viewport" content="width=device-width" />
 <meta charset="UTF-8">
 <title>MBTI 커뮤니케이션</title>
 <link rel="stylesheet" href="./css/cssReset.css" />
 <link rel="stylesheet" href="./css/header.css" />
 <link rel="stylesheet" href="./css/footer.css" />
 <script type="text/javascript" src="/.js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="./js/me.js"></script>
 
 <link rel="stylesheet" href="./css/me.css"/>
 <style>
-#myWallPhoto{background:url('./images/me/back.PNG');background-seze:coveer;
+#myWallPhoto{background:url('./images/me/back.PNG');background-size:cover;
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
 </style>
-
 </head>
+<header>
+   <div id="myService"> My First Web Service</div>
+   <!-- 로그인 후 -->
+   <div id="myName">
+      <p>안녕하세요 전채경님</p>
+      <div id="logoutBox">
+         <input type="button" id="logoutBtn" value="로그아웃"/>
+      </div>
+   </div>
+   <!-- 로그인 전 -->
+   <div id="loginForm">
+      <form name="loginForm" method="post" action="./login.jsp">
+         <div id="loginEmailArea">
+            <label for="loginEmail">E-Mail</label>
+            <div class="loginInputBox">
+               <input type="email" id="loginEmail" name="email" placeholder="이메일"/>
+            </div>
+         </div>
+         <div id="loginPwArea">
+            <label for="loginPw">Password</label>
+            <div class="loginInputBox">
+               <input type="password" name="userPw" id="loginPw" placeholder="비밀번호 8자 이상 입력"/>
+            </div>
+         </div>
+         <div class="loginSubmitBox">
+            <input type="submit" id="loginSumnit" value="로그인"/> 
+         </div>
+      </form>
+   </div>
+</header>
 <body>
 <div id="container">
 	<div id="center">
@@ -24,7 +55,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 		<div id="myProfilePhoto">
 			<img src="./images/me/pro.PNG" />
 		</div>
-		<p id="name">호랑이</p>
+		<p id="name">라이언</p>
 		<div class="myButtonBox">
 			<form name="phto" method="post" action="/myservice/database/myMember.jsp" 
 				enctype="multipart/form-data">
@@ -52,10 +83,10 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 			</form>
 		</div>
 		<div id="myContent">
-			<div id="writeing">
+			<div id="writing">
 				<div class="me">
 					<img src="./images/me/pro.PNG" />
-						<p>호랑이</p>
+						<p>라이언</p>
 				</div>
 				<textarea maxlength="500" id="meContent"></textarea>
 				<div id="inputBox">
@@ -66,9 +97,9 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 			<div class="reading">
 				<div class="writeArea">
 					<img src="./images/me/pro.PNG"/>
-					<div class="writeingInfo"></div>
-					<p>호랑이</p>
-					<div class="writeingDate">2021년 04월 07일</div>
+					<div class="writingInfo"></div>
+					<p>라이언</p>
+					<div class="writingDate">2021년 04월 07일</div>
 				</div>
 			</div>
 			
@@ -83,9 +114,9 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 			<div class="myCommentArea myCommentArea861225">
 				<div class="commentBox">
 					<img src="./images/me/pro.PNG" />
-					<p class="commentRegTime"> 2013년 12월 25일 </p>
-					<p class ="commentPoster"> 호랑이 </p>
-					<p class="writenComment"> 정말 반갑습니다. </p>
+					<p class="commentRegTime"> 2021년 04월 08일 </p>
+					<p class ="commentPoster"> 라이언 </p>
+					<p class="writenComment"> 안뇽 </p>
 				</div>
 			</div>
 			<div class="inputBox">
@@ -102,6 +133,10 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 	<div id="noContents">
 		더 이상 콘텐츠가 없습니다.
 	</div>
+<footer>
+	<link rel="stylesheet" href="./css/footer.css" />
+   <p>My First Web Service</p>
+</footer>
 </div>
 </body>
 </html>
