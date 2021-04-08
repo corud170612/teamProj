@@ -3,7 +3,7 @@
 #viewType, #myName{display:none}
 #loginForm{_display:none}
 /* common */
-header{class:both; float:left; width:100%; background:rgba(85,191,247,0.7)}
+header{clear:both; float:left; width:100%; background:rgba(85,191,247,0.7)}
 #loginForm form{float:left;width:100%}
 #viewType{clear:both; width:100px; height:25px; margin: 0 auto; border-left:1px solid #ccc;
 border-right:1px solid #ccc}
@@ -12,7 +12,7 @@ padding:8px 0 0 0; color:#aaa}
 #alllink{float:left; width:49%; height:17px; text-align:center; padding:8px 0 0; color:#aaa}
 /* pc */
 @media screen and (min-width:1200px){
-	#myservice{float:left; color:#fff; font-size:2rem; text-align:left; margin:10px}
+	#myService{float:left; color:#fff; font-size:2rem; text-align:left; margin:10px}
 	#myName{float:right; color:#fff; margin-right:1%; margin-top:20px}
 	#myName p{float:left; width:250px; font-size:1rem}
 	#logoutBox{float:left; border:1px solid #ccc; margin-top:1px}
