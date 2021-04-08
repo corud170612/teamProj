@@ -24,7 +24,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 		<div id="myProfilePhoto">
 			<img src="./images/me/pro.PNG" />
 		</div>
-		<p id="name">라이언</p>
+		<p id="name">호랑이</p>
 		<div class="myButtonBox">
 			<form name="phto" method="post" action="/myservice/database/myMember.jsp" 
 				enctype="multipart/form-data">
@@ -55,7 +55,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 			<div id="writeing">
 				<div class="me">
 					<img src="./images/me/pro.PNG" />
-						<p>라이언</p>
+						<p>호랑이</p>
 				</div>
 				<textarea maxlength="500" id="meContent"></textarea>
 				<div id="inputBox">
@@ -67,7 +67,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 				<div class="writeArea">
 					<img src="./images/me/pro.PNG"/>
 					<div class="writeingInfo"></div>
-					<p>라이언</p>
+					<p>호랑이</p>
 					<div class="writeingDate">2021년 04월 07일</div>
 				</div>
 			</div>
@@ -84,7 +84,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 				<div class="commentBox">
 					<img src="./images/me/pro.PNG" />
 					<p class="commentRegTime"> 2013년 12월 25일 </p>
-					<p class ="commentPoster"> 라이언 </p>
+					<p class ="commentPoster"> 호랑이 </p>
 					<p class="writenComment"> 정말 반갑습니다. </p>
 				</div>
 			</div>
