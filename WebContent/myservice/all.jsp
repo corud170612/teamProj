@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width" />
 <meta charset="UTF-8">
-<title>MBTI Ä¿¹Â´ÏÆ¼</title>
+<title>MBTI ì»¤ë®¤ë‹ˆí‹°</title>
 <link rel="stylesheet" href="./css/cssReset.css" />
 <link rel="stylesheet" href="./css/header.css" />
 <link rel="stylesheet" href="./css/all.css" />
@@ -15,62 +15,62 @@
 <script type="text/javascript" src=./js/all.js></script>
 </head>
 <body>
-<!-- ³ªÁß¿¡ header ³ÖÀ» ÀÚ¸® -->
+<!-- ë‚˜ì¤‘ì— header ë„£ì„ ìžë¦¬ -->
 <div id="timeLine">
 	<div id="container">
 		<div id="writing">
 		<div class="me">
 			<img src="./images/me/happyCat.png" />
-			<p>±èÅÂ¿µ</p>
+			<p>ê¹€íƒœì˜</p>
 		</div>
 		<textarea maxlength="500" id="meContent"></textarea>
 		<div id="inputBox">
-			<input type="button" id="mePostBtn" value="°Ô½Ã" />
+			<input type="button" id="mePostBtn" value="ê²Œì‹œ" />
 		</div>
 	</div>
 	<div class="reading">
 		<div class="writerArea">
 			<img src="./images/me/happyCat.png" />
 			<div class="writingInfo">
-				<p>±èÅÂ¿µ</p>
-				<div class="writingDate">2030³â 12¿ù 25ÀÏ</div>
+				<p>ê¹€íƒœì˜</p>
+				<div class="writingDate">2030ë…„ 12ì›” 25ì¼</div>
 			</div>
 		</div>
 		
 		
-		<span class="content">¹Ý°©½À´Ï´Ù.</span>
+		<span class="content">ë°˜ê°‘ìŠµë‹ˆë‹¤.</span>
 		
 		<div class="likeArea">
-			<div class="likeNum likes861225" style="background:#fff">°ø°¨¼ö : 250</div>
-			<div class="likeBtn" id="likes861225">°ø°¨ÇÏ±â</div>
-			<div class="contentsID">ÄÜÅÙÃ÷ ¹øÈ£: 861225</div>
+			<div class="likeNum likes861225" style="background:#fff">ê³µê°ìˆ˜ : 250</div>
+			<div class="likeBtn" id="likes861225">ê³µê°í•˜ê¸°</div>
+			<div class="contentsID">ì½˜í…ì¸  ë²ˆí˜¸: 861225</div>
 		</div>
 		
 		<div class="myCommentArea myCommentAtra861225">
 			<div class="commentBox">
 				<img src="./images/me/happyCat.png" />
-				<p class="commentRegTime">2030³â 12¿ù 25ÀÏ</p>
-				<p class="commentPoster">±èÅÂ¿µ</p>
-				<p class="writtenComment">¹Ý°©½À´Ï´Ù.</p> 
+				<p class="commentRegTime">2030ë…„ 12ì›” 25ì¼</p>
+				<p class="commentPoster">ê¹€íƒœì˜</p>
+				<p class="writtenComment">ë°˜ê°‘ìŠµë‹ˆë‹¤.</p> 
 			</div>
 		</div>
 		<div class="inputBox">
 			<img src="./images/me/happyCat.png" />
-			<input type="text" class="inputComment comments861225" placeholder="ÄÚ¸àÆ® ÀÔ·Â" />
+			<input type="text" class="inputComment comments861225" placeholder="ì½”ë©˜íŠ¸ ìž…ë ¥" />
 			<div class="regCommentBox">
-				<input type="button" class="regCommentBtn" id="comments861225" value="°Ô½Ã" />
+				<input type="button" class="regCommentBtn" id="comments861225" value="ê²Œì‹œ" />
 			</div>
 		</div>
  	</div>
 </div>
 <div id="noContents">
-	´õ ÀÌ»ó ÄÜÅÙÃ÷°¡ ¾ø½À´Ï´Ù.
+	ë” ì´ìƒ ì½˜í…ì¸ ê°€ ì—†ìŠµë‹ˆë‹¤.
 </div>
 	<input type="hidden" name="page" id="page" value="1" />
 </div>
 <aside id="advertiseBox">
 	Advertisement
 </aside>
-<!-- ³ªÁß¿¡ footer ³ÖÀ» ÀÚ¸® -->
+<!-- ë‚˜ì¤‘ì— footer ë„£ì„ ìžë¦¬ -->
 </body>
 </html>
