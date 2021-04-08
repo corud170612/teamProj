@@ -10,12 +10,40 @@
 <link rel="stylesheet" href="./css/cssReset.css" />
 <link rel="stylesheet" href="./css/header.css" />
 <link rel="stylesheet" href="./css/all.css" />
-<link rel="stylesheet" href="./css/footer.css" />
 <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src=./js/all.js></script>
 </head>
 <body>
-<!-- 나중에 header 넣을 자리 -->
+<header>
+   <div id="myService">MBTI 커뮤니티</div>
+   <!-- 로그인 후 -->
+   <div id="myName">
+      <p>안녕하세요 전채경님</p>
+      <div id="logoutBox">
+         <input type="button" id="logoutBtn" value="로그아웃"/>
+      </div>
+   </div>
+   <!-- 로그인 전 -->
+   <div id="loginForm">
+      <form name="loginForm" method="post" action="./login.jsp">
+         <div id="loginEmailArea">
+            <label for="loginEmail">E-Mail</label>
+            <div class="loginInputBox">
+               <input type="email" id="loginEmail" name="email" placeholder="이메일"/>
+            </div>
+         </div>
+         <div id="loginPwArea">
+            <label for="loginPw">Password</label>
+            <div class="loginInputBox">
+               <input type="password" name="userPw" id="loginPw" placeholder="비밀번호 8자 이상 입력"/>
+            </div>
+         </div>
+         <div class="loginSubmitBox">
+            <input type="submit" id="loginSumnit" value="로그인"/> 
+         </div>
+      </form>
+   </div>
+</header>
 <div id="timeLine">
 	<div id="container">
 		<div id="writing">
@@ -72,5 +100,9 @@
 	Advertisement
 </aside>
 <!-- 나중에 footer 넣을 자리 -->
+<footer>
+<link rel="stylesheet" href="./css/footer.css" />
+   <p>MBTI 커뮤니티</p>
+</footer>
 </body>
 </html>
