@@ -5,14 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" herf="./css/header.css" />
+<link rel="stylesheet" href="./css/header.css" />
 <meta name="viewport" content="width=device-width" charset="UTF-8">
 <title>My First Web Service</title>
 </head>
 <body>
 <div id="viwType">
-	<a herf="/myservice/me.jsp" id="meLink">me</a>
-	<a herf="/myservice/all.jsp" id="allLink">all</a>
+	<a href="/myservice/me.jsp" id="meLink">me</a>
+	<a href="/myservice/all.jsp" id="allLink">all</a>
 </div>
 <header>
 	<div id="myService"> My First Web Service</div>
@@ -46,6 +46,7 @@
 </header>
 <!-- container -->
 <div id="container">
+<link rel="stylesheet" href="./css/index.css" />
 	<section id="introSite">
 		<div id="siteComment">
 			어서오세요<br/>
@@ -128,6 +129,7 @@
 	</section>
 </div>
 <footer>
+<link rel="stylesheet" href="./css/footer.css" />
 	<p>My First Web Service</p>
 </footer>
 </body>
