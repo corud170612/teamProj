@@ -18,15 +18,13 @@
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
 </style>
 </head>
+<body>
+<div id="viwType">
+	<a href="/myservice/me.jsp" id="meLink">me</a>
+	<a href="/myservice/all.jsp" id="allLink">all</a>
+</div>
 <header>
    <div id="myService"> My First Web Service</div>
-   <!-- 로그인 후 -->
-   <div id="myName">
-      <p>안녕하세요 전채경님</p>
-      <div id="logoutBox">
-         <input type="button" id="logoutBtn" value="로그아웃"/>
-      </div>
-   </div>
    <!-- 로그인 전 -->
    <div id="loginForm">
       <form name="loginForm" method="post" action="./login.jsp">
@@ -48,7 +46,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
       </form>
    </div>
 </header>
-<body>
+
 <div id="container">
 	<div id="center">
 		<div id="myWallPhoto"></div>
@@ -95,44 +93,45 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 			</div>
 			
 			<div class="reading">
-				<div class="writeArea">
-					<img src="./images/me/pro.PNG"/>
-					<div class="writingInfo"></div>
-					<p>라이언</p>
-					<div class="writingDate">2021년 04월 07일</div>
-				</div>
-			</div>
-			
-			<span class="content">안녕하세요. 반갑습니다.</span>
-			
-			<div class="likeArea">
-				<div class="likeNum likes861225" style="background:#fff">공감수: 250</div>
-				<div class="likeBtn" id="likes861225">공감하기</div>
-				<div class="contentsID">콘텐츠 번호 : 861225</div>
-			</div>
-			
-			<div class="myCommentArea myCommentArea861225">
-				<div class="commentBox">
-					<img src="./images/me/pro.PNG" />
-					<p class="commentRegTime"> 2021년 04월 08일 </p>
-					<p class ="commentPoster"> 라이언 </p>
-					<p class="writenComment"> 안뇽 </p>
-				</div>
-			</div>
-			<div class="inputBox">
-				<img src="./images/me/pro.PNG" />
-				<input type="text" class="inputComment comments8612225" placeholder="코멘트 입력" />
-				<div class="regCommnetBox">
-					<input type="button" class="regCommentBtn" id="comments861225" value="게시" />
-				</div>
+		<div class="writerArea">
+			<img src="./images/me/pro.PNG" />
+			<div class="writingInfo">
+				<p>라이언  </p>
+				<div class="writingDate">2030년 12월 25일</div>
 			</div>
 		</div>
 		
-		<input type="hidden" name="page" id="page" value="1" />
-	</div>
-	<div id="noContents">
-		더 이상 콘텐츠가 없습니다.
-	</div>
+		
+		<span class="content">반갑습니다.</span>
+		
+		<div class="likeArea">
+			<div class="likeNum likes861225" style="background:#fff">공감수 : 250</div>
+			<div class="likeBtn" id="likes861225">공감하기</div>
+			<div class="contentsID">콘텐츠 번호: 861225</div>
+		</div>
+		
+		<div class="myCommentArea myCommentAtra861225">
+			<div class="commentBox">
+				<img src="./images/me/pro.PNG" />
+				<p class="commentRegTime">2030년 12월 25일</p>
+				<p class="commentPoster">라이언</p>
+				<p class="writtenComment">반갑습니다.</p> 
+			</div>
+		</div>
+		<div class="inputBox">
+			<img src="./images/me/pro.PNG" />
+			<input type="text" class="inputComment comments861225" placeholder="코멘트 입력" />
+			<div class="regCommentBox">
+				<input type="button" class="regCommentBtn" id="comments861225" value="게시" />
+			</div>
+		</div>
+ 	</div>
+</div>
+<div id="noContents">
+	더 이상 콘텐츠가 없습니다.
+</div>
+	<input type="hidden" name="page" id="page" value="1" />
+</div>
 <footer>
 	<link rel="stylesheet" href="./css/footer.css" />
    <p>My First Web Service</p>
