@@ -128,7 +128,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
             <img src="./images/me/pro.PNG" />
             <p class="commentRegTime">2030년 12월 25일</p>
             <p class="commentPoster">댓글 작성자</p>
-            <p class="writtenComment">네네</p> 
+            <p class="writtenComment">네네네</p> 
          </div>
       </div> 
 <!--       <div class="inputBox">
