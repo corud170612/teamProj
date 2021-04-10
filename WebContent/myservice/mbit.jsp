@@ -9,7 +9,7 @@
 <title>MBTI 커뮤니티</title>
 <link rel="stylesheet" href="./css/cssReset.css" />
 <link rel="stylesheet" href="./css/header.css" />
-<link rel="stylesheet" href="./css/allList.css" />
+<link rel="stylesheet" href="./css/mbti.css" />
 <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src=./js/all.js></script>
 </head>
@@ -50,45 +50,62 @@
    </div>
 </header>
 
-<form id="frm"  method="post">
-<table id="listTable" >
-	<thead>
-	<tr>
-		<th id="thead1">글번호</th>
-		<th id="thead2">제 목</th>
-		<th id="thead3">작성자</th>
-		<th id="thead4">유 형</th>
-		<th id="thead5">작성일</th>
-		<th id="thead6">조회수</th>
-	</tr>
-	</thead>
-	<tr>
-		<td colspan=6 ><hr/></td>
-	</tr>
-	<tr>
-		<td id="td1">글번호입니다.</td>
-		<td id="td2">제목입니다.</td>
-		<td id="td3">아이디입니다.</td>
-		<td id="td4">유형입니다.</td>
-		<td id="td5">작성일입니다.</td>
-		<td id="td6">조회수입니다.</td>
-	</tr>
-	<tr><td colspan=6><hr/></td></tr>
-	<tr>
-		<td colspan=3><input type="text" name="search" style="width:100%" /></td>
-		<td colspan=3 align="right">
-			<input type="button" value='검색' style="width:25%"/>
-			<input type="submit" name='submitBtn' value='글쓰기' style="width:25%"/>
-		</td>
-	</tr>
-	<tr><td colspan=6><hr/></td></tr>
-</table>
-</form>
+<div id="categoryBox">
+<section class="asideContent">
+	<ul class="categories">
+		<li><a href="">취업</a></li>
+		<li><a href="">진로</a></li>
+		<li><a href="">취미</a></li>
+		<li>Advertisement</li>
+	</ul>
+</section>
+</div>
 
+<div id="timeLine">
+<div class="orderbyArea">
+	<div class="orderbyHistory" style="background:#fff">최신순</div>
+	<div class="orderbyClicked" id="orderbyClicked">인기순</div>
+	<div class="allPostBtn">글쓰기</div>
+</div>
+
+	<div class="reading">
+		<div class="writerArea">
+			<img src="./images/me/happyCat.png" />
+			<div class="writingInfo">
+				<p>김태영</p>
+			</div>
+		</div>
+		<span class="content">반갑습니다.</span>
+
+		<div class="likeArea">
+			<div class="likeNum likes861225" style="background:#fff">공감수 : 250</div>
+			<div class="likeBtn" id="likes861225">공감하기</div>
+			<div class="contentsID">콘텐츠 번호: 861225</div>
+		</div>
+		
+		<div class="myCommentArea myCommentAtra861225">
+			<div class="commentBox">
+				<img src="./images/me/happyCat.png" />
+				<p class="commentRegTime">2030년 12월 25일</p>
+				<p class="commentPoster">김태영</p>
+				<p class="writtenComment">반갑습니다.</p> 
+			</div>
+		</div>
+		<div class="inputBox">
+			<img src="./images/me/happyCat.png" />
+			<input type="text" class="inputComment comments861225" placeholder="코멘트 입력" />
+			<div class="regCommentBox">
+				<input type="button" class="regCommentBtn" id="comments861225" value="게시" />
+			</div>
+		</div>
+ 	</div>
+</div>
 <div id="noContents">
 	더 이상 콘텐츠가 없습니다.
 </div>
 	<input type="hidden" name="page" id="page" value="1" />
+</div>
+
 <aside id="advertiseBox">
 	Advertisement
 </aside>
