@@ -126,7 +126,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
        <div class="myCommentArea myCommentAtra861225">
          <div class="commentBox">
             <img src="./images/me/pro.PNG" />
-            <p class="commentRegTime">2030년 12월 25일</p>
+            <p class="commentRegTime">2021년 04월 10일</p>
             <p class="commentPoster">댓글 작성자</p>
             <p class="writtenComment">네네네</p> 
          </div>
