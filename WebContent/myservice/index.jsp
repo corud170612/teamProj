@@ -29,7 +29,7 @@
 	</div>
 	<!-- 로그인 전 -->
 	<div id="loginForm">
-		<form name="loginForm" method="post" action="./login.jsp">
+		<form name="loginForm" method="post" action="./login.php">
 			<div id="loginEmailArea">
 				<label for="loginEmail">E-Mail</label>
 				<div class="loginInputBox">
