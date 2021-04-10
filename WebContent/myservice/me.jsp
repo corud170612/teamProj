@@ -5,14 +5,14 @@
 <head>
 <meta name = "viewport" content="width=device-width" />
 <meta charset="UTF-8">
-<title>MBTI 커뮤니케이션</title>
+<title>MBTI 커뮤니티</title>
 <link rel="stylesheet" href="./css/cssReset.css" />
 <link rel="stylesheet" href="./css/header.css" />
-<link rel="stylesheet" href="./css/footer.css" />
+<link rel="stylesheet" href="./css/me.css"/>
+
 <script type="text/javascript" src="/.js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="./js/me.js"></script>
 
-<link rel="stylesheet" href="./css/me.css"/>
 <style>
 #myWallPhoto{background:url('./images/me/back.PNG');background-size:cover;
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
@@ -25,7 +25,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    <a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
 </div>
 <header>
-   <div id="myService"> My First Web Service</div>
+   <div id="myService"> MBTI 커뮤니케이션</div>
    <!-- 로그인 전 -->
    <div id="loginForm">
       <form name="loginForm" method="post" action="./login.jsp">
@@ -149,7 +149,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 </div>
 <footer>
    <link rel="stylesheet" href="./css/footer.css" />
-   <p>My First Web Service</p>
+   <p>MBTI 커뮤니티</p>
 </footer>
 </body>
 </html>
