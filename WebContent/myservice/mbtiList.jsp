@@ -9,7 +9,7 @@
 <title>MBTI 커뮤니티</title>
 <link rel="stylesheet" href="./css/cssReset.css" />
 <link rel="stylesheet" href="./css/header.css" />
-<link rel="stylesheet" href="./css/allList.css" />
+<link rel="stylesheet" href="./css/mbtiList.css" />
 <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src=./js/all.js></script>
 </head>
@@ -50,6 +50,16 @@
    </div>
 </header>
 
+<div id="categoryBox">
+<section class="asideContent">
+	<ul class="categories">
+		<li><a href="">취업</a></li>
+		<li><a href="">진로</a></li>
+		<li><a href="">취미</a></li>
+		<li>Advertisement</li>
+	</ul>
+</section>
+</div>
 <form id="frm"  method="post">
 <table id="listTable" >
 	<thead>
