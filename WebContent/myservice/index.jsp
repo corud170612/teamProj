@@ -5,7 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="./css/cssReset.css" />
 <link rel="stylesheet" href="./css/header.css" />
+<link rel="stylesheet" href="./css/index.css" />
+
 <meta name="viewport" content="width=device-width" charset="UTF-8">
 <title>My First Web Service</title>
 </head>
@@ -46,7 +49,6 @@
 </header>
 <!-- container -->
 <div id="container">
-<link rel="stylesheet" href="./css/index.css" />
 	<section id="introSite">
 		<div id="siteComment">
 			어서오세요<br/>
