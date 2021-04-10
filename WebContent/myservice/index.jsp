@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="./css/index.css" />
 
 <meta name="viewport" content="width=device-width" charset="UTF-8">
-<title>My First Web Service</title>
+<title>MBTI 커뮤니티</title>
 </head>
 <body>
 <div id="viwType" align="center">
@@ -19,7 +19,7 @@
 	<a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
 </div>
 <header>
-	<div id="myService"> My First Web Service</div>
+	<div id="myService"> MBTI 커뮤니티</div>
 	<!-- 로그인 후 -->
 	<div id="myName">
 		<p>안녕하세요 전채경님</p>
@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="loginSubmitBox">
-				<input type="submit" id="loginSumnit" value="로그인"/> 
+				<input type="submit" id="loginSubmit" value="로그인"/> 
 			</div>
 		</form>
 	</div>
@@ -118,9 +118,24 @@
 				<div class="row">
 					<p id="valueError"></p>
 				</div>
+				<div class="row2">
+					<label>나의 MBTI는?</label>
+				</div>
+				<div class="mbti">
+					<div id="mbtiPage">
+						<a href="https://www.16personalities.com/ko"target="_blank" id="mbtiGo">MBTI검사하러가기</a>
+					</div>
+					<div class="row">
+					
+					<div class="inputBox">
+						<input type="text" name="userMbti" id="userMbti" placeholder="MBTI를 적어주세요" />
+					</div>
+				</div>
+				</div>
+				
 				<div class="row">
 					<div class="submitBox">
-						<input type="submit" id="signSubmit" value="가입하기" />
+						<input type="submit" id="signUpSubmit" value="가입하기" />
 					</div>
 				</div>
 				<input type="hidden" name="mode" value="save" />
@@ -133,7 +148,7 @@
 </div>
 <footer>
 <link rel="stylesheet" href="./css/footer.css" />
-	<p>My First Web Service</p>
+	<p>MBTI 커뮤니티</p>
 </footer>
 </body>
 </html>
