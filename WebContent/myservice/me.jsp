@@ -22,7 +22,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 <div id="viwType" align="center">
 	<a href="/myservice/me.jsp" id="meLink">ME</a>
 	<a href="/myservice/all.jsp" id="allLink">ALL</a>
-	<a href="/myservice/all.jsp" id="allLink">MBTE</a>
+	<a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
 </div>
 <header>
    <div id="myService"> MBTI 커뮤니케이션</div>

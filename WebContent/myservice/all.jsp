@@ -14,15 +14,13 @@
 <script type="text/javascript" src=./js/all.js></script>
 </head>
 <body>
+<div id="viwType" align="center">
+	<a href="/myservice/me.jsp" id="meLink">ME</a>
+	<a href="/myservice/all.jsp" id="allLink">ALL</a>
+	<a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
+</div>
 <header>
-   <div id="myService">MBTI 커뮤니티</div>
-   <!-- 로그인 후 -->
-   <div id="myName">
-      <p>안녕하세요 전채경님</p>
-      <div id="logoutBox">
-         <input type="button" id="logoutBtn" value="로그아웃"/>
-      </div>
-   </div>
+   <div id="myService"> MBTI 커뮤니케이션</div>
    <!-- 로그인 전 -->
    <div id="loginForm">
       <form name="loginForm" method="post" action="./login.jsp">
@@ -44,27 +42,15 @@
       </form>
    </div>
 </header>
+
 <div id="timeLine">
-	<div id="container">
-		<div id="writing">
-		<div class="me">
-			<img src="./images/me/happyCat.png" />
-			<p>김태영</p>
-		</div>
-		<textarea maxlength="500" id="meContent"></textarea>
-		<div id="inputBox">
-			<input type="button" id="mePostBtn" value="게시" />
-		</div>
-	</div>
 	<div class="reading">
 		<div class="writerArea">
 			<img src="./images/me/happyCat.png" />
 			<div class="writingInfo">
 				<p>김태영</p>
-				<div class="writingDate">2030년 12월 25일</div>
 			</div>
 		</div>
-		
 		
 		<span class="content">반갑습니다.</span>
 		

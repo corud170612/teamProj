@@ -8,9 +8,10 @@ header{clear:both; float:left; width:100%; background:rgba(85,191,247,0.7)}
 
 #viewType{clear:both; width:100px; height:25px; margin: 0 auto; border-left:1px solid #ccc;
 border-right:1px solid #ccc}
-#meLink{float:left; width:50%; height:17px; border-right:1px solid #ccc; text-align:center;
+#meLink{float:left; width:33%; height:17px; border-right:1px solid #ccc; text-align:center;
 padding:8px 0 0 0; color:#aaa}
-#allLink{float:left; width:49%; height:17px; text-align:center; padding:8px 0 0 0; color:#aaa}
+#allLink{float:left; width:33%; height:17px; border-right:1px solid #ccc; text-align:center; padding:8px 0 0 0; color:#aaa}
+#mbtiLink{float:left; width:33%; height:17px; text-align:center; padding:8px 0 0 0; color:#aaa}
 
 /* mobile */
 @media screen and (min-width:0px) and (max-width:1199px){
