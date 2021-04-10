@@ -19,12 +19,13 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 </style>
 </head>
 <body>
-<div id="viwType">
-	<a href="/myservice/me.jsp" id="meLink">me</a>
-	<a href="/myservice/all.jsp" id="allLink">all</a>
+<div id="viwType" align="center">
+	<a href="/myservice/me.jsp" id="meLink">ME</a>
+	<a href="/myservice/all.jsp" id="allLink">ALL</a>
+	<a href="/myservice/all.jsp" id="allLink">MBTE</a>
 </div>
 <header>
-   <div id="myService"> My First Web Service</div>
+   <div id="myService"> MBTI 커뮤니케이션</div>
    <!-- 로그인 전 -->
    <div id="loginForm">
       <form name="loginForm" method="post" action="./login.jsp">
@@ -80,7 +81,14 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 				</div>
 			</form>
 		</div>
-		<div id="myContent">
+		
+		<form name="write" method="post" action="writeForm.jsp">
+			<div id="writing" align="right">
+				<input type="submit" id="mePostBtn" value="글쓰기" />
+			</div>
+		</form>
+			
+		<!-- <div id="myContent">
 			<div id="writing">
 				<div class="me">
 					<img src="./images/me/pro.PNG" />
@@ -90,7 +98,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 				<div id="inputBox">
 					<input type="button" id="mePostBtn" value="게시" />
 				</div>
-			</div>
+			</div> -->
 			
 			<div class="reading">
 		<div class="writerArea">
@@ -104,27 +112,27 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 		
 		<span class="content">반갑습니다.</span>
 		
-		<div class="likeArea">
+<!-- 		<div class="likeArea">
 			<div class="likeNum likes861225" style="background:#fff">공감수 : 250</div>
 			<div class="likeBtn" id="likes861225">공감하기</div>
 			<div class="contentsID">콘텐츠 번호: 861225</div>
-		</div>
+		</div> -->
 		
 		<div class="myCommentArea myCommentAtra861225">
 			<div class="commentBox">
 				<img src="./images/me/pro.PNG" />
 				<p class="commentRegTime">2030년 12월 25일</p>
-				<p class="commentPoster">라이언</p>
-				<p class="writtenComment">반갑습니다.</p> 
+				<p class="commentPoster">댓글달러 온 사람</p>
+				<p class="writtenComment">네네</p> 
 			</div>
 		</div>
-		<div class="inputBox">
+<!-- 		<div class="inputBox">
 			<img src="./images/me/pro.PNG" />
 			<input type="text" class="inputComment comments861225" placeholder="코멘트 입력" />
 			<div class="regCommentBox">
 				<input type="button" class="regCommentBtn" id="comments861225" value="게시" />
 			</div>
-		</div>
+		</div> -->
  	</div>
 </div>
 <div id="noContents">
@@ -134,7 +142,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 </div>
 <footer>
 	<link rel="stylesheet" href="./css/footer.css" />
-   <p>My First Web Service</p>
+   <p>MBTI 커뮤니케이션</p>
 </footer>
 </div>
 </body>

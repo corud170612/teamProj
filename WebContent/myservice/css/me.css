@@ -59,7 +59,7 @@
 }
 
 #container{clear:both;width:80%;margin:30px auto 0;}
-#writing{clear:both;float:left;width:100%;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin-bottom:10%}
+#writing{clear:both;float:left;width:100%;border-top:1px solid #ccc;border-bottom:100px solid #ccc;margin-bottom:10%}
 #writing .me img{float:left;width:30px;margin:1rem}
 #writing .me p{float:left;font-size:1rem;margin:1.2rem 0 0 0}
 
@@ -105,18 +105,3 @@ color:#fff;background:#fff}
 .inputBox img{float:left;width:25px;margin:2px 2px 2px 11px}
 
 #noContents{clear:both;float:left;width:100%;text-align:center;padding:10px 0 10px 0;display:none}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
