@@ -13,5 +13,5 @@ $(document).ready(function() {
 			return false;
 		}
 		// 백엔드 프로젝트에서 게시물 등록 기능 구현
-	})
-}
+	});
+});
