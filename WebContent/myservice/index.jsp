@@ -29,7 +29,7 @@
 	</div>
 	<!-- 로그인 전 -->
 	<div id="loginForm">
-		<form name="loginForm" method="post" action="./login.php">
+		<form name="loginForm" method="post" action="./loginProc.jsp">
 			<div id="loginEmailArea">
 				<label for="loginEmail">E-Mail</label>
 				<div class="loginInputBox">
@@ -62,7 +62,7 @@
 	</section>
 	<section id="signup">
 		<div id="signupCenter">
-			<form id="signUpForm" method="post" action="./database/myMember.jsp">
+			<form id="signUpForm" method="post" action="membershipProc.jsp">
 				<div class="row">
 					<div class="inputBox">
 						<input type="text" name="userName" id="userName" placeholder="이름" />
@@ -112,8 +112,8 @@
 						<label for="gW" id="gMW">여성</label>
 						<label for="gM" id="gMM">남성</label>
 					</div>
-					<input type="radio" name="gender" class="gender" id="gW" value="w" />
-					<input type="radio" name="gender" class="gender" id="gM" value="m" />
+					<input type="radio" name="gender" class="gender" id="gW" value="1" />
+					<input type="radio" name="gender" class="gender" id="gM" value="2" />
 				</div>
 				<div class="row">
 					<p id="valueError"></p>
