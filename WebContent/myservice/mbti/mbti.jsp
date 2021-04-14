@@ -111,7 +111,7 @@
 </aside>
 <!-- 나중에 footer 넣을 자리 -->
 <footer>
-<link rel="stylesheet" href="../css/footer.css" />
+<link rel="stylesheet" href="./css/footer.css" />
    <p>MBTI 커뮤니티</p>
 </footer>
 </body>
