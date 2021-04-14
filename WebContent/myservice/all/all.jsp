@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="com.jjj.comment.CommentsDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -9,8 +11,15 @@
 	if(session.getAttribute("userId")!=null) {
 		userId=(String)session.getAttribute("userId");
 	}
+	
+	CommentsDAO commentsDao = new CommentsDAO();
+	Connection conn = commentsDao.getConn();
+/*  	int commentsID = commentsDao.getAI(conn, "comments"); */
+ 	Comments comments = commentsDao.getComments(request);
+	commentsDao.Insert(conn, comments);
+  	int comNum =1; /* Integer.parseInt(request.getParameter("contentsid")); */
+	List<Comments> lst = commentsDao.getCommentsList(conn, comNum);
 
-	List<Comments> commentsLst = (List<Comments>)session.getAttribute("commentsLst");
 
 %>
 <!DOCTYPE html>
@@ -83,10 +92,10 @@
 		<div class="likeArea">
 			<div class="likeNum likes861225" style="background:#fff">공감수 : 250</div>
 			<div class="likeBtn" id="likes861225">공감하기</div>
-			<div class="contentsID">콘텐츠 번호: 861225</div>
+			<div class="contentsID"><input type="hidden" name="contentsid" <%-- value="<%=contentsid %>" --%> /> 콘텐츠 번호:<%--  <%=contentsid %> --%></div>
 		</div>
 <%
-for(Comments comment : commentsLst){
+for(Comments comment : lst){
 %>		
 		<div class="myCommentArea myCommentAtra861225">
 			<div class="commentBox">
@@ -96,6 +105,7 @@ for(Comments comment : commentsLst){
 				<p class="writtenComment"><%=comment.getReply() %></p> 
 			</div>
 		</div>
+		
 <%
 }
 %>
