@@ -1,4 +1,4 @@
-package com.jjj.DTO;
+package com.jjj.membership;
 //¸â¹ö½± 
 public class Mymember {
 

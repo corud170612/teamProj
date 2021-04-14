@@ -1,0 +1,12 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%request.setCharacterEncoding("UTF-8"); %>
+<link rel="stylesheet" href="./css/cssReset.css" />
+<meta name="viewport" content="width=device-width" charset="UTF-8">
+<title>MBTI 커뮤니티</title>
+</head>
+<body>
+<div id="viwType" align="center">
+	<a href="<%=request.getContextPath() %>/myservice/me/me.jsp" id="meLink">ME</a>
+	<a href="<%=request.getContextPath() %>/myservice/all/all.jsp" id="allLink">ALL</a>
+	<a href="<%=request.getContextPath() %>/myservice/mbti/mbti.jsp" id="mbtiLink">MBTI</a>
+</div>
