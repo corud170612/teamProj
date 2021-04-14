@@ -1,20 +1,23 @@
+<%@page import="com.jjj.DTO.Contents"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	Contents contents = (Contents)request.getAttribute("contents");    
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name = "viewport" content="width=device-width" />
 <meta charset="UTF-8">
 <title>MBTI 커뮤니티</title>
-<link rel="stylesheet" href="./css/cssReset.css" />
-<link rel="stylesheet" href="./css/header.css" />
-<link rel="stylesheet" href="./css/me.css"/>
-
+<link rel="stylesheet" href="../css/cssReset.css" />
+<link rel="stylesheet" href="../css/header.css" />
+<link rel="stylesheet" href="../css/me.css"/>
 <script type="text/javascript" src="/.js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="./js/me.js"></script>
 
 <style>
-#myWallPhoto{background:url('./images/me/back.PNG');background-size:cover;
+#myWallPhoto{background:url('../images/me/back.PNG');background-size:cover;
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
 </style>
 </head>
@@ -25,10 +28,17 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    <a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
 </div>
 <header>
-   <div id="myService"> MBTI 커뮤니케이션</div>
+   <div id="myService"> MBTI 커뮤니티</div>
+   <!-- 로그인 후 -->
+   <div id="myName">
+      <p>안녕하세요 전채경님</p>
+      <div id="logoutBox">
+         <input type="button" id="logoutBtn" value="로그아웃"/>
+      </div>
+   </div>
    <!-- 로그인 전 -->
    <div id="loginForm">
-      <form name="loginForm" method="post" action="./login.jsp">
+      <form name="loginForm" method="post" action="../loginProc.jsp">
          <div id="loginEmailArea">
             <label for="loginEmail">E-Mail</label>
             <div class="loginInputBox">
@@ -42,7 +52,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
             </div>
          </div>
          <div class="loginSubmitBox">
-            <input type="submit" id="loginSumnit" value="로그인"/> 
+            <input type="submit" id="loginSubmit" value="로그인"/> 
          </div>
       </form>
    </div>
@@ -52,7 +62,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    <div id="center">
       <div id="myWallPhoto"></div>
       <div id="myProfilePhoto">
-         <img src="./images/me/pro.PNG" />
+         <img src="../images/me/pro.PNG" />
       </div>
       <p id="name">라이언</p>
       <div class="myButtonBox">
@@ -107,14 +117,16 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
          
       <div class="reading">
          <div class="writerArea">
-            <img src="./images/me/pro.PNG" />
+            <img src="../images/me/pro.PNG" />
             <div class="writingInfo">
             <p>라이언  </p>
-            <div class="writingDate">2021년 04월 10일</div>
+            <div class="writingDate"></div> <!-- 작성일 -->
          </div>
       </div>
       
-      <span class="content">반갑습니다. </span>
+      <span class="content">
+      	<input type="text" name="inputcontents"/>
+      </span>
       
       
 <!--       <div class="likeArea">
@@ -125,7 +137,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
       
        <div class="myCommentArea myCommentAtra861225">
          <div class="commentBox">
-            <img src="./images/me/pro.PNG" />
+            <img src="../images/me/pro.PNG" />
             <p class="commentRegTime">2021년 04월 10일</p>
             <p class="commentPoster">댓글 작성자</p>
             <p class="writtenComment">네네네</p> 
@@ -148,7 +160,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    <input type="hidden" name="page" id="page" value="1" />
 </div>
 <footer>
-   <link rel="stylesheet" href="./css/footer.css" />
+   <link rel="stylesheet" href="../css/footer.css" />
    <p>MBTI 커뮤니티</p>
 </footer>
 </body>
