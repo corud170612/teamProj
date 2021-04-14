@@ -1,20 +1,7 @@
 <!-- myservice/index.jsp -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-   String name = request.getParameter("userName");
-   String email = request.getParameter("userEmail");
-   String pw = request.getParameter("userPw");
-   String gender = request.getParameter("gender");
-   String mbti = request.getParameter("userMbti");
-   
-   if(name==null)name="";
-   if(email==null)email="";
-   if(pw==null)pw="";
-   if(gender==null)gender="";
-   if(mbti==null)mbti="";
-%>
-<!-- 로그인 후 -->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!-- �α��� �� -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +10,7 @@
 <link rel="stylesheet" href="./css/index.css" />
 
 <meta name="viewport" content="width=device-width" charset="UTF-8">
-<title>MBTI 커뮤니티</title>
+<title>MBTI Ŀ�´�Ƽ</title>
 </head>
 <body>
 <div id="viwType" align="center">
@@ -32,31 +19,31 @@
    <a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
 </div>
 <header>
-   <div id="myService"> MBTI 커뮤니티</div>
-   <!-- 로그인 후 -->
+   <div id="myService"> MBTI Ŀ�´�Ƽ</div>
+   <!-- �α��� �� -->
    <div id="myName">
-      <p>안녕하세요 전채경님</p>
+      <p>�ȳ��ϼ��� ��ä���</p>
       <div id="logoutBox">
-         <input type="button" id="logoutBtn" value="로그아웃"/>
+         <input type="button" id="logoutBtn" value="�α׾ƿ�"/>
       </div>
    </div>
-   <!-- 로그인 전 -->
+   <!-- �α��� �� -->
    <div id="loginForm">
       <form name="loginForm" method="post" action="./loginProc.jsp">
          <div id="loginEmailArea">
             <label for="loginEmail">E-Mail</label>
             <div class="loginInputBox">
-               <input type="email" id="loginEmail" name="email" placeholder="이메일"/>
+               <input type="email" id="loginEmail" name="email" placeholder="�̸���"/>
             </div>
          </div>
          <div id="loginPwArea">
             <label for="loginPw">Password</label>
             <div class="loginInputBox">
-               <input type="password" name="userPw" id="loginPw" placeholder="비밀번호 8자 이상 입력"/>
+               <input type="password" name="userPw" id="loginPw" placeholder="��й�ȣ 8�� �̻� �Է�"/>
             </div>
          </div>
          <div class="loginSubmitBox">
-            <input type="submit" id="loginSubmit" value="로그인"/> 
+            <input type="submit" id="loginSubmit" value="�α���"/> 
          </div>
       </form>
    </div>
@@ -65,37 +52,65 @@
 <div id="container">
    <section id="introSite">
       <div id="siteComment">
-         어서오세요<br/>
-         MBTI 커뮤티니에 오신걸<br/>
-         환영합니다.
+         �������<br/>
+         MBTI Ŀ��Ƽ�Ͽ� ���Ű�<br/>
+         ȯ���մϴ�.
       </div>
       <div id="signUpBtn">
-         <p>가입하기</p>
+         <p>�����ϱ�</p>
       </div>
    </section>
    <section id="signup">
       <div id="signupCenter">
-      <script  src='<%=request.getContextPath()%>/js/common.js' type="text/javascript"></script>
          <form id="signUpForm" method="post" action="membershipProc.jsp">
             <div class="row">
                <div class="inputBox">
-                  <input type="text" name="userName" id="userName" value="<%=name %>" placeholder="이름" />
+                  <input type="text" name="userName" id="userName" placeholder="�̸�" />
                </div>
             </div>
             <div class="row">
                <div class="inputBox">
-                  <input type="email" name="userEmail" id="userEmail" value="<%=email %>" placeholder="이메일" />
+                  <input type="email" name="userEmail" id="userEmail" placeholder="�̸���" />
                </div>
             </div>
             <div class="row">
                <div class="inputBox">
-                  <input type="password" name="userPw" id="userPw" value="<%=pw %>" placeholder="비밀번호" />
+                  <input type="password" name="userPw" id="userPw" placeholder="��й�ȣ" />
+               </div>
+            </div>
+            <div class="row">
+               <label>����</label>
+               <div class="selectBox">
+                  <select name="birthYear" id="birthYear">
+                     <option value="">����</option>
+                     <option value="2016">2016</option>
+                     <option value="2015">2015</option>
+                     <option value="2014">2014</option>
+                     <option value="2013">2013</option>
+                  </select>
+               </div>
+               
+               <div class="selectBox selectBoxMargin">
+                  <select name="birthMonth" id="birthMonth">
+                     <option value="">��</option>
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                  </select>
+               </div>
+               <div class="selectBox">
+                  <select name="birthDay" id="birthDay">
+                     <option value="">��</option>
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                  </select>
                </div>
             </div>
             <div class="row genderRow">
                <div id="genderLabel">
-                  <label for="gW" id="gMW">여성</label>
-                  <label for="gM" id="gMM">남성</label>
+                  <label for="gW" id="gMW">����</label>
+                  <label for="gM" id="gMM">����</label>
                </div>
                <input type="radio" name="gender" class="gender" id="gW" value="1" />
                <input type="radio" name="gender" class="gender" id="gM" value="2" />
@@ -104,36 +119,36 @@
                <p id="valueError"></p>
             </div>
             <div class="row2">
-               <label>나의 MBTI는?</label>
+               <label>���� MBTI��?</label>
             </div>
             <div class="mbti">
                <div id="mbtiPage">
-                  <a href="https://www.16personalities.com/ko"target="_blank" id="mbtiGo">MBTI검사하러가기</a>
+                  <a href="https://www.16personalities.com/ko"target="_blank" id="mbtiGo">MBTI�˻��Ϸ�����</a>
                </div>
                <div class="row">
                
                <div class="inputBox">
-                  <input type="text" name="userMbti" id="userMbti" value="<%=mbti %>" placeholder="MBTI를 적어주세요" />
+                  <input type="text" name="userMbti" id="userMbti" placeholder="MBTI�� �����ּ���" />
                </div>
             </div>
             </div>
             
             <div class="row">
                <div class="submitBox">
-                  <input type="button" onclick="sendMember();" id="signUpSubmit" value="가입하기" />
+                  <input type="submit" id="signUpSubmit" value="�����ϱ�" />
                </div>
             </div>
             <input type="hidden" name="mode" value="save" />
          </form>
          <div id="goToLoginBtn">
-            <p>로그인하기</p>
+            <p>�α����ϱ�</p>
          </div>
       </div>
    </section>
 </div>
 <footer>
 <link rel="stylesheet" href="./css/footer.css" />
-   <p>MBTI 커뮤니티</p>
+   <p>MBTI Ŀ�´�Ƽ</p>
 </footer>
 </body>
 </html>
