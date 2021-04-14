@@ -1,6 +1,3 @@
-me/ContentsForm.jsp
-
-
 <%@ page contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -53,7 +50,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    </div>
 </header>
 <center>
-<form action="writeProc.jsp" method="post" enctype="multipart/form-data">
+<form action="ContentsProc.jsp" method="post" enctype="multipart/form-data">
 <table style="width: 650px; ">
 
 	<tr>

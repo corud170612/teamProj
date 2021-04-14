@@ -94,7 +94,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
       </div>
       
       <div class="myButtonBox">
-      <form name="write" method="post" action="writeForm.jsp">
+      <form name="write" method="post" action="ContentsForm.jsp">
          <div id="writing" align="right">
                <input type="submit" id="mePostBtn" value="글쓰기" />
          </div>
@@ -115,18 +115,17 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 
          
          
-      <div class="reading">
-         <div class="writerArea">
-            <img src="../images/me/pro.PNG" />
-            <div class="writingInfo">
-            <p>라이언  </p>
-            <div class="writingDate"></div> <!-- 작성일 -->
-         </div>
-      </div>
-      
-      <span class="content">
-      	<input type="text" name="inputcontents"/>
-      </span>
+		<div class="reading">
+			<div class="writerArea">
+				<img src="../images/me/pro.PNG" />
+				<div class="writingInfo">
+				<p>라이언  </p>
+				<div class="writingDate">2030년 12월 25일</div>
+			</div>
+		</div>
+		
+		
+		<span class="content">반갑습니다.</span>
       
       
 <!--       <div class="likeArea">

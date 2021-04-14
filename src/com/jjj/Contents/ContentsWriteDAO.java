@@ -3,6 +3,7 @@ package com.jjj.Contents;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.jjj.DTO.Contents;
@@ -21,26 +22,30 @@ public class ContentsWriteDAO {
 		
 		return conn;
 	}
-	public int Insert(Connection conn, Contents contents) {
-		String sql="INSERT INTO contents(contentsID, myMemberID,  content,   regTime) "
-		 + "VALUES (?, ?, ?, ?)";
-		
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, contents.getContentsid()); // 게시물 번호
-			pstmt.setInt(2, contents.getMymemberid()); // 작성한 고객번호
-			pstmt.setString(3, contents.getContent()); // 게시물 내용
-			pstmt.setInt(4, contents.getRegtime()); // 등록시간
-			
-			pstmt.executeUpdate();
-			pstmt.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
-	}
+	   public int Insert(Connection conn, Contents contents) {
+		      int getAI = getAI(getConn(), "contents");
+		      
+		      String sql = "INSERT INTO contents (contentsid, mymemberid, content, regtime) " +
+		      "VALUES ("+getAI+", ?, ?, sysdate)";
+
+		      try {
+		         PreparedStatement pstmt = conn.prepareStatement(sql);
+
+		         pstmt.setInt(1, 123); 
+		         pstmt.setString(2, "345");   
+		      
+//		         pstmt.setInt(1,   contents.getMymemberid()); 
+//		         pstmt.setString(2, contents.getContent());
+		          
+		         pstmt.executeUpdate();
+		         pstmt.close();
+		      } catch (SQLException e) {
+		         // TODO Auto-generated catch block
+		         e.printStackTrace();
+		      }
+		      
+		      return 0;
+		   }
 	
 	/*
 	public Contents getContents(HttpServletRequest request) {
@@ -54,16 +59,26 @@ public class ContentsWriteDAO {
 	}
 	*/
 	
-	/* > 글번호 생성
-	 * public int getAI(Connection conn, String tableName) { String
-	 * sql="select nvl(max(no), 0)+1 from "+tableName; int maxNum=0; try {
-	 * PreparedStatement pstmt = conn.prepareStatement(sql); //pstmt.setString(1,
-	 * tableName);
-	 * 
-	 * ResultSet rs = pstmt.executeQuery(); if(rs.next()) maxNum =rs.getInt(1);
-	 * rs.close(); pstmt.close(); } catch (SQLException e) { // TODO Auto-generated
-	 * catch block e.printStackTrace(); } return maxNum; }
-	 */
+	  //글번호
+	public int getAI(Connection conn, String tableName) {
+		String sql="select nvl(max(contentsID), 0)+1 from "+tableName;
+		int maxNum=0;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			//pstmt.setString(1, tableName);
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next())
+				maxNum =rs.getInt(1);
+			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return maxNum;
+	}
+	 
 	
 	/*
 	  private void getMultiReq(HttpServletRequest request) { String uploadFilePath
