@@ -1,12 +1,10 @@
-package com.jjj.DAO;
+package com.jjj.membership;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.jjj.DTO.Mymember;
 
 public class MembershipDAO {
 	public Connection getConn() {

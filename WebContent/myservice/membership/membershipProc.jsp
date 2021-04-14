@@ -1,7 +1,7 @@
 <!-- memberProc.jsp -->
-<%@page import="com.jjj.DTO.Mymember"%>
+<%@page import="com.jjj.membership.Mymember"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="com.jjj.DAO.MembershipDAO"%>
+<%@page import="com.jjj.membership.MembershipDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	Mymember mymember = new Mymember();
