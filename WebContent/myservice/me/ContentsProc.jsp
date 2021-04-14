@@ -1,13 +1,10 @@
-ContentsProc.jsp
-
-
 <%@page import="com.jjj.Contents.ContentsWriteDAO"%>
 <%@page import="com.jjj.DTO.Contents"%>
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	out.print(request.getParameter("inputcontents"));
+	out.print(request.getParameter("contents"));
 
 	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
 	Connection conn = contentsDao.getConn();
