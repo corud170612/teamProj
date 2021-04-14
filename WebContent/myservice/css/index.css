@@ -37,11 +37,11 @@ background-position: 90% 5px; width: 90%; margin-left: 5px; font-size: 1rem}
 .selectBoxMargin{margin-left: 2%; margin-right: 2%}
 .genderRow input{width: 15px; margin-left: 10%; position: relative; top: 4px}
 
-#genderLabel{clear: both; width: 80%; margin: 0 auto;}
+/* #genderLabel{clear: both; width: 80%; margin: 0 auto;}
 #gMM{border-left: none;}
 .genderRow label {float: left; width: 49%; border: 1px solid #ccc; text-align: center;padding-left: 0}
-.genderRow input{clear: both; float: none; width: 0px; visibility: hidden}
-
+.genderRow input{clear: both; float: none; width: 0px}
+ */
 #valueError{float: left; width: 100%; text-align: center; color: red; font-size: 2em}
 #siteComment{border: 3px solid #64cbf9; padding: 1rem; font-size: 2rem; color: #64cbf9;}
 
