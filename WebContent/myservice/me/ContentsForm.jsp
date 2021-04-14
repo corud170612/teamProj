@@ -1,28 +1,19 @@
+me/ContentsForm.jsp
+
+
 <%@ page contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%	
-	String openRadio="checked";
-	String closeRadio="";
-	
-	if("close".contentEquals(radioBtn)){
-		openRadio = "";
-		closeRadio ="checked";
-	}
-	else if("open".contentEquals(radioBtn)) {
-		openRadio="checked";
-		closeRadio = "";
-	}
-%> --%>
+
 <head>
 <meta name = "viewport" content="width=device-width" />
 <meta charset="UTF-8">
 <title>MBTI 커뮤니케이션</title>
-<link rel="stylesheet" href="./css/cssReset.css" />
-<link rel="stylesheet" href="./css/header.css" />
-<link rel="stylesheet" href="./css/footer.css" />
+<link rel="stylesheet" href="../css/cssReset.css" />
+<link rel="stylesheet" href="../css/header.css" />
+<link rel="stylesheet" href="../css/footer.css" />
 
 <style>
-#myWallPhoto{background:url('./images/me/back.PNG');background-size:cover;
+#myWallPhoto{background:url('../images/me/back.PNG');background-size:cover;
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
 </style>
 </head>
@@ -32,10 +23,17 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    <a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
 </div>
 <header>
-   <div id="myService"> MBTI 커뮤니케이션</div>
+   <div id="myService"> MBTI 커뮤니티</div>
+   <!-- 로그인 후 -->
+   <div id="myName">
+      <p>안녕하세요 전채경님</p>
+      <div id="logoutBox">
+         <input type="button" id="logoutBtn" value="로그아웃"/>
+      </div>
+   </div>
    <!-- 로그인 전 -->
    <div id="loginForm">
-      <form name="loginForm" method="post" action="./login.jsp">
+      <form name="loginForm" method="post" action="../loginProc.jsp">
          <div id="loginEmailArea">
             <label for="loginEmail">E-Mail</label>
             <div class="loginInputBox">
@@ -49,7 +47,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
             </div>
          </div>
          <div class="loginSubmitBox">
-            <input type="submit" id="loginSumnit" value="로그인"/> 
+            <input type="submit" id="loginSubmit" value="로그인"/> 
          </div>
       </form>
    </div>
@@ -59,19 +57,15 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 <table style="width: 650px; ">
 
 	<tr>
-		<td  style="width: 50px; height:100px;" align="right">제 목</td>
+<!-- 		<td  style="width: 50px; height:100px;" align="right">제 목</td>
 		<td style="width: 1000px; height:100px;">
 			<input type=text name='title' style="width: 750px; height:30px; "/> 
-			<input type="radio" name="radioBtn" value="open" /> 전채공개
+		<input type="radio" name="radioBtn" value="open" /> 전채공개
 			<input type="radio" name="radioBtn" value="close"/>비공개
-		</td>
-		<td>
-		
-		</td>
-
+		</td> -->
 	</tr>
 	<tr>
-		<td colspan=2 align="right"><textarea name="contents" style="width: 1000px; height: 500px"></textarea></td>
+		<td colspan=2 align="right"><br/><br/><textarea name="contents" style="width: 1000px; height: 500px"></textarea></td>
 	</tr>
 	<tr>
 		<td align='right' height=40 colspan=2>
@@ -88,6 +82,6 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 </form>
 </center>
 <footer>
-   <link rel="stylesheet" href="./css/footer.css" />
+   <link rel="stylesheet" href="../css/footer.css" />
    <p>MBTI 커뮤니티</p>
 </footer>
