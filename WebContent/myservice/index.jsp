@@ -8,6 +8,10 @@
 		pageName = "./membership/memberForm.jsp";
 	else if("home".contentEquals(currentPage))
 		pageName = "./membership/memberForm.jsp";
+   	else if("commentProc".contentEquals(currentPage))
+	    pageName = "./all/all.jsp";
+    else if("ContentsForm".contentEquals(currentPage))
+        pageName = "/me/me.jsp";
 %>
 
 <!DOCTYPE html>

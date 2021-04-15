@@ -50,20 +50,16 @@ public class CommentsDAO {
 		int getAI = getAI(getConn(), "Comments");
 		//댓글 작성시 db저장 하는 메소드
 		String sql = "INSERT INTO comments (commentsID, contentsID, myMemberID, reply, regTime) " +
-		"VALUES ("+getAI+", ?, ?, ?, 201212)";
-		//201212 => ? 변경
-		//pstmt.setString(4, comments.getRegtime());
+		"VALUES ("+getAI+", ?, ?, ?, ?)";
+
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-
-			pstmt.setInt(1, 123); 
-			pstmt.setInt(2,	234); 
-			pstmt.setString(3, "345");	
 		
-//			pstmt.setInt(1, comments.getContentsid()); 
-//			pstmt.setInt(2,	comments.getMymemberid()); 
-//			pstmt.setString(3, comments.getReply());
-			 
+			pstmt.setInt(1, comments.getContentsid()); 
+			pstmt.setInt(2,	comments.getMymemberid()); 
+			pstmt.setString(3, comments.getReply());
+			pstmt.setString(4, comments.getRegtime());
+			
 			pstmt.executeUpdate();
 			pstmt.close();
 		} catch (SQLException e) {
@@ -74,32 +70,30 @@ public class CommentsDAO {
 		return 0;
 	}
 
-	  public Comments getComments(HttpServletRequest request) {
+	  public Comments getComments(HttpServletRequest request, String nowdate, String commentcontents, int contentsid, int myMemberID) {
 		  //comments (DTO) 변수애 set메소드 사용해서 값 지정해주는 메소드
 	Comments comments =	  new Comments();
 	  
-	  comments.setContentsid(123);
-	  comments.setMymemberid(2233);
-	  comments.setReply("3334");
-	  //comments.setRegtime(nowdate);
-	  // 가져온 nowdate 저장
+	  comments.setContentsid(contentsid);
+	  comments.setMymemberid(myMemberID);
+	  comments.setReply(commentcontents);
+	  comments.setRegtime(nowdate);
 	  
 	  return comments; 
 	  }
 	  
-	public List<Comments> getCommentsList(Connection conn, int comNum){
+	public List<Comments> getCommentsList(Connection conn, int contentsid){
 		// 댓글목록 출력하는 메소드 (List로 반환시킴)
 		String sql  ="select commentsid, contentsid,mymemberid,regtime,reply from comments "
 				+ "where contentsid = ?";
 		List<Comments> lst = new ArrayList<Comments>();
 		
-		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
-			pstmt.setInt(1, comNum);
+			pstmt.setInt(1, contentsid);
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				Comments comments = new Comments();
 				comments.setCommentsid(rs.getInt(1));
 				comments.setContentsid(rs.getInt(2));
@@ -115,4 +109,5 @@ public class CommentsDAO {
 		} catch (SQLException e) {			e.printStackTrace();		}
 		return lst;
 	}
+
 }
