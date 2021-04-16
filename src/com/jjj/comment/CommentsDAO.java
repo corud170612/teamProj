@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class CommentsDAO {
 	public Connection getConn() {
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "c##jjj";
 		String pass = "jjj123";
 		Connection conn = null;
@@ -29,7 +29,7 @@ public class CommentsDAO {
 	}
 
 	public int getAI(Connection conn, String tn) {
-		//댓글번호 자동증가 생성 메소드
+		//�뙎湲�踰덊샇 �옄�룞利앷� �깮�꽦 硫붿냼�뱶
 		String sql = "select nvl(max(commentsid), 0)+1 from " + tn;
 		int maxNum = 0;
 		try {
@@ -47,7 +47,7 @@ public class CommentsDAO {
 	}
 
 	public int Insert(Connection conn, Comments comments) {
-		//댓글 작성시 db저장 하는 메소드
+		//�뙎湲� �옉�꽦�떆 db���옣 �븯�뒗 硫붿냼�뱶
 		String sql = "INSERT INTO comments (commentsID, contentsID, myMemberID, reply, regTime) " +
 		"VALUES (?, ?, ?, ?, ?)";
 
@@ -71,7 +71,7 @@ public class CommentsDAO {
 	}
 
 	  public Comments getComments(HttpServletRequest request, String nowdate, String commentcontents, int contentsid, int myMemberID) {
-		  //comments (DTO) 변수애 set메소드 사용해서 값 지정해주는 메소드
+		  //comments (DTO) 蹂��닔�븷 set硫붿냼�뱶 �궗�슜�빐�꽌 媛� 吏��젙�빐二쇰뒗 硫붿냼�뱶
 	Comments comments =	  new Comments();
 	comments.setCommentsid(getAI(getConn(), "Comments"));
 	  comments.setContentsid(contentsid);
@@ -83,7 +83,7 @@ public class CommentsDAO {
 	  }
 	  
 	public List<Comments> getCommentsList(Connection conn, int contentsid){
-		// 댓글목록 출력하는 메소드 (List로 반환시킴)
+		// �뙎湲�紐⑸줉 異쒕젰�븯�뒗 硫붿냼�뱶 (List濡� 諛섑솚�떆�궡)
 		String sql  ="select commentsid, contentsid,mymemberid,regtime,reply from comments "
 				+ "where contentsid = ?";
 		List<Comments> lst = new ArrayList<Comments>();

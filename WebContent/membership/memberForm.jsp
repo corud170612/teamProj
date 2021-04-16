@@ -24,7 +24,7 @@
 	}
 %>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberForm.css" />
-<form id="signUpForm" method="post" action="membershipProc.jsp">
+<form id="signUpForm" method="post" action="<%=request.getContextPath() %>/membership/membershipProc.jsp">
 <input type="hidden" value="memberForm" name="currentPage" />
 <div id="container">
 	<section id="introSite">

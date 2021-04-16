@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import com.jjj.DTO.Contents;
 
 public class ContentsWriteDAO {
-	//private MultipartRequest multiReq; // ���Ͼ��ε�
+	//private MultipartRequest multiReq; // 占쏙옙占싹억옙占싸듸옙
 	public Connection getConn() {
-		String url="jdbc:oracle:thin:@localhost:1521:orcl";
+		String url="jdbc:oracle:thin:@localhost:1521:xe";
 		String user="c##jjj";
 		String pass="jjj123";
 		Connection conn = null;
@@ -59,7 +59,7 @@ public class ContentsWriteDAO {
 		return contents;
 	}
 	
-	  //�۹�ȣ
+	  //占쌜뱄옙호
 	public int getAI(Connection conn, String tableName) {
 		String sql="select nvl(max(contentsID), 0)+1 from "+tableName;
 		int maxNum=0;
@@ -117,14 +117,14 @@ public class ContentsWriteDAO {
 	*/
 	 
 	
-	/*	> ÷������
+	/*	> 첨占쏙옙占쏙옙占쏙옙
 	 * public AttachFile getAttachFile(HttpServletRequest request, int fno) {
 	 * AttachFile attachFile = new AttachFile(); int no = getAI(getConn(),
 	 * "AttachFile"); System.out.println(no); attachFile.setNo(no); //AttachFile
-	 * table�� ���� attachFile.setSystemfile(multiReq.getFilesystemName("uploadFile"));
-	 * //���� ���� ���� �̸�
-	 * attachFile.setOriginfile(multiReq.getOriginalFileName("uploadFile")); //���� ����
-	 * �̸� attachFile.setFno(fno); //�Խñ� ��ȣ return attachFile; } public int
+	 * table占쏙옙 占쏙옙占쏙옙 attachFile.setSystemfile(multiReq.getFilesystemName("uploadFile"));
+	 * //占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占싱몌옙
+	 * attachFile.setOriginfile(multiReq.getOriginalFileName("uploadFile")); //占쏙옙占쏙옙 占쏙옙占쏙옙
+	 * 占싱몌옙 attachFile.setFno(fno); //占쌉시깍옙 占쏙옙호 return attachFile; } public int
 	 * Insert(Connection conn, AttachFile attachFile) { String
 	 * sql="INSERT INTO AttachFile (no, systemFile, originFile, fno) " +
 	 * "VALUES (?, ?, ?, ?)";
@@ -139,7 +139,7 @@ public class ContentsWriteDAO {
 	 * Auto-generated catch block e.printStackTrace(); } return 0; }
 	 */
 
-	/* ���
+	/* 占쏙옙占�
 	  public int Insert(Connection conn, int no, String pno) { String selectSql =
 	  "select depth+1 from reply where no=?"; String
 	  insertSql="insert into reply(no, pno, depth) values(?, ?, ?)";
