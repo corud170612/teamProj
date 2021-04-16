@@ -22,5 +22,5 @@ Connection conn = fileuploadDAO.getConn();
 	   
 	
 %>
-DB저장 됐음!
+DB저장 됐음!!!!
 
