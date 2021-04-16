@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class MembershipDAO {
 	public Connection getConn() {
-		String url="jdbc:oracle:thin:@localhost:1521:orcl";
+		String url="jdbc:oracle:thin:@localhost:1521:xe";
 		String user="c##jjj";
 		String pass="jjj123";
 		Connection conn = null;

@@ -18,7 +18,7 @@ public class FileuploadDAO {
 
 	private MultipartRequest multiReq;
 	   public Connection getConn() {
-		  String url="jdbc:oracle:thin:@localhost:1521:orcl";
+			String url="jdbc:oracle:thin:@localhost:1521:xe";
 	      String usr = "c##jjj";
 	      String pass= "jjj123";
 	      Connection conn = null;
@@ -30,7 +30,7 @@ public class FileuploadDAO {
 	      return conn;
 	   }
 	   
-	   public void getMultiReq(HttpServletRequest request) { // ���� �뷮, ������������ ��ġ �����޼ҵ� 
+	   public void getMultiReq(HttpServletRequest request) {  
 		      String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
 		      System.out.println(uploadFilePath);
 		      int maxSize = 1024*1024*10;
@@ -41,18 +41,25 @@ public class FileuploadDAO {
 		     }
 	   
 	   public AttachFile getAttachFile(HttpServletRequest request, AttachFile attachFile) {
+//		      System.out.println("오리지널 파일네임 1 : " + multiReq.getOriginalFileName("myProfilePhoto"));
+//		      System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+"333333545"); 
+		      System.out.println("files : " + multiReq.getFileNames() + "===="); 
+		   	  System.out.println(multiReq.getFileNames() + "getNultiReq 앞"); 
+		      getMultiReq(request); 
+		   	  System.out.println(multiReq.getFileNames() + "getNultiReq 뒤"); 
+//		      System.out.println(multiReq.toString()); // 출력 
+		      //System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+"1111121121111"); 
 		      AttachFile af = new AttachFile();
-		      //������ ����� ���� DTO�������ϴ� �޼ҵ� 
-		      af.setMymemberid(1234); //���߿� ȸ����ȣ ���ԵǸ� af.getMymmemberid �־��ֽɵǿ� 
+		      af.setMymemberid(1234);
 		      af.setAttachedfile1(multiReq.getOriginalFileName("myProfilePhoto"));
 		      af.setFilepath1(multiReq.getFilesystemName("myProfilePhoto"));
 		      af.setAttachedfile2(multiReq.getOriginalFileName("myCoverPhoto"));
 		      af.setFilepath2(multiReq.getFilesystemName("myCoverPhoto"));
 		      
-		  
 		      return af;
 	      
 		   }
+	   
 	   public String takePic(Connection conn, int result) {
 		   String insertSql = "INSERT INTO upload (mymemberid, attachedFile1, filepath1, attachedFile2,  filepath2) "
 			   		+ "VALUES(?, ?,  ?,  ?, ?)";

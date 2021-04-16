@@ -12,7 +12,7 @@ import com.jjj.comment.Comments;
 
 public class LikesDAO {
 	public Connection getConn() {
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String url="jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "c##jjj";
 		String pass = "jjj123";
 		Connection conn = null;
@@ -27,7 +27,7 @@ public class LikesDAO {
 	}
 	
 	public int getAI(Connection conn, String tn) {
-		//좋아요번호 자동증가 생성 메소드
+		//醫뗭븘�슂踰덊샇 �옄�룞利앷� �깮�꽦 硫붿냼�뱶
 		String sql = "select nvl(max(likesID), 0)+1 from " + tn;
 		int maxNum = 0;
 		try {
@@ -45,7 +45,7 @@ public class LikesDAO {
 	}
 	
 	public int Insert(Connection conn, Likes likes) {
-		//좋아요 클릭시 db저장 하는 메소드
+		//醫뗭븘�슂 �겢由��떆 db���옣 �븯�뒗 硫붿냼�뱶
 		String sql = "INSERT INTO likes (likesID, contentsID, myMemberID, regTime) "
 				+ "VALUES (?, ?, ?, ?)";
 
@@ -68,7 +68,7 @@ public class LikesDAO {
 	}
 
 	public Likes getLikes(HttpServletRequest request, String nowdate, int contentsid, int myMemberID) {
-		 //likes (DTO) 변수애 set메소드 사용해서 값 지정해주는 메소드
+		 //likes (DTO) 蹂��닔�븷 set硫붿냼�뱶 �궗�슜�빐�꽌 媛� 吏��젙�빐二쇰뒗 硫붿냼�뱶
 	Likes likes = new Likes();
 	likes.setLikesid(getAI(getConn(), "Likes"));
 	likes.setContentsid(contentsid);
@@ -79,7 +79,7 @@ public class LikesDAO {
 	}
 	
 	public int getLikesNum(Connection conn, int contentsid) {
-		//좋아요번호 자동증가 생성 메소드
+		//醫뗭븘�슂踰덊샇 �옄�룞利앷� �깮�꽦 硫붿냼�뱶
 		String sql = "select count(*) from likes "
 				+ "where contentsid = ?";
 		int likesNum = 0;
