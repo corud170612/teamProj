@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/common/top.jsp=UTF-8
+encoding//src/com/jjj/Contents/ContentsWriteDAO.java=UTF-8
+encoding//src/com/jjj/Contents/FileuploadDAO.java=UTF-8
+encoding//src/com/jjj/comment/CommentsDAO.java=UTF-8
+encoding//src/com/jjj/likes/LikesDAO.java=UTF-8
