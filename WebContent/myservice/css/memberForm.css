@@ -59,7 +59,7 @@ background: #64cbf9; cursor: pointer; text-align: center; border-radius: 10px}
 #goToLoginBtn p{font-size: 1rem; color: #fff; text-align:center; position: relative; top: 5px}
 
 
-/* desktop css source */
+/* desktop css source 시발이게머야... 무서워...ㅇ이거 저는 따로 css파일따로 빼놓고하지않아서 이ㅓ때문에 적용이안된거같은데*/
 @media screen and (min-width:1200px){
 	#loginForm{display: block}
 	#container{float: left; width: 100%; min-height: 100%;
