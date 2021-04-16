@@ -18,21 +18,20 @@
 		
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
-	System.out.print(sf.format(nowTime));
 	String nowdate = sf.format(nowTime);
 	
 	request.setCharacterEncoding("UTF-8");
 	String commentcontents = request.getParameter("commentcontents");
 	
-	int contentsid = Integer.parseInt(request.getParameter("contentsid"));
+	int contentsid = 70; /* Integer.parseInt(request.getParameter("contentsid")); */
 	
 	CommentsDAO commentsDao = new CommentsDAO();
 	Connection conn = commentsDao.getConn();
-		Comments comments = commentsDao.getComments(request, nowdate, commentcontents, contentsid, myMemberID);
+	Comments comments = commentsDao.getComments(request, nowdate, commentcontents, contentsid, myMemberID);
 	commentsDao.Insert(conn, comments);
 	List<Comments> lst = commentsDao.getCommentsList(conn, contentsid);
 	session.setAttribute("commentsLst", lst);
-	
+	System.out.println(lst);
 %>
 <jsp:forward page="../index.jsp">
 <jsp:param value="commentProc" name="currentPage"/>
