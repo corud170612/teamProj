@@ -13,7 +13,7 @@ public class Contents {
     private String content;
 
     // 등록시간 
-    private Integer regtime;
+    private String regtime;
 
     public Integer getContentsid() {
         return contentsid;
@@ -39,11 +39,11 @@ public class Contents {
         this.content = content;
     }
 
-    public Integer getRegtime() {
+    public String getRegtime() {
         return regtime;
     }
 
-    public void setRegtime(Integer regtime) {
+    public void setRegtime(String regtime) {
         this.regtime = regtime;
     }
 
