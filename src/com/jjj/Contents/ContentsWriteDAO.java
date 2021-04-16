@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.jjj.DTO.Contents;
 
-public class ContentsWriteDAO { ////
-	//private MultipartRequest multiReq; 
+public class ContentsWriteDAO {
+	//private MultipartRequest multiReq; // 占쏙옙占싹억옙占싸듸옙
 	public Connection getConn() {
 		String url="jdbc:oracle:thin:@localhost:1521:xe";
 		String user="c##jjj";

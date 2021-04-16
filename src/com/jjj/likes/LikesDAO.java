@@ -12,7 +12,7 @@ import com.jjj.comment.Comments;
 
 public class LikesDAO {
 	public Connection getConn() {
-		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "c##jjj";
 		String pass = "jjj123";
 		Connection conn = null;

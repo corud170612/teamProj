@@ -26,7 +26,7 @@
 
 	
 %>
-<jsp:forward page="../index.jsp">
+<jsp:forward page="/index.jsp">
 <jsp:param value="<%=filePath %>" name="currentPage"/>
 </jsp:forward>
 
