@@ -1,20 +1,47 @@
+<%@page import="java.util.List"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.jjj.Contents.ContentsWriteDAO"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.jjj.DTO.Contents"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Contents contents = (Contents)request.getAttribute("contents");    
+	//out.print(request.getParameter("contents"));
+ 	String content = request.getParameter("contents");
+	Date now = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년MM월dd일 E요일 a hh:mm:ss");
+	String today = sf.format(now);
+	int myMemberID=123;
+	if(session.getAttribute("myMemberID")!=null) {
+	    myMemberID=(Integer)session.getAttribute("myMemberID");
+	 }
+	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
+	Contents contents = contentsDao.getContents(request, today, content, myMemberID);
+	Connection conn = contentsDao.getConn();
+	contentsDao.Insert(conn, contents); 
+	//List<Contents> boardLst = (List<Contents>)request.getAttribute("boardLst");
+	List<Contents> boardLst = (List<Contents>)session.getAttribute("contentsLst");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name = "viewport" content="width=device-width" />
 <meta charset="UTF-8">
 <title>MBTI 커뮤니티</title>
-<link rel="stylesheet" href="../css/cssReset.css" />
-<link rel="stylesheet" href="../css/header.css" />
-<link rel="stylesheet" href="../css/me.css"/>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/cssReset.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/me.css"/>
 <script type="text/javascript" src="/.js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="./js/me.js"></script>
+<script type="text/javascript">
+function formSubmit(frmId, nextPath){
+	   let frm = document.getElementById(frmId);
+	   frm.action = nextPath;
+	   frm.submit();
+	}
+</script>
 
 <style>
 #myWallPhoto{background:url('../images/me/back.PNG');background-size:cover;
@@ -66,16 +93,14 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
       </div>
       <p id="name">라이언</p>
       <div class="myButtonBox">
-         <form name="photo" method="post" action="/myservice/database/myMember.jsp" 
+         <form id="frm" name="photo" method="post" 
             enctype="multipart/form-data">
-            <div class="photoBox">
-               <input type="file" name="myProfilePhoto" class="photoSelectorBtn" />
-            </div>
+            
             
             <input type="hidden" name="mode" value="photo" />
             
             <div class = "photoBox">
-               <input type="submit" id="myProfilePhtoUploadBtn" value="프로필 사진 변경" />
+               <p>배경 사진 선택해주세요</p>
             </div>
          </form>
       </div>
@@ -83,18 +108,22 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
          <form name="photo" method="post" action="/myservice/database/myMember.jsp"
             enctype="multipart/form-data">
             <div class="photoBox">
+               <input type="file" name="myProfilePhoto" class="photoSelectorBtn" />
+            </div>
+            <div class="photoBox">
                <input type="file" name="myCoverPhoto" class="photoSelectorBtn" />
             </div>
             <input type="hidden" name="mode" value="photo" />
             
             <div class = "photoBox">
-               <input type="submit" id="myCoverPhotoUploadBtn" value="커버 사진 변경" />
+            <p>프로필사진을 선택해주세요</p>
+               <input type="button" onclick="formSubmit('frm', '<%=request.getContextPath()%>/myservice/me/ProfileProc.jsp')" id="myCoverPhotoUploadBtn" value="프로필 저장" />
             </div>
          </form>
       </div>
-      
+
       <div class="myButtonBox">
-      <form name="write" method="post" action="ContentsForm.jsp">
+      <form name="write" method="post" action="<%=request.getContextPath() %>/myservice/me/ContentsForm.jsp">
          <div id="writing" align="right">
                <input type="submit" id="mePostBtn" value="글쓰기" />
          </div>
@@ -113,19 +142,22 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
          </div> -->
          
 
-         
+         <%
+			for(Contents c : boardLst){
+		 %>
          
 		<div class="reading">
 			<div class="writerArea">
 				<img src="../images/me/pro.PNG" />
 				<div class="writingInfo">
 				<p>라이언  </p>
-				<div class="writingDate">2030년 12월 25일</div>
+				<div class="writingDate"></div>
 			</div>
 		</div>
-		
-		
-		<span class="content">반갑습니다.</span>
+			<%=c.getRegtime() %>		
+		<span class="content">	
+			<%=c.getContent()%>
+		</span>
       
       
 <!--       <div class="likeArea">
@@ -134,21 +166,26 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
          <div class="contentsID">콘텐츠 번호: 861225</div>
       </div> -->
       
-       <div class="myCommentArea myCommentAtra861225">
+<!--        <div class="myCommentArea myCommentAtra861225">
          <div class="commentBox">
             <img src="../images/me/pro.PNG" />
             <p class="commentRegTime">2021년 04월 10일</p>
             <p class="commentPoster">댓글 작성자</p>
             <p class="writtenComment">네네네</p> 
          </div>
+      </div>  -->
+<!--       <div class="likeArea">
+         <div class="likeNum likes861225" style="background:#fff">공감수 : 250</div>
+         <div class="likeBtn" id="likes861225">공감하기</div> -->
+            <div class="contentsID">
+               <input type="hidden" name="contentsid" value="<%=c.getContentsid()%>"/>
+            </div>
       </div> 
-<!--       <div class="inputBox">
-         <img src="./images/me/pro.PNG" />
-         <input type="text" class="inputComment comments861225" placeholder="코멘트 입력" />
-         <div class="regCommentBox">
-            <input type="button" class="regCommentBtn" id="comments861225" value="게시" />
-         </div>
-      </div> -->
+
+<%
+}
+%>
+      
       <div class="regCommentBox">
       </div>
     </div>
