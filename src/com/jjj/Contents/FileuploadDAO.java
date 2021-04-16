@@ -14,7 +14,7 @@ import com.jjj.DTO.Contents;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class FileuploadDAO {
+public class FileuploadDAO { ////
 
 	private MultipartRequest multiReq;
 	   public Connection getConn() {

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.jjj.DTO.Contents;
 
-public class ContentsWriteDAO {
+public class ContentsWriteDAO { ////
 	//private MultipartRequest multiReq; 
 	public Connection getConn() {
 		String url="jdbc:oracle:thin:@localhost:1521:xe";
