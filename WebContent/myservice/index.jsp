@@ -16,7 +16,7 @@
     else if("ContentsProc".contentEquals(currentPage))
         pageName = path+"/me/me.jsp";
    else if("commentProc".contentEquals(currentPage))
-         pageName = path+"/all/all.jsp";
+   		pageName = path+"/all/all.jsp";
     else if("likesProc".contentEquals(currentPage))
         pageName = path+"/all/all.jsp";
 %>

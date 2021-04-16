@@ -15,7 +15,7 @@
 .orderbyArea div{padding:5px 0;text-align:center}
 .orderbyHistory{clear:both;float:left;width:33%;border-right:1px solid #ccc}
 .orderbyClicked{float:left;width:33%;border-right:1px solid #ccc}
-.allPostBtn{float:left;width:33%}
+.allPostBtn{float:left;width:34%}
 
 .reading{clear:both;float:left;width:100%;border:1px solid #ccc;margin-bottom:20px}
 .reading .writerArea img{float:left;width:30px;margin:1rem}
@@ -33,7 +33,7 @@
 
 .myCommentArea{float:left;width:100%}
 .myCommentArea img{float:left;width:25px;margin:2px}
-.commentBox{clear:both;float:left;width:98%;padding:1%;margin-bottom:4px;font-size:1.2em}
+.commentBox{clear:both;flex:1;float:left;width:98%;padding:1%;font-size:1.2em}
 .comment{float:left}
 .commentPoster, .writtenComment{float:left;font-size:1.2em}
 .commentBox .commentPoster{color:#64cbf9;margin-right:10px}
