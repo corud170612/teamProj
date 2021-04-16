@@ -18,27 +18,13 @@
 		userName=(String)session.getAttribute("userName");
 	}
 	
-	Date nowTime = new Date();
-	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
-	String nowdate = sf.format(nowTime);
-	
-	int contentsid = 70; /* Integer.parseInt(request.getParameter("contentsid")); */
-	
-	LikesDAO likesDao = new LikesDAO();
+ 	LikesDAO likesDao = new LikesDAO();
 	Connection conn = likesDao.getConn();
-	Likes likes = likesDao.getLikes(request, nowdate, contentsid, myMemberID);
-	likesDao.Insert(conn, likes);
-	int likesNum = likesDao.getLikesNum(conn, contentsid);
-	session.setAttribute("likesNum", likesNum);
 	int likesNum2 = (Integer)session.getAttribute("likesNum");
 	
-	CommentsDAO commentsDao = new CommentsDAO();
+ 	CommentsDAO commentsDao = new CommentsDAO();
 	Connection conn2 = commentsDao.getConn();
-	String commentcontents = request.getParameter("commentcontents");
-	Comments comments = commentsDao.getComments(request, nowdate, commentcontents, contentsid, myMemberID);
-	commentsDao.Insert(conn2, comments);
-	List<Comments> lst = commentsDao.getCommentsList(conn2, contentsid);
-	session.setAttribute("commentsLst", lst);
+  	List<Comments> commentsLst = (List<Comments>)session.getAttribute("commentsLst"); 
 %>
 <!DOCTYPE html>
 <html>
@@ -50,7 +36,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/header.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/all.css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src=<%=request.getContextPath() %>/js/all.js></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/all.js"></script>
 </head>
 <body>
 <form id="frm" action="<%=request.getContextPath() %>/all/commentProc.jsp" method="post">
@@ -74,13 +60,11 @@
 		
 		<div class="likeArea">
 			<div class="likeNum" style="background:#fff">공감수 : <%=likesNum2 %></div>
-			<div class="likeBtn" ><input type="button" onclick="formSubmit('frm','/all/likesProc.jsp')" name="likeBtn" value="공감하기"/></div>
-			<div class="contentsID"> 콘텐츠 번호: <%=contentsid %> <%=request.getParameter("contentsid") %></div>
+			<div class="likeBtn" ><input type="button" onclick="formSubmit('frm','/20210406/all/likesProc.jsp')" name="likeBtn" value="공감하기"/></div>
+			<div class="contentsID"> 콘텐츠 번호: <%=request.getParameter("contentsid") %></div>
 </div>
 		<div class="myCommentArea myCommentAtra861225">
 <%
-	
-  	List<Comments> commentsLst = (List<Comments>)session.getAttribute("commentsLst"); 
 
 	for(Comments c : commentsLst) {
 %>		
