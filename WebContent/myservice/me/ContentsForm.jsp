@@ -1,13 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <head>
 <meta name = "viewport" content="width=device-width" />
 <meta charset="UTF-8">
 <title>MBTI 커뮤니케이션</title>
-<link rel="stylesheet" href="../css/cssReset.css" />
-<link rel="stylesheet" href="../css/header.css" />
-<link rel="stylesheet" href="../css/footer.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/cssReset.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/footer.css" />
 
 <style>
 #myWallPhoto{background:url('../images/me/back.PNG');background-size:cover;
@@ -50,7 +49,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    </div>
 </header>
 <center>
-<form action="ContentsProc.jsp" method="post" enctype="multipart/form-data">
+<form action="<%=request.getContextPath() %>/myservice/me/ContentsProc.jsp" method="post" >
 <table style="width: 650px; ">
 
 	<tr>

@@ -7,15 +7,16 @@
 <meta name="viewport" content="width=device-width" />
 <meta charset="UTF-8">
 <title>MBTI 커뮤니티</title>
-<link rel="stylesheet" href="./css/cssReset.css" />
-<link rel="stylesheet" href="./css/header.css" />
-<link rel="stylesheet" href="./css/mbti.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/cssReset.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/mbti.css" />
 <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src=./js/all.js></script>
 </head>
 <body>
 <div id="viwType" align="center">
-	<a href="/myservice/me.jsp" id="meLink">ME</a>
+<!-- 	<a href="/myservice/me.jsp" id="meLink">ME</a>
+ -->	<a href="http://localhost:8080/20210406/myservice/me/ContentsProc.jsp" id="meLink">ME</a>
 	<a href="/myservice/all.jsp" id="allLink">ALL</a>
 	<a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
 </div>

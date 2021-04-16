@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.jjj.DTO.Contents;
 
@@ -23,19 +27,17 @@ public class ContentsWriteDAO {
 		return conn;
 	}
 	   public int Insert(Connection conn, Contents contents) {
-		      int getAI = getAI(getConn(), "contents");
 		      
 		      String sql = "INSERT INTO contents (contentsid, mymemberid, content, regtime) " +
-		      "VALUES ("+getAI+", ?, ?, sysdate)";
+		      "VALUES (?, ?, ?, ?)";
 
 		      try {
 		         PreparedStatement pstmt = conn.prepareStatement(sql);
-
-		         pstmt.setInt(1, 123); 
-		         pstmt.setString(2, "345");   
-		      
-//		         pstmt.setInt(1,   contents.getMymemberid()); 
-//		         pstmt.setString(2, contents.getContent());
+  
+		         pstmt.setInt(1, contents.getContentsid());
+		         pstmt.setInt(2, contents.getMymemberid()); 
+		         pstmt.setString(3, contents.getContent());
+		         pstmt.setString(4, contents.getRegtime());
 		          
 		         pstmt.executeUpdate();
 		         pstmt.close();
@@ -43,21 +45,19 @@ public class ContentsWriteDAO {
 		         // TODO Auto-generated catch block
 		         e.printStackTrace();
 		      }
-		      
+
 		      return 0;
 		   }
 	
-	/*
-	public Contents getContents(HttpServletRequest request) {
+
+	public Contents getContents(HttpServletRequest request, String today, String content, int myMemberID) {
 		Contents contents = new Contents();
-		getMultiReq(request);
-		board.setId( multiReq.getParameter("writer") );
-		board.setTitle( multiReq.getParameter("title") );
-		board.setContents( multiReq.getParameter("contents") );
-		board.setNo(getAI(getConn(), "Board"));
-		return board;
+		contents.setContentsid(getAI(getConn(), "contents"));
+		contents.setMymemberid(myMemberID);
+		contents.setContent(content);
+		contents.setRegtime(today);
+		return contents;
 	}
-	*/
 	
 	  //±Û¹øÈ£
 	public int getAI(Connection conn, String tableName) {
@@ -78,7 +78,35 @@ public class ContentsWriteDAO {
 		}
 		return maxNum;
 	}
-	 
+	
+
+	public List<Contents> getBoardList(Connection conn, int myMemberid){
+		String sql  ="select contentsid,mymemberid,content,regtime from contents "
+				+ "where mymemberid = ? ";
+		List<Contents> lst = new ArrayList<Contents>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, myMemberid);
+			//System.out.print("*********"+myMemberid);
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				Contents contents = new Contents();
+				
+				contents.setContentsid(rs.getInt(1));
+				contents.setMymemberid(rs.getInt(2));
+				contents.setContent(rs.getString(3));
+				contents.setRegtime(rs.getString(4));
+
+				lst.add(contents);
+				System.out.println("======="+lst.size());
+			}
+			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {			e.printStackTrace();		}
+		//System.out.println("00000"+lst.size());
+		return lst;
+	}
 	
 	/*
 	  private void getMultiReq(HttpServletRequest request) { String uploadFilePath
