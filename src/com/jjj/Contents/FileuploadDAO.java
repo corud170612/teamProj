@@ -14,7 +14,7 @@ import com.jjj.DTO.Contents;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class FileuploadDAO {
+public class FileuploadDAO { ////
 
 	private MultipartRequest multiReq;
 	   public Connection getConn() {
@@ -41,6 +41,14 @@ public class FileuploadDAO {
 		     }
 	   
 	   public AttachFile getAttachFile(HttpServletRequest request, AttachFile attachFile) {
+//		      System.out.println("오리지널 파일네임 1 : " + multiReq.getOriginalFileName("myProfilePhoto"));
+//		      System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+"333333545"); 
+		      System.out.println("files : " + multiReq.getFileNames() + "===="); 
+		   	  System.out.println(multiReq.getFileNames() + "getNultiReq 앞"); 
+		      getMultiReq(request); 
+		   	  System.out.println(multiReq.getFileNames() + "getNultiReq 뒤"); 
+//		      System.out.println(multiReq.toString()); // 출력 
+		      //System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+"1111121121111"); 
 		      AttachFile af = new AttachFile();
 		      //占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙 DTO占쏙옙占쏙옙占쏙옙占싹댐옙 占쌨소듸옙 
 		      af.setMymemberid(1234); //占쏙옙占쌩울옙 회占쏙옙占쏙옙호 占쏙옙占쌉되몌옙 af.getMymmemberid 占쌍억옙占쌍심되울옙 
@@ -49,10 +57,10 @@ public class FileuploadDAO {
 		      af.setAttachedfile2(multiReq.getOriginalFileName("myCoverPhoto"));
 		      af.setFilepath2(multiReq.getFilesystemName("myCoverPhoto"));
 		      
-		  
 		      return af;
 	      
 		   }
+	   
 	   public String takePic(Connection conn, int result) {
 		   String insertSql = "INSERT INTO upload (mymemberid, attachedFile1, filepath1, attachedFile2,  filepath2) "
 			   		+ "VALUES(?, ?,  ?,  ?, ?)";
