@@ -23,8 +23,8 @@
 		wChk="";
 	}
 %>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/memberForm.css" />
-<form id="signUpForm" method="post" action="membership/membershipProc.jsp">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberForm.css" />
+<form id="signUpForm" method="post" action="membershipProc.jsp">
 <input type="hidden" value="memberForm" name="currentPage" />
 <div id="container">
 	<section id="introSite">

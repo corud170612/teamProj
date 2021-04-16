@@ -6,12 +6,12 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
 <jsp-config>
 	<jsp-property-group>
-		<url-pattern>/myservice/all/*</url-pattern>
-		<url-pattern>/myservice/login/*</url-pattern>
-		<url-pattern>/myservice/mbti/*</url-pattern>
-		<url-pattern>/myservice/me/*</url-pattern>
-		<url-pattern>/myservice/membership/*</url-pattern>
-		<include-prelude>/myservice/header.jspf</include-prelude>
+		<url-pattern>/all/*</url-pattern>
+		<url-pattern>/login/*</url-pattern>
+		<url-pattern>/mbti/*</url-pattern>
+		<url-pattern>/me/*</url-pattern>
+		<url-pattern>/membership/*</url-pattern>
+		<include-prelude>/common/header.jspf</include-prelude>
 	</jsp-property-group>
 </jsp-config>
 </web-app>

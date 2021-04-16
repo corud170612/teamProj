@@ -8,10 +8,9 @@
 Connection conn = fileuploadDAO.getConn();
 	fileuploadDAO.getMultiReq(request); 
  attachFile = fileuploadDAO.getAttachFile(request, attachFile);
-	int result = fileuploadDAO.mem(conn, 123);
+	int result = fileuploadDAO.mem(conn, 1234);
 	String sql = fileuploadDAO.takePic(conn, result);
 	fileuploadDAO.Insert(conn, attachFile, sql);
 	
 %>
-db저장 했쑴 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 코드좀 보고올게아
-아아아아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ
+DB저장 됐음!
