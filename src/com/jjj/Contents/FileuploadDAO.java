@@ -18,7 +18,7 @@ public class FileuploadDAO {
 
 	private MultipartRequest multiReq;
 	   public Connection getConn() {
-		  String url="jdbc:oracle:thin:@localhost:1521:xe";
+		  String url="jdbc:oracle:thin:@localhost:1521:orcl";
 	      String usr = "c##jjj";
 	      String pass= "jjj123";
 	      Connection conn = null;
@@ -30,7 +30,7 @@ public class FileuploadDAO {
 	      return conn;
 	   }
 	   
-	   public void getMultiReq(HttpServletRequest request) { // ÆÄÀÏ ¿ë·®, ¼­¹öÀúÀåÆú´õ À§Ä¡ ÁöÁ¤¸Þ¼Òµå 
+	   public void getMultiReq(HttpServletRequest request) { // ï¿½ï¿½ï¿½ï¿½ ï¿½ë·®, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½Þ¼Òµï¿½ 
 		      String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
 		      System.out.println(uploadFilePath);
 		      int maxSize = 1024*1024*10;
@@ -42,8 +42,8 @@ public class FileuploadDAO {
 	   
 	   public AttachFile getAttachFile(HttpServletRequest request, AttachFile attachFile) {
 		      AttachFile af = new AttachFile();
-		      //¼­¹ö¿¡ ÀúÀåµÈ ÆÄÀÏ DTO¿¡´ëÀÔÇÏ´Â ¸Þ¼Òµå 
-		      af.setMymemberid(123); //³ªÁß¿¡ È¸¿ø¹øÈ£ »ç¿ë°ÔµÇ¸é af.getMymmemberid ³Ö¾îÁÖ½ÉµÇ¿µ 
+		      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ DTOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½ 
+		      af.setMymemberid(1234); //ï¿½ï¿½ï¿½ß¿ï¿½ È¸ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ÔµÇ¸ï¿½ af.getMymmemberid ï¿½Ö¾ï¿½ï¿½Ö½ÉµÇ¿ï¿½ 
 		      af.setAttachedfile1(multiReq.getOriginalFileName("myProfilePhoto"));
 		      af.setFilepath1(multiReq.getFilesystemName("myProfilePhoto"));
 		      af.setAttachedfile2(multiReq.getOriginalFileName("myCoverPhoto"));

@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import com.jjj.DTO.Contents;
 
 public class ContentsWriteDAO {
-	//private MultipartRequest multiReq; // ÆÄÀÏ¾÷·Îµå
+	//private MultipartRequest multiReq; // ï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Îµï¿½
 	public Connection getConn() {
-		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String url="jdbc:oracle:thin:@localhost:1521:orcl";
 		String user="c##jjj";
 		String pass="jjj123";
 		Connection conn = null;
@@ -59,7 +59,7 @@ public class ContentsWriteDAO {
 		return contents;
 	}
 	
-	  //±Û¹øÈ£
+	  //ï¿½Û¹ï¿½È£
 	public int getAI(Connection conn, String tableName) {
 		String sql="select nvl(max(contentsID), 0)+1 from "+tableName;
 		int maxNum=0;
@@ -117,14 +117,14 @@ public class ContentsWriteDAO {
 	*/
 	 
 	
-	/*	> Ã·ºÎÆÄÀÏ
+	/*	> Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * public AttachFile getAttachFile(HttpServletRequest request, int fno) {
 	 * AttachFile attachFile = new AttachFile(); int no = getAI(getConn(),
 	 * "AttachFile"); System.out.println(no); attachFile.setNo(no); //AttachFile
-	 * tableÀÇ ¼ø¹ø attachFile.setSystemfile(multiReq.getFilesystemName("uploadFile"));
-	 * //¼­¹ö ÀúÀå ÆÄÀÏ ÀÌ¸§
-	 * attachFile.setOriginfile(multiReq.getOriginalFileName("uploadFile")); //¿øº» ÆÄÀÏ
-	 * ÀÌ¸§ attachFile.setFno(fno); //°Ô½Ã±Û ¹øÈ£ return attachFile; } public int
+	 * tableï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ attachFile.setSystemfile(multiReq.getFilesystemName("uploadFile"));
+	 * //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+	 * attachFile.setOriginfile(multiReq.getOriginalFileName("uploadFile")); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½Ì¸ï¿½ attachFile.setFno(fno); //ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ return attachFile; } public int
 	 * Insert(Connection conn, AttachFile attachFile) { String
 	 * sql="INSERT INTO AttachFile (no, systemFile, originFile, fno) " +
 	 * "VALUES (?, ?, ?, ?)";
@@ -139,7 +139,7 @@ public class ContentsWriteDAO {
 	 * Auto-generated catch block e.printStackTrace(); } return 0; }
 	 */
 
-	/* ´ä±Û
+	/* ï¿½ï¿½ï¿½
 	  public int Insert(Connection conn, int no, String pno) { String selectSql =
 	  "select depth+1 from reply where no=?"; String
 	  insertSql="insert into reply(no, pno, depth) values(?, ?, ?)";

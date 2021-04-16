@@ -6,9 +6,9 @@ d<%@page import="java.util.List"%>
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	int myMemberid=123;
-	if(session.getAttribute("myMemberID")!=null) {
-		myMemberid=(Integer)session.getAttribute("myMemberID");
+	int myMemberId=123;
+	if(session.getAttribute("myMemberId")!=null) {
+		myMemberId=(Integer)session.getAttribute("myMemberId");
 	 }
 	
 	Date now = new Date();
@@ -21,10 +21,10 @@ d<%@page import="java.util.List"%>
 	
 	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
 	Connection conn = contentsDao.getConn();
-	Contents contents = contentsDao.getContents(request, today, content, myMemberid);
+	Contents contents = contentsDao.getContents(request, today, content, myMemberId);
 	contentsDao.Insert(conn, contents);
 	
-	List<Contents> lst = contentsDao.getBoardList(conn, myMemberid);
+	List<Contents> lst = contentsDao.getBoardList(conn, myMemberId);
 	
 	session.setAttribute("contentsLst", lst);
 	/* 	파일 첨부
@@ -32,5 +32,5 @@ d<%@page import="java.util.List"%>
 	boardDao.Insert(conn, attachFile); */
 %>
 <jsp:forward page="../index.jsp">
-<jsp:param value="ContentsForm" name="currentPage"/>
+<jsp:param value="me" name="currentPage"/>
 </jsp:forward>

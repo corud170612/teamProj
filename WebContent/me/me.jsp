@@ -12,15 +12,19 @@
 	Date now = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy년MM월dd일 E요일 a hh:mm:ss");
 	String today = sf.format(now);
-	int myMemberID=123;
-	if(session.getAttribute("myMemberID")!=null) {
-	    myMemberID=(Integer)session.getAttribute("myMemberID");
+	int myMemberId=123;
+	if(session.getAttribute("myMemberId")!=null) {
+		myMemberId=(Integer)session.getAttribute("myMemberId");
 	 }
 	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
-	Contents contents = contentsDao.getContents(request, today, content, myMemberID);
+	Contents contents = contentsDao.getContents(request, today, content, myMemberId);
 	Connection conn = contentsDao.getConn();
 	contentsDao.Insert(conn, contents); 
 	//List<Contents> boardLst = (List<Contents>)request.getAttribute("boardLst");
+	
+	List<Contents> lst = contentsDao.getBoardList(conn, myMemberId);
+	session.setAttribute("contentsLst", lst);
+
 	List<Contents> boardLst = (List<Contents>)session.getAttribute("contentsLst");
 %>
 
@@ -30,11 +34,11 @@
 <meta name = "viewport" content="width=device-width" />
 <meta charset="UTF-8">
 <title>MBTI 커뮤니티</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/cssReset.css" />
-<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/header.css" />
-<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/me.css"/>
-<script type="text/javascript" src="/.js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="./js/me.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/cssReset.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/header.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/me.css"/>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/me.js"></script>
 <script type="text/javascript">
 function formSubmit(frmId, nextPath){
 	   let frm = document.getElementById(frmId);
@@ -44,52 +48,17 @@ function formSubmit(frmId, nextPath){
 </script>
 
 <style>
-#myWallPhoto{background:url('../images/me/back.PNG');background-size:cover;
+#myWallPhoto{background:url('/20210406/images/me/back.PNG');background-size:cover;
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
 </style>
 </head>
 <body>
-<div id="viwType" align="center">
-   <a href="/myservice/me.jsp" id="meLink">ME</a>
-   <a href="/myservice/all.jsp" id="allLink">ALL</a>
-   <a href="/myservice/all.jsp" id="mbtiLink">MBTI</a>
-</div>
-<header>
-   <div id="myService"> MBTI 커뮤니티</div>
-   <!-- 로그인 후 -->
-   <div id="myName">
-      <p>안녕하세요 전채경님</p>
-      <div id="logoutBox">
-         <input type="button" id="logoutBtn" value="로그아웃"/>
-      </div>
-   </div>
-   <!-- 로그인 전 -->
-   <div id="loginForm">
-      <form name="loginForm" method="post" action="../loginProc.jsp">
-         <div id="loginEmailArea">
-            <label for="loginEmail">E-Mail</label>
-            <div class="loginInputBox">
-               <input type="email" id="loginEmail" name="email" placeholder="이메일"/>
-            </div>
-         </div>
-         <div id="loginPwArea">
-            <label for="loginPw">Password</label>
-            <div class="loginInputBox">
-               <input type="password" name="userPw" id="loginPw" placeholder="비밀번호 8자 이상 입력"/>
-            </div>
-         </div>
-         <div class="loginSubmitBox">
-            <input type="submit" id="loginSubmit" value="로그인"/> 
-         </div>
-      </form>
-   </div>
-</header>
-
+<input name="currentPage" value="me" />
 <div id="container">
    <div id="center">
       <div id="myWallPhoto"></div>
       <div id="myProfilePhoto">
-         <img src="../images/me/pro.PNG" />
+         <img src="<%=request.getContextPath() %>/images/me/pro.PNG" />
       </div>
       <p id="name">라이언</p>
       <div class="myButtonBox">
@@ -105,7 +74,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
          </form>
       </div>
       <div class="myButtonBox">
-         <form name="photo" method="post" action="/myservice/database/myMember.jsp"
+         <form name="photo" method="post" action="/database/myMember.jsp"
             enctype="multipart/form-data">
             <div class="photoBox">
                <input type="file" name="myProfilePhoto" class="photoSelectorBtn" />
@@ -117,13 +86,13 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
             
             <div class = "photoBox">
             <p>프로필사진을 선택해주세요</p>
-               <input type="button" onclick="formSubmit('frm', '<%=request.getContextPath()%>/myservice/me/ProfileProc.jsp')" id="myCoverPhotoUploadBtn" value="프로필 저장" />
+               <input type="button" onclick="formSubmit('frm', '<%=request.getContextPath()%>/me/ProfileProc.jsp')" id="myCoverPhotoUploadBtn" value="프로필 저장" />
             </div>
          </form>
       </div>
 
       <div class="myButtonBox">
-      <form name="write" method="post" action="<%=request.getContextPath() %>/myservice/me/ContentsForm.jsp">
+      <form name="write" method="post" action="<%=request.getContextPath() %>/me/ContentsForm.jsp">
          <div id="writing" align="right">
                <input type="submit" id="mePostBtn" value="글쓰기" />
          </div>
@@ -148,7 +117,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
          
 		<div class="reading">
 			<div class="writerArea">
-				<img src="../images/me/pro.PNG" />
+				<img src="<%=request.getContextPath() %>/images/me/pro.PNG" />
 				<div class="writingInfo">
 				<p>라이언  </p>
 				<div class="writingDate"></div>
@@ -195,9 +164,5 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 </div>
    <input type="hidden" name="page" id="page" value="1" />
 </div>
-<footer>
-   <link rel="stylesheet" href="../css/footer.css" />
-   <p>MBTI 커뮤니티</p>
-</footer>
 </body>
 </html>

@@ -18,6 +18,6 @@
 	String pagePath = "memberForm";
 	
 %>
-<jsp:forward page="/myservice/index.jsp">
+<jsp:forward page="/index.jsp">
 <jsp:param value="memberForm" name="currentPage"/>
 </jsp:forward>
