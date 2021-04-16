@@ -15,6 +15,9 @@
 	Connection conn = membership.getConn();
 	membership.Insert(conn, mymember);
 	
-	System.out.println("userName");
+	String pagePath = "memberForm";
+	
 %>
-<jsp:forward page="../me/me.jsp"/>
+<jsp:forward page="/myservice/index.jsp">
+<jsp:param value="memberForm" name="currentPage"/>
+</jsp:forward>

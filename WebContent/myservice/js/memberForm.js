@@ -12,7 +12,7 @@ function sendMember(){
 	System.out.print(name);
 }
 function formSubmit(frmId, path){
-   let frm = document.getElementById(frmId);
-   frm.action=path;
-   frm.submit();
+   let signUpForm = document.getElementById(frmId);
+   signUpForm.action=path;
+   signUpForm.submit();
 }

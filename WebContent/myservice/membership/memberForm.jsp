@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	String name = request.getParameter("userName");
 	String email = request.getParameter("userEmail");
@@ -24,7 +23,9 @@
 		wChk="";
 	}
 %>
-<link rel="stylesheet" href="./css/index.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/myservice/css/memberForm.css" />
+<form id="signUpForm" method="post" action="membership/membershipProc.jsp">
+<input type="hidden" value="memberForm" name="currentPage" />
 <div id="container">
 	<section id="introSite">
 		<div id="siteComment">
@@ -39,7 +40,7 @@
 	<section id="signup">
 		<div id="signupCenter">
 		<script  src='../js/memberForm.js' type="text/javascript"></script>
-			<form id="signUpForm" method="post" action="membership/membershipProc.jsp">
+			
 				<div class="row">
 					<div class="inputBox">
 						<input type="text" name="userName" id="userName" value="<%=name %>" placeholder="이름" />
