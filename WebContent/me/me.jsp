@@ -26,6 +26,9 @@
 	session.setAttribute("contentsLst", lst);
 
 	List<Contents> boardLst = (List<Contents>)session.getAttribute("contentsLst");
+
+
+	
 %>
 
 <!DOCTYPE html>
