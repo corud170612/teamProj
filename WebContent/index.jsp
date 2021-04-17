@@ -19,6 +19,10 @@
    		pageName = "/all/all.jsp";
     else if("likesProc".contentEquals(currentPage))
         pageName = "/all/all.jsp";
+    else if("loginProc".contentEquals(currentPage))
+        pageName = "/membership/memberForm.jsp";
+    else if("logout".contentEquals(currentPage))
+        pageName = "/membership/memberForm.jsp";
 %>
 
 <!DOCTYPE html>

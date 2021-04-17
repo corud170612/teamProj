@@ -48,6 +48,9 @@
             <input type="submit" id="loginSubmit" value="로그인"/> 
          </div>
       </form>
+      
+      <a id="kakao-login-btn"></a>
+      
    </div>
    <%
    } else {
@@ -64,3 +67,33 @@
    }
    %>
 </header>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript">
+Kakao.init('89a0ce8b1b2c426078cbea78228b7cb9');
+  Kakao.Auth.createLoginButton({
+    container: '#kakao-login-btn',
+    success: function(authObj) {
+      Kakao.API.request({
+        url: '/v2/user/me',
+        success: function(res) {
+          var login = JSON.stringify(res);
+          var email = res.kakao_account.email;
+          
+          document.getElementById("email").value = email;
+          document.getElementById("pw").value = "0";
+          document.getElementById("loginSubmit").click();
+        },
+        fail: function(error) {
+          alert(
+            'login success, but failed to request user information: ' +
+              JSON.stringify(error)
+          )
+        },
+      })
+    },
+    fail: function(err) {
+      alert('failed to login: ' + JSON.stringify(err))
+    },
+  });
+</script>
