@@ -16,7 +16,7 @@ d<%@page import="java.util.List"%>
 	String today = sf.format(now);
 	
 	request.setCharacterEncoding("UTF-8");
-	System.out.print(request.getParameter("contents"));
+	//System.out.print(request.getParameter("contents"));
 	String content = request.getParameter("contents");
 	
 	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
@@ -25,7 +25,6 @@ d<%@page import="java.util.List"%>
 	contentsDao.Insert(conn, contents);
 	
 	List<Contents> lst = contentsDao.getBoardList(conn, myMemberId);
-	
 	session.setAttribute("contentsLst", lst);
 	/* 	파일 첨부
 	AttachFile attachFile = boardDao.getAttachFile(request, board.getNo());

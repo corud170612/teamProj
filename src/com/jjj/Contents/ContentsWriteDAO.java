@@ -59,7 +59,6 @@ public class ContentsWriteDAO {
 		return contents;
 	}
 	
-	  //占쌜뱄옙호
 	public int getAI(Connection conn, String tableName) {
 		String sql="select nvl(max(contentsID), 0)+1 from "+tableName;
 		int maxNum=0;
@@ -99,7 +98,7 @@ public class ContentsWriteDAO {
 				contents.setRegtime(rs.getString(4));
 
 				lst.add(contents);
-				System.out.println("======="+lst.size());
+				//System.out.println("======="+lst.size());
 			}
 			rs.close();
 			pstmt.close();

@@ -4,9 +4,9 @@
    String YN = (String)session.getAttribute("YN");
  
    String contextPath =request.getContextPath();
-   System.out.println(contextPath);
+   System.out.println(contextPath);   
    String Currentpath = contextPath +  "/index.jsp?currentPage=";
-   System.out.println("현재 접속중인 id :" + name);
+   System.out.println("현재 접속중인 id :" + name);  
 
 %>
 <script  src='<%=request.getContextPath()%>/js/loginForm.js' type="text/javascript"></script>

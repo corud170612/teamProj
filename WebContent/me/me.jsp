@@ -1,3 +1,7 @@
+<%@page import="jdk.internal.misc.FileSystemOption"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="com.jjj.Contents.FileuploadDAO"%>
+<%@page import="com.jjj.DTO.AttachFile"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="com.jjj.Contents.ContentsWriteDAO"%>
@@ -26,9 +30,24 @@
 	session.setAttribute("contentsLst", lst);
 
 	List<Contents> boardLst = (List<Contents>)session.getAttribute("contentsLst");
-
-
 	
+	//String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
+	 	// 사진이 저장되는 경로
+		// 폴더 명 + 사진이 저장되는 경로
+	
+	AttachFile attachFile = new AttachFile(); // 
+	FileuploadDAO fileuploadDAO = new FileuploadDAO();
+ 	Connection connection = fileuploadDAO.getConn();
+ 	
+	//String profpath = request.getContextPath()+"/myMemberProfilePhoto/" + myCoverPhoto;
+	
+	String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
+	/* System.out.print("파일 경로 : " +(AttachFile)session.getAttribute("af") + "<br/>"); */
+	AttachFile af = (AttachFile)session.getAttribute("af");
+	if(af == null) {
+		af = new AttachFile();
+		
+	}
 %>
 
 <!DOCTYPE html>
@@ -61,23 +80,24 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    <div id="center">
       <div id="myWallPhoto"></div>
       <div id="myProfilePhoto">
-         <img src="<%=request.getContextPath() %>/images/me/pro.PNG" />
+        <%-- <img src="<%=request.getContextPath() %>/images/me/pro.PNG" /> --%>
+        <img src="/20210406/myMemberProfilePhoto/<%=af.getFilepath1() %>" />
       </div>
       <p id="name">라이언</p>
       <div class="myButtonBox">
-         <form id="frm" name="photo" method="post" 
-            enctype="multipart/form-data">
+         <form id="frm" name="photo" method="post" enctype="multipart/form-data">
             
             
             <input type="hidden" name="mode" value="photo" />
             
             <div class = "photoBox">
-               <p>배경 사진 선택해주세요</p>
+               <p>배경사진 바꾸기</p>
             </div>
          </form>
       </div>
       <div class="myButtonBox">
-         <form name="photo" method="post" action="/database/myMember.jsp"
+         <%-- <form name="photo" method="post" action="<%=request.getContextPath()%>/me/ProfileProc.jsp" --%>
+         <form name="photo" method="post" action="<%=request.getContextPath()%>/me/ProfileProc.jsp"
             enctype="multipart/form-data">
             <div class="photoBox">
                <input type="file" name="myProfilePhoto" class="photoSelectorBtn" />
@@ -88,8 +108,8 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
             <input type="hidden" name="mode" value="photo" />
             
             <div class = "photoBox">
-            <p>프로필사진을 선택해주세요</p>
-               <input type="button" onclick="formSubmit('frm', '<%=request.getContextPath()%>/me/ProfileProc.jsp')" id="myCoverPhotoUploadBtn" value="프로필 저장" />
+            <p>프로필사진 바꾸기</p>
+               <button type="submit" <%-- onclick="formSubmit('frm', '<%=request.getContextPath()%>/me/ProfileProc.jsp')"  --%>id="myCoverPhotoUploadBtn">저장</button>
             </div>
          </form>
       </div>
