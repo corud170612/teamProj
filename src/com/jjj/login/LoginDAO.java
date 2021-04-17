@@ -27,13 +27,11 @@ public class LoginDAO {
 	public Mymember LoginProc(Connection conn, Login login) {
 		Mymember mymember = new Mymember();
 		String sql="select count(*) from mymember "
-				+ "where email = ? "
-				+ "and pw = ?";
+				+ "where email = ? ";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, login.getEmail());
-			pstmt.setString(2, login.getPw());
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -53,15 +51,13 @@ public class LoginDAO {
 	
 	public Mymember getLoginMember(Connection conn, Login login) {
 		Mymember mymember = new Mymember();
-		
 		String sql="select * from mymember "
-				+ "where email = ? "
-				+ "and pw = ?";
+				+ "where email = ? " ;
+		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, login.getEmail());
-			pstmt.setString(2, login.getPw());
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {

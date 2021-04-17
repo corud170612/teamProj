@@ -4,5 +4,5 @@
 	session.invalidate();
 %>
 <jsp:forward page="../index.jsp">
-	<jsp:param value="home" name="currentPage"/>
+	<jsp:param value="logout" name="currentPage"/>
 </jsp:forward>
