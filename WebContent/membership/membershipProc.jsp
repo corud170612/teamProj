@@ -16,7 +16,7 @@
 	membership.Insert(conn, mymember);
 	
 	String pagePath = "memberForm";
-	
+
 %>
 <jsp:forward page="/index.jsp">
 <jsp:param value="memberForm" name="currentPage"/>

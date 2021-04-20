@@ -45,13 +45,14 @@
             <div class="loginInputBox">
                <input type="password" name="pw" id="pw" placeholder="비밀번호 8자 이상 입력"/>
             </div>
+            <a id="kakao-login-btn"></a>
          </div>
          <div class="loginSubmitBox">
             <input type="submit" id="loginSubmit" value="로그인"/> 
          </div>
       </form>
       
-      <a id="kakao-login-btn"></a>
+      
       
    </div>
    <%

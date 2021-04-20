@@ -1,4 +1,5 @@
-d<%@page import="java.util.List"%>
+d<%@page import="jdk.internal.misc.FileSystemOption"%>
+<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.jjj.Contents.ContentsWriteDAO"%>
@@ -16,7 +17,7 @@ d<%@page import="java.util.List"%>
 	String today = sf.format(now);
 	
 	request.setCharacterEncoding("UTF-8");
-	//System.out.print(request.getParameter("contents"));
+	System.out.print(request.getParameter("contents"));
 	String content = request.getParameter("contents");
 	
 	ContentsWriteDAO contentsDao = new ContentsWriteDAO();

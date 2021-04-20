@@ -21,6 +21,7 @@
 		myMemberId=(Integer)session.getAttribute("myMemberId");
 	 }
 	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
+	//Contents contents = contentsDao.getContents(request, myMemberId, content, today);
 	Contents contents = contentsDao.getContents(request, today, content, myMemberId);
 	Connection conn = contentsDao.getConn();
 	contentsDao.Insert(conn, contents); 
@@ -32,24 +33,22 @@
 	List<Contents> boardLst = (List<Contents>)session.getAttribute("contentsLst");
 	
 	//String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
-	 	// 사진이 저장되는 경로
-		// 폴더 명 + 사진이 저장되는 경로
-	
+	// 사진이 저장되는 경로
+	// 폴더 명 + 사진이 저장되는 경로
+
 	AttachFile attachFile = new AttachFile(); // 
 	FileuploadDAO fileuploadDAO = new FileuploadDAO();
  	Connection connection = fileuploadDAO.getConn();
  	
 	//String profpath = request.getContextPath()+"/myMemberProfilePhoto/" + myCoverPhoto;
 	
-	String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
+	////String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
 	/* System.out.print("파일 경로 : " +(AttachFile)session.getAttribute("af") + "<br/>"); */
 	AttachFile af = (AttachFile)session.getAttribute("af");
 	if(af == null) {
 		af = new AttachFile();
-		
 	}
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,46 +69,49 @@ function formSubmit(frmId, nextPath){
 </script>
 
 <style>
-#myWallPhoto{background:url('/20210406/images/me/back.PNG');background-size:cover;
+/* <img id="myWallPhoto">  */
+
+/* #myWallPhoto{background:url('/20210406/images/me/back.PNG');background-size:cover; */
+#myWallPhoto{background:url('/20210406/myMemberProfilePhoto/<%=af.getAttachedfile1()%>');background-size:cover;
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
 </style>
 </head>
 <body>
-<input name="currentPage" value="me" />
+<input type="hidden" name="currentPage" value="me" />
 <div id="container">
    <div id="center">
       <div id="myWallPhoto"></div>
       <div id="myProfilePhoto">
         <%-- <img src="<%=request.getContextPath() %>/images/me/pro.PNG" /> --%>
-        <img src="/20210406/myMemberProfilePhoto/<%=af.getFilepath1() %>" />
+        <img src="/20210406/myMemberProfilePhoto/<%=af.getAttachedfile2() %>" />
+      
       </div>
       <p id="name">라이언</p>
-      <div class="myButtonBox">
+<!--       <div class="myButtonBox">
          <form id="frm" name="photo" method="post" enctype="multipart/form-data">
-            
             
             <input type="hidden" name="mode" value="photo" />
             
-            <div class = "photoBox">
+             <div class = "photoBox">
                <p>배경사진 바꾸기</p>
             </div>
          </form>
-      </div>
+      </div> -->
+      
       <div class="myButtonBox">
          <%-- <form name="photo" method="post" action="<%=request.getContextPath()%>/me/ProfileProc.jsp" --%>
-         <form name="photo" method="post" action="<%=request.getContextPath()%>/me/ProfileProc.jsp"
-            enctype="multipart/form-data">
+         <form name="photo" method="post" action="<%=request.getContextPath()%>/me/ProfileProc.jsp" enctype="multipart/form-data">
             <div class="photoBox">
-               <input type="file" name="myProfilePhoto" class="photoSelectorBtn" />
+               상　단 <input type="file" name="myProfilePhoto" class="photoSelectorBtn" /> 
             </div>
             <div class="photoBox">
-               <input type="file" name="myCoverPhoto" class="photoSelectorBtn" />
+               프로필 <input type="file" name="myCoverPhoto" class="photoSelectorBtn"/>
             </div>
             <input type="hidden" name="mode" value="photo" />
             
             <div class = "photoBox">
-            <p>프로필사진 바꾸기</p>
-               <button type="submit" <%-- onclick="formSubmit('frm', '<%=request.getContextPath()%>/me/ProfileProc.jsp')"  --%>id="myCoverPhotoUploadBtn">저장</button>
+            <p><!-- 사진 바꾸기 --></p>
+               <button type="submit" <%-- onclick="formSubmit('frm', '<%=request.getContextPath()%>/me/ProfileProc.jsp')"  --%>id="myCoverPhotoUploadBtn">　저장　</button>
             </div>
          </form>
       </div>
@@ -140,7 +142,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
          
 		<div class="reading">
 			<div class="writerArea">
-				<img src="<%=request.getContextPath() %>/images/me/pro.PNG" />
+				<img src="/20210406/myMemberProfilePhoto/<%=af.getAttachedfile2() %>" />
 				<div class="writingInfo">
 				<p>라이언  </p>
 				<div class="writingDate"></div>
@@ -148,7 +150,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
 		</div>
 			<%=c.getRegtime() %>		
 		<span class="content">	
-			<%=c.getContent()%>
+			<%=c.getContent() %>
 		</span>
       
       

@@ -8,11 +8,14 @@
 	FileuploadDAO fileuploadDAO = new FileuploadDAO();
  	Connection conn = fileuploadDAO.getConn();
 	//fileuploadDAO.getMultiReq(request); 
+	//System.out.println("여기는 몇번째?");
 	attachFile = fileuploadDAO.getAttachFile(request, attachFile);
+	//System.out.println("그럼 여기는 몇번째?");
+
 	int result = fileuploadDAO.mem(conn, 123);
 	String sql = fileuploadDAO.takePic(conn, result);
 	fileuploadDAO.Insert(conn, attachFile, sql);
-	System.out.print("파일 경로 : " + attachFile + "<br/>"); 
+	//System.out.print("파일 경로 : " + attachFile + "<br/>"); 
 
 	//String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
 
