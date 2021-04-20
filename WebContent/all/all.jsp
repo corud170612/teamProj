@@ -1,3 +1,5 @@
+<%@page import="com.jjj.Contents.ContentsWriteDAO"%>
+<%@page import="com.jjj.DTO.Contents"%>
 <%@page import="com.jjj.likes.Likes"%>
 <%@page import="com.jjj.likes.LikesDAO"%>
 <%@page import="java.sql.Connection"%>
@@ -9,22 +11,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	int myMemberID=123;
-	if(session.getAttribute("myMemberID")!=null) {
-		myMemberID=(Integer)session.getAttribute("myMemberID");
-	}
-	String userName="jjj";
+/* 	String userName="";
 	if(session.getAttribute("userName")!=null) {
 		userName=(String)session.getAttribute("userName");
 	}
+	int myMemberId=5;
+	System.out.println(session.getAttribute("myMemberId"));
+	if(session.getAttribute("myMemberId")!=null) {
+		myMemberId=(Integer)session.getAttribute("myMemberId");
+	 } */
 	
- 	LikesDAO likesDao = new LikesDAO();
-	Connection conn = likesDao.getConn();
-	int likesNum2 = (Integer)session.getAttribute("likesNum");
-	
- 	CommentsDAO commentsDao = new CommentsDAO();
+	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
+	Connection conn = contentsDao.getConn();
+ 	List<Contents> lst = contentsDao.getAllList(conn);
+	session.setAttribute("contentsLst", lst);
+	List<Contents> contentsLst = (List<Contents>)session.getAttribute("contentsLst");
+
+	CommentsDAO commentsDao = new CommentsDAO();
 	Connection conn2 = commentsDao.getConn();
-  	List<Comments> commentsLst = (List<Comments>)session.getAttribute("commentsLst"); 
+	//List<Comments> lst2 = commentsDao.getCommentsList(conn2);
+	//session.setAttribute("commentsLst", lst2);
+	//List<Comments> commentsLst = (List<Comments>)session.getAttribute("commentsLst");
+	int count = 1;
+	int count2 = 1;
+	int count3 = 1;
+	session.setAttribute("asd", contentsLst.size());
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -45,53 +57,65 @@
 <div class="orderbyArea">
 	<div class="orderbyHistory" style="background:#fff">최신순</div>
 	<div class="orderbyClicked" id="orderbyClicked">인기순</div>
-	<div class="allPostBtn" style="border-right: 1px solid #ccc">글쓰기</div>
+	<div class="allPostBtn" style="border-right: 1px solid #ccc"><a href="<%=request.getContextPath() %>/all/ContentsForm2.jsp">글쓰기</a></div>
 </div>
-
 	<div class="reading">
+<%
+	for(Contents t : contentsLst) {
+%>
 		<div class="writerArea">
 			<img src="<%=request.getContextPath() %>/images/me/happyCat.png" />
 			<div class="writingInfo">
-				<p>조은지</p>
+				<p><%=t.getMymemberid() %></p>
 			</div>
 		</div>
 		
-		<span class="content">반갑습니다.</span>
+		<span class="content"><%=t.getContent() %></span>
 		
 		<div class="likeArea">
-			<div class="likeNum" style="background:#fff">공감수 : <%=likesNum2 %></div>
+			<div class="likeNum" style="background:#fff">공감수 : <%=session.getAttribute("likesNum") %></div>
 			<div class="likeBtn" ><input type="button" onclick="formSubmit('frm','/20210406/all/likesProc.jsp')" name="likeBtn" value="공감하기"/></div>
-			<div class="contentsID"> 콘텐츠 번호: <%=request.getParameter("contentsid") %></div>
+			<div class="contentsID"> 콘텐츠 번호: <%=t.getContentsid() %></div>
+		<input type="hidden" name="contentsid<%=count++ %>" value="<%=t.getContentsid() %>" />
+		
 </div>
-		<div class="myCommentArea myCommentAtra861225">
+		<div class="myCommentArea">
 <%
+	List<Comments> lst2 = commentsDao.getCommentsList(conn2, t.getContentsid());
+	session.setAttribute("commentsLst", lst2);
+	List<Comments> commentsLst = (List<Comments>)session.getAttribute("commentsLst");
+	
+	System.out.println(lst2.size()+" : lst2사이즈");
 
-	for(Comments c : commentsLst) {
+		for(Comments c : commentsLst) {
+				System.out.println(t.getContentsid()+"글번호");
+				System.out.println(c.getContentsid()+"댓글번호");
+				session.setAttribute("qwe", contentsLst.size());
 %>		
 		
 			<div class="commentBox">
-			<input type="hidden" value="<%=c.getContentsid() %>" />
-			<input type="hidden" value="<%=c.getCommentsid() %>" />
-				<img src="<%=request.getContextPath() %>/images/me/happyCat.png" />
-<%-- 				<p class="CommentMemberid"><%=c.getMymemberid() %></p> 
-				<p class="commentRegTime"><%=c.getRegtime() %></p> --%>
-				<p class="commentPoster"><%=userName %></p>
+				<input type="hidden" name="commentsid<%=count3++ %>" value="<%=c.getCommentsid() %>" />
+				<img src="<%=request.getContextPath() %>/images/me/niniz.PNG" />
+				<p class="CommentMemberid"><%=c.getMymemberid() %></p> 
+				<p class="commentRegTime"><%=c.getRegtime() %></p>
+				
 				<p class="writtenComment"><%=c.getReply() %></p> 
 			</div>
 		
 <%
-}
+		}
 %>
 </div>
 		<div class="inputBox">
-			<img src="<%=request.getContextPath() %>/images/me/happyCat.png" />
-			<input type="text" class="inputComment comments861225" name="commentcontents" value="" placeholder="코멘트 입력" />
+			<img src="<%=request.getContextPath() %>/images/me/pro.PNG" />
+			<input type="text" class="inputComment" name="commentcontents<%=count2++ %>" placeholder="코멘트 입력" />
 			<div class="regCommentBox">
-				<input type="submit" class="regCommentBtn" id="comments861225" value="게시" />
+				<input type="submit" class="regCommentBtn" value="게시" />
 			</div>
-		
-		
 		</div>
+<%
+	}
+%>
  	</div>
 </div>
 </form>

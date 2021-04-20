@@ -59,6 +59,7 @@ public class ContentsWriteDAO {
 		return contents;
 	}
 	
+	  //占쌜뱄옙호
 	public int getAI(Connection conn, String tableName) {
 		String sql="select nvl(max(contentsID), 0)+1 from "+tableName;
 		int maxNum=0;
@@ -98,7 +99,32 @@ public class ContentsWriteDAO {
 				contents.setRegtime(rs.getString(4));
 
 				lst.add(contents);
-				//System.out.println("======="+lst.size());
+				System.out.println("======="+lst.size());
+			}
+			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {			e.printStackTrace();		}
+		//System.out.println("00000"+lst.size());
+		return lst;
+	}
+	
+	public List<Contents> getAllList(Connection conn){
+		String sql  ="select contentsid,mymemberid,content,regtime "
+				+ "from contents "
+				+ "order by contentsid";
+		List<Contents> lst = new ArrayList<Contents>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				Contents contents = new Contents();
+				contents.setContentsid(rs.getInt(1));
+				contents.setMymemberid(rs.getInt(2));
+				contents.setContent(rs.getString(3));
+				contents.setRegtime(rs.getString(4));
+
+				lst.add(contents);
 			}
 			rs.close();
 			pstmt.close();

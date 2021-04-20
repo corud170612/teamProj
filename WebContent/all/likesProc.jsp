@@ -13,16 +13,17 @@
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
 	String nowdate = sf.format(nowTime);
 	
-	int contentsid = 70; /* Integer.parseInt(request.getParameter("contentsid")); */
+	int contentsid = Integer.parseInt(request.getParameter("contentsid"));
 	
-	int myMemberID=123;
-	if(session.getAttribute("myMemberID")!=null) {
-		myMemberID=(Integer)session.getAttribute("myMemberID");
-	}
+	int myMemberId=1;
+	if(session.getAttribute("myMemberId")!=null) {
+		myMemberId=(Integer)session.getAttribute("myMemberId");
+	 }
 	
-	Likes likes = likesDao.getLikes(request, nowdate, contentsid, myMemberID);
+	Likes likes = likesDao.getLikes(request, nowdate, contentsid, myMemberId);
 	likesDao.Insert(conn, likes);
-	int likesNum = likesDao.getLikesNum(conn, contentsid);
+	int likesNum = likesDao.getLikesNum(conn,contentsid);
+	
 	session.setAttribute("likesNum", likesNum);
 %>
 <jsp:forward page="../index.jsp">

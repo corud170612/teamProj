@@ -80,9 +80,13 @@ public class LikesDAO {
 	
 	public int getLikesNum(Connection conn, int contentsid) {
 		//醫뗭븘�슂踰덊샇 �옄�룞利앷� �깮�꽦 硫붿냼�뱶
-		String sql = "select count(*) from likes "
-				+ "where contentsid = ?";
+		String sql = "select count(*) "
+				+ "from likes l , contents c "
+				+ "where c.contentsid=l.contentsid "
+				+ "and c.contentsid = ?";
+		
 		int likesNum = 0;
+		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, contentsid);
@@ -92,9 +96,11 @@ public class LikesDAO {
 				likesNum = rs.getInt(1);
 			rs.close();
 			pstmt.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return likesNum;
 	}
 }

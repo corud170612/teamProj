@@ -70,46 +70,55 @@ public class CommentsDAO {
 		return 0;
 	}
 
-	  public Comments getComments(HttpServletRequest request, String nowdate, String commentcontents, int contentsid, int myMemberID) {
-		  //comments (DTO) 蹂��닔�븷 set硫붿냼�뱶 �궗�슜�빐�꽌 媛� 吏��젙�빐二쇰뒗 硫붿냼�뱶
-	Comments comments =	  new Comments();
+	public Comments getComments(HttpServletRequest request, String nowdate, String reply, int contentsid, int myMemberID) {
+		System.out.println("용용");
+	Comments comments =	new Comments();
 	comments.setCommentsid(getAI(getConn(), "Comments"));
-	  comments.setContentsid(contentsid);
-	  comments.setMymemberid(myMemberID);
-	  comments.setReply(commentcontents);
-	  comments.setRegtime(nowdate);
+	comments.setContentsid(contentsid);
+		System.out.println(contentsid);
+	comments.setMymemberid(myMemberID);
+		System.out.println(myMemberID);
+	comments.setReply(reply);
+	System.out.println(reply);
+	comments.setRegtime(nowdate);
+	System.out.println(nowdate);
 	  
-	  return comments; 
-	  }
-	  
-	public List<Comments> getCommentsList(Connection conn, int contentsid){
-		// �뙎湲�紐⑸줉 異쒕젰�븯�뒗 硫붿냼�뱶 (List濡� 諛섑솚�떆�궡)
-		String sql  ="select commentsid, contentsid,mymemberid,regtime,reply from comments "
-				+ "where contentsid = ?";
-		List<Comments> lst = new ArrayList<Comments>();
-
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, contentsid);
-			
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				Comments comments = new Comments();
-				comments.setCommentsid(rs.getInt(1));
-				comments.setContentsid(rs.getInt(2));
-				comments.setMymemberid(rs.getInt(3));
-				comments.setRegtime(rs.getString(4));
-				comments.setReply(rs.getString(5));
-				lst.add(comments);
-				
-			}
-
-			rs.close();
-			pstmt.close();
-		} catch (SQLException e) {			e.printStackTrace();		}
-		
-		System.out.println(lst.size());
-		return lst;
+	return comments; 
 	}
+	
+		public List<Comments> getCommentsList(Connection conn, int contentsNo){
+			// �뙎湲�紐⑸줉 異쒕젰�븯�뒗 硫붿냼�뱶 (List濡� 諛섑솚�떆�궡)
+			//String sql  ="select m.commentsid,m.mymemberid,m.reply,m.regtime,m.contentsid "
+			//		+ "from contents n, comments m ";
+			
+			
+			String sql="select m.commentsid,m.mymemberid,m.reply,m.regtime,m.contentsid "
+					+ "from contents n, comments m "
+					+ "where n.contentsid=m.contentsid "
+					+ "and n.contentsid=?";
+			List<Comments> lst = new ArrayList<Comments>();
 
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, contentsNo);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					Comments comments = new Comments();
+					comments.setCommentsid(rs.getInt(1));
+					comments.setMymemberid(rs.getInt(2));
+					comments.setReply(rs.getString(3));
+					comments.setRegtime(rs.getString(4));
+					comments.setContentsid(rs.getInt(5));
+					lst.add(comments);
+					
+				}
+
+				rs.close();
+				pstmt.close();
+			} catch (SQLException e) {			e.printStackTrace();		}
+			
+			return lst;
+		}
+		
+		
 }

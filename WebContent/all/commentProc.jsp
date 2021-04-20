@@ -7,31 +7,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	int myMemberID=123;
-	if(session.getAttribute("myMemberID")!=null) {
-		myMemberID=(Integer)session.getAttribute("myMemberID");
-	}
-	String userName="jjj";
-	if(session.getAttribute("userName")!=null) {
-		userName=(String)session.getAttribute("userName");
-	}
-		
+	
+	int myMemberId=5;
+	if(session.getAttribute("myMemberId")!=null) {
+		myMemberId=(Integer)session.getAttribute("myMemberId");
+	 }
+	
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
 	String nowdate = sf.format(nowTime);
 	
-	request.setCharacterEncoding("UTF-8");
-	String commentcontents = request.getParameter("commentcontents");
-	
-	int contentsid = 70; /* Integer.parseInt(request.getParameter("contentsid")); */
-	
 	CommentsDAO commentsDao = new CommentsDAO();
 	Connection conn = commentsDao.getConn();
-	Comments comments = commentsDao.getComments(request, nowdate, commentcontents, contentsid, myMemberID);
-	commentsDao.Insert(conn, comments);
-	List<Comments> lst = commentsDao.getCommentsList(conn, contentsid);
-	session.setAttribute("commentsLst", lst);
-	System.out.println(lst);
+	
+	String reply="";
+	for(int i=1; i<=(Integer)session.getAttribute("asd"); i++){
+			if(request.getParameter("commentcontents"+i)!=null) {
+				reply = request.getParameter("commentcontents"+i);
+				int contentsid = Integer.parseInt(request.getParameter("contentsid"+i));
+				System.out.println(reply+"AAAAAAAAAAA");
+				Comments comments = commentsDao.getComments(request, nowdate, reply, contentsid, myMemberId);
+				commentsDao.Insert(conn, comments);
+			}
+		}
+	
+
+	session.getAttribute("asd");
+	System.out.println(session.getAttribute("asd"));
+	
+/* 	 */
+	/*  */
+
 %>
 <jsp:forward page="../index.jsp">
 <jsp:param value="commentProc" name="currentPage"/>

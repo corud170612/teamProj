@@ -18,9 +18,22 @@
 <div id="categoryBox">
 <section class="asideContent">
 	<ul class="categories">
-		<li><a href="">취업</a></li>
-		<li><a href="">진로</a></li>
-		<li><a href="">취미</a></li>
+		<li><a href="">ESTJ</a></li>
+		<li><a href="">ISTJ</a></li>
+		<li><a href="">ESTP</a></li>
+		<li><a href="">ISTP</a></li>		
+		<li><a href="">ESFJ</a></li>
+		<li><a href="">ISFJ</a></li>
+		<li><a href="">ESFP</a></li>
+		<li><a href="">ISFP</a></li>
+		<li><a href="">ENFJ</a></li>
+		<li><a href="">INFJ</a></li>
+		<li><a href="">ENFP</a></li>
+		<li><a href="">INFP</a></li>
+		<li><a href="">ENTJ</a></li>
+		<li><a href="">INTJ</a></li>
+		<li><a href="">ENTP</a></li>
+		<li><a href="">INTP</a></li>
 		<li>Advertisement</li>
 	</ul>
 </section>
@@ -37,7 +50,7 @@
 		<div class="writerArea">
 			<img src="<%=request.getContextPath() %>/images/me/happyCat.png" />
 			<div class="writingInfo">
-				<p>김태영</p>
+				<p>주소영</p>
 			</div>
 		</div>
 		<span class="content">반갑습니다.</span>
@@ -52,7 +65,7 @@
 			<div class="commentBox">
 				<img src="<%=request.getContextPath() %>/images/me/happyCat.png" />
 				<p class="commentRegTime">2030년 12월 25일</p>
-				<p class="commentPoster">김태영</p>
+				<p class="commentPoster">전채경</p>
 				<p class="writtenComment">반갑습니다.</p> 
 			</div>
 		</div>
