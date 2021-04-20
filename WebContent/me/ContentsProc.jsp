@@ -1,4 +1,4 @@
-d<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.jjj.Contents.ContentsWriteDAO"%>
@@ -25,7 +25,6 @@ d<%@page import="java.util.List"%>
 	contentsDao.Insert(conn, contents);
 	
 	List<Contents> lst = contentsDao.getBoardList(conn, myMemberId);
-	
 	session.setAttribute("contentsLst", lst);
 	/* 	파일 첨부
 	AttachFile attachFile = boardDao.getAttachFile(request, board.getNo());
