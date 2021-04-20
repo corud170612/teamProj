@@ -26,13 +26,16 @@ if ("w".contentEquals(gender)) {
 } else if ("m".contentEquals(gender)) {
 	mChk = "checked";
 	wChk = "";
+	
 }
+
+
 %>
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/memberForm.css" />
-<script type="text/javascript" src="membership.js"></script>
-<form id="signUpForm" name=" " method="post"
+<script type="text/javascript" src='<%=request.getContextPath()%>/js/membership.js'></script>
+<form id="frm" name="frm" method="post"
 	action="<%=request.getContextPath()%>/membership/membershipProc.jsp">
 	<input type="hidden" value="memberForm" name="currentPage" />
 	<div id="container">
@@ -94,7 +97,8 @@ if ("w".contentEquals(gender)) {
 
 				<div class="row">
 					<div class="submitBox">
-						<input type="submit" id="signUpSubmit" value="가입하기" />
+						<input type="button" id="signUpSubmit" value="가입하기" onclick="inputCheck('userName', 'userEmail', 'userPw', 'userMbti', 'frm', '<%=request.getContextPath() %>/membership/membershipProc.jsp');">
+						<!-- <input type="submit" id="signUpSubmit" value="가입하기" /> -->
 					</div>
 				</div>
 				<input type="hidden" name="mode" value="save" />
@@ -102,6 +106,3 @@ if ("w".contentEquals(gender)) {
 		</section>
 	</div>
 </form>
-<div id="goToLoginBtn">
-	<p>로그인하기</p>
-</div>
