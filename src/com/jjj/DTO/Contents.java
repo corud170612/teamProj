@@ -1,7 +1,10 @@
 package com.jjj.DTO;
-// 게시물 등록 
 
-public class Contents {
+import java.io.Serializable;
+
+// 게시물 등록 
+@SuppressWarnings("serial")
+public class Contents implements Serializable{
 
     // 게시물 번호 
     private Integer contentsid;

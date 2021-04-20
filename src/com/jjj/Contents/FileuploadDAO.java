@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.jjj.DTO.AttachFile;
 import com.jjj.DTO.Contents;
@@ -30,35 +31,58 @@ public class FileuploadDAO { ////
 	      return conn;
 	   }
 	   
-	   public void getMultiReq(HttpServletRequest request) { // 占쏙옙占쏙옙 占쎈량, 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙치 占쏙옙占쏙옙占쌨소듸옙 
+	   public void getMultiReq(HttpServletRequest request) { 
 		      String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
-		      System.out.println(uploadFilePath);
+		      
+		      System.out.println("===uploadFilePath==" + uploadFilePath + "=====");
 		      int maxSize = 1024*1024*10;
 		      try {
 		      multiReq = new MultipartRequest(request, uploadFilePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		      
 		      } catch (IOException e) {   e.printStackTrace();   }
 		      
 		     }
 	   
 	   public AttachFile getAttachFile(HttpServletRequest request, AttachFile attachFile) {
-//		      System.out.println("오리지널 파일네임 1 : " + multiReq.getOriginalFileName("myProfilePhoto"));
-//		      System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+"333333545"); 
-		      System.out.println("files : " + multiReq.getFileNames() + "===="); 
-		   	  System.out.println(multiReq.getFileNames() + "getNultiReq 앞"); 
-		      getMultiReq(request); 
-		   	  System.out.println(multiReq.getFileNames() + "getNultiReq 뒤"); 
-//		      System.out.println(multiReq.toString()); // 출력 
-		      //System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+"1111121121111"); 
 		      AttachFile af = new AttachFile();
-		      //占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙 DTO占쏙옙占쏙옙占쏙옙占싹댐옙 占쌨소듸옙 
-		      af.setMymemberid(1234); //占쏙옙占쌩울옙 회占쏙옙占쏙옙호 占쏙옙占쌉되몌옙 af.getMymmemberid 占쌍억옙占쌍심되울옙 
+		      //getConn();
+//		      System.out.println("오리지널 파일네임 1 : " + multiReq.getOriginalFileName("myProfilePhoto"));
+		      //System.out.println("files : " + multiReq.getFileNames() + "===="); 
+		   	  //System.out.println(multiReq.getFileNames() + "getNultiReq"); 
+		      //System.out.println(multiReq.getFilesystemName("uploadFile")); ////
+		      //System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+ "==전==");
+		      getMultiReq(request); 
+		      System.out.println("11111111111111111111111111111111111111111111111111111111111111111111");
+		      System.out.println(multiReq.getFilesystemName("uploadFile")); // null 값 출력
+		      System.out.println("22222222222222222222222222222222222222222222222222222222222222222222");
+		      System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+ "==후=="); // 선택한 사진 이름 출력
+		      System.out.println("33333333333333333333333333333333333333333333333333333333333333333333");
+
+//		      System.out.println(multiReq.toString()); // 출력 
+		     // System.out.println("=======================================================================");
+		      //String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
+		      //System.out.println(request.getContextPath()+"/myMemberProfilePhoto/" + uploadFilePath);
+		      af.setMymemberid(123); //af.getMymmemberid 
+
 		      af.setAttachedfile1(multiReq.getOriginalFileName("myProfilePhoto"));
-		      af.setFilepath1(multiReq.getFilesystemName("myProfilePhoto"));
-		      af.setAttachedfile2(multiReq.getOriginalFileName("myCoverPhoto"));
-		      af.setFilepath2(multiReq.getFilesystemName("myCoverPhoto"));
+		      //System.out.println("1111111111"+multiReq.getOriginalFileName("myProfilePhoto")+"1111111111");
 		      
+			  af.setFilepath1(multiReq.getFilesystemName("myProfilePhoto")); 
+		      //af.setFilepath1(request.getServletContext().getRealPath("myProfilePhoto"));
+		      //System.out.println("1111111111"+multiReq.getFilesystemName("myProfilePhoto")+"1111111111");
+
+		      
+		      af.setAttachedfile2(multiReq.getOriginalFileName("myCoverPhoto"));
+		      //System.out.println("1111111111"+multiReq.getOriginalFileName("myCoverPhoto")+"1111111111");
+
+		      
+		      af.setFilepath2(request.getServletContext().getRealPath("myMemberProfilePhoto"));
+		      //System.out.println("1111111111"+request.getServletContext().getRealPath("myMemberProfilePhoto")+"1111111111");
+
+		      
+		      HttpSession session = request.getSession();
+		      session.setAttribute("af", af);
 		      return af;
-	      
 		   }
 	   
 	   public String takePic(Connection conn, int result) {
@@ -105,10 +129,10 @@ public class FileuploadDAO { ////
 	   }
 	   
 	   public int Insert(Connection conn, AttachFile attachFile, String modifySql) {
-		      System.out.println(attachFile.getAttachedfile1());
-		      System.out.println(attachFile.getAttachedfile2());
-		      System.out.println(attachFile.getFilepath1());
-		      System.out.println(attachFile.getFilepath2());
+		      //System.out.println(attachFile.getAttachedfile1());
+		      //System.out.println(attachFile.getAttachedfile2());
+		      //System.out.println(attachFile.getFilepath1());
+		      //System.out.println(attachFile.getFilepath2());
 		      
 		      String sql = modifySql;
 
