@@ -52,9 +52,12 @@ public class FileuploadDAO { ////
 		      //System.out.println(multiReq.getFilesystemName("uploadFile")); ////
 		      //System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+ "==전==");
 		      getMultiReq(request); 
-		      System.out.println(multiReq.getFilesystemName("uploadFile"));
-		      System.out.println("=======================================================================");
-		      System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+ "==후==");
+		      System.out.println("11111111111111111111111111111111111111111111111111111111111111111111");
+		      System.out.println(multiReq.getFilesystemName("uploadFile")); // null 값 출력
+		      System.out.println("22222222222222222222222222222222222222222222222222222222222222222222");
+		      System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+ "==후=="); // 선택한 사진 이름 출력
+		      System.out.println("33333333333333333333333333333333333333333333333333333333333333333333");
+
 //		      System.out.println(multiReq.toString()); // 출력 
 		     // System.out.println("=======================================================================");
 		      //String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
@@ -62,14 +65,24 @@ public class FileuploadDAO { ////
 		      af.setMymemberid(123); //af.getMymmemberid 
 
 		      af.setAttachedfile1(multiReq.getOriginalFileName("myProfilePhoto"));
-		      af.setFilepath1(multiReq.getFilesystemName("myProfilePhoto"));
+		      //System.out.println("1111111111"+multiReq.getOriginalFileName("myProfilePhoto")+"1111111111");
+		      
+			  af.setFilepath1(multiReq.getFilesystemName("myProfilePhoto")); 
+		      //af.setFilepath1(request.getServletContext().getRealPath("myProfilePhoto"));
+		      //System.out.println("1111111111"+multiReq.getFilesystemName("myProfilePhoto")+"1111111111");
+
+		      
 		      af.setAttachedfile2(multiReq.getOriginalFileName("myCoverPhoto"));
+		      //System.out.println("1111111111"+multiReq.getOriginalFileName("myCoverPhoto")+"1111111111");
+
+		      
 		      af.setFilepath2(request.getServletContext().getRealPath("myMemberProfilePhoto"));
+		      //System.out.println("1111111111"+request.getServletContext().getRealPath("myMemberProfilePhoto")+"1111111111");
+
 		      
 		      HttpSession session = request.getSession();
 		      session.setAttribute("af", af);
 		      return af;
-	      
 		   }
 	   
 	   public String takePic(Connection conn, int result) {
