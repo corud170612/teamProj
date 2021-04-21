@@ -1,5 +1,5 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="com.jjj.membership.MembershipDAO"%>
+<%@page import="com.jjj.membership.Mymember"%>
 <%@page import="com.jjj.Contents.FileuploadDAO"%>
 <%@page import="com.jjj.DTO.AttachFile"%>
 <%@page import="java.util.List"%>
@@ -69,9 +69,7 @@ function formSubmit(frmId, nextPath){
 </script>
 
 <style>
-/* <img id="myWallPhoto">  */
 
-/* #myWallPhoto{background:url('/20210406/images/me/back.PNG');background-size:cover; */
 #myWallPhoto{background:url('/20210406/myMemberProfilePhoto/<%=af.getAttachedfile1()%>');background-size:cover;
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
 </style>

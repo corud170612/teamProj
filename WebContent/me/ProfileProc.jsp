@@ -1,4 +1,3 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="com.jjj.DTO.AttachFile"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="com.jjj.Contents.FileuploadDAO"%>
