@@ -24,7 +24,7 @@ function inputCheck(usrName, usrEmail, usrPw, usrMbti, frmId, path){
 	   }
 	
 	   if(mbti.value==""){
-	      alert("mbti 입력하세요.");
+	      alert("mbti 선택하세요.");
 	      mbti.focus();
 	      return false;
 	   }

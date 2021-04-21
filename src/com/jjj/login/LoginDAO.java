@@ -10,7 +10,7 @@ import com.jjj.membership.Mymember;
 
 public class LoginDAO {
 	public Connection getConn() {
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "c##jjj";
 		String pass = "jjj123";
 		Connection conn = null;

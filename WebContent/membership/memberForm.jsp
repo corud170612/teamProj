@@ -1,3 +1,5 @@
+<%@page import="com.jjj.membership.Mymember"%>
+<%@page import="com.jjj.membership.MembershipDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 String name = request.getParameter("userName");
@@ -28,7 +30,6 @@ if ("w".contentEquals(gender)) {
 	wChk = "";
 	
 }
-
 
 %>
 
@@ -87,11 +88,29 @@ if ("w".contentEquals(gender)) {
 							id="mbtiGo">MBTI검사하러가기</a>
 					</div>
 					<div class="row">
-
-						<div class="inputBox">
+						<%-- <div class="inputBox">
 							<input type="text" name="userMbti" id="userMbti"
 								value="<%=mbti%>" placeholder="MBTI를 적어주세요" />
-						</div>
+						</div> --%>
+						<select name="userMbti" id="userMbti" >
+						    <option value="">MBTI</option>
+						    <option value="ISTP">ISTP</option>
+						    <option value="ISFP">ISFP</option>
+						    <option value="ESTP">ESTP</option>
+						    <option value="ESFP">ESFP</option>
+						    <option value="INTP">INTP</option>
+						    <option value="INTJ">INTJ</option>
+						    <option value="ENTP">ENTP</option>
+						    <option value="ENTJ">ENTJ</option>
+						    <option value="INFP">INFP</option>
+						    <option value="INFJ">INFJ</option>
+						    <option value="ENFP">ENFP</option>
+						    <option value="ENFJ">ENFJ</option>
+						    <option value="ISTJ">ISTJ</option>
+						    <option value="ISFJ">ISFJ</option>
+						    <option value="ESTJ">ESTJ</option>
+						    <option value="ESFJ">ESFJ</option>
+						</select>
 					</div>
 				</div>
 
