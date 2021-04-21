@@ -8,9 +8,9 @@
     pageEncoding="UTF-8"%>
 <%
 	
-	int myMemberId=5;
-	if(session.getAttribute("myMemberId")!=null) {
-		myMemberId=(Integer)session.getAttribute("myMemberId");
+	int mymemberId=0;
+	if(session.getAttribute("mymemberId")!=null) {
+		mymemberId=(Integer)session.getAttribute("mymemberId");
 	 }
 	
 	Date nowTime = new Date();
@@ -25,7 +25,7 @@
 			if(request.getParameter("commentcontents"+i)!=null) {
 				reply = request.getParameter("commentcontents"+i);
 				int contentsid = Integer.parseInt(request.getParameter("contentsid"+i));
-				Comments comments = commentsDao.getComments(request, nowdate, reply, contentsid, myMemberId);
+				Comments comments = commentsDao.getComments(request, nowdate, reply, contentsid, mymemberId);
 				commentsDao.Insert(conn, comments);
 			}
 		}

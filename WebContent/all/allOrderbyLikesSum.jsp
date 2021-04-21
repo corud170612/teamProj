@@ -13,10 +13,10 @@
 <%
 	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
 	Connection conn = contentsDao.getConn();
- 	List<Contents> lst = contentsDao.getAllList(conn);
+ 	List<Contents> lst = contentsDao.getAllListOrderbyLikeSum(conn);
 	session.setAttribute("contentsLst", lst);
 	List<Contents> contentsLst = (List<Contents>)session.getAttribute("contentsLst");
-
+	
 	CommentsDAO commentsDao = new CommentsDAO();
 	Connection conn2 = commentsDao.getConn();
 
@@ -45,7 +45,7 @@
 
 <div class="orderbyArea">
 	<div class="orderbyHistory" style="background:#fff"><a href="<%=request.getContextPath() %>/index.jsp?currentPage=all">최신순</a></div>
-	<div class="orderbyClicked" id="orderbyClicked"><a href="<%=request.getContextPath() %>/index.jsp?currentPage=allOrderbyLikesSum">공감순</a></div>
+	<div class="orderbyClicked" id="orderbyClicked">공감순</div>
 	<div class="allPostBtn"><a href="<%=request.getContextPath() %>/all/ContentsForm2.jsp">글쓰기</a></div>
 </div>
 <%
@@ -65,7 +65,7 @@
 			<div class="contentsID"> 콘텐츠 번호: <%=t.getContentsid() %></div>
 			<input type="hidden" name="contentsid<%=count++ %>" value="<%=t.getContentsid() %>" />
 			<div class="likeBtn" >
-				<a href="<%=request.getContextPath() %>/all/likesProc.jsp?likeBtn<%=count4++ %>=<%=t.getContentsid() %>">공감하기</a>
+				<a href="<%=request.getContextPath() %>/all/likesProc2.jsp?likeBtn<%=count4++ %>=<%=t.getContentsid() %>">공감하기</a>
 			</div>		
 			<div class="likeNum" style="background:#fff">공감수 : <%=t.getLikesSum() %></div>
 		</div>

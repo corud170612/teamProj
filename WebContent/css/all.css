@@ -11,7 +11,7 @@
 #writing #inputBox{clear:both;float:right;width:40px;height:1.9rem;border:1px solid #ccc;margin:0.5rem 1%;color:#fff;background:#fff}
 #writing #inputBox input{float:left;width:100%;border:none;color:#000;background:none;margin-top:8px}
 
-.orderbyArea{clear:both;float:left;width:100%;margin-top:10px;border-top:1px solid #ccc}
+.orderbyArea{clear:both;float:left;width:100%;margin-top:10px;border:1px solid #ccc;font-size:0.9rem}
 .orderbyArea div{padding:5px 0;text-align:center}
 .orderbyHistory{clear:both;float:left;width:33%;border-right:1px solid #ccc}
 .orderbyClicked{float:left;width:33%;border-right:1px solid #ccc}
@@ -19,13 +19,13 @@
 
 .reading{clear:both;float:left;width:100%;border:1px solid #ccc;margin-bottom:20px}
 .reading .writerArea img{float:left;width:30px;margin:1rem}
-.reading .writingInfo{float:left}
-.reading .writingInfo p{clear:both;float:left;font-size:1rem;margin-top:12px}
+.reading .writingInfo{float:left;font-size:0.7rem}
+.reading .writingInfo p{clear:both;float:left;font-size:0.9rem;margin-top:12px}
 .reading .writingDate{clear:both;float:left;margin:0.3rem 0 0 0;font-size:0.5rem;color:#bbb}
 
-.content{float:left;width:96%;min-height:48px;margin-left:2%;border-top:1px solid #ccc}
+.content{float:left;font-size:1rem;width:96%;min-height:48px;margin-left:2%;border-top:1px solid #ccc}
 
-.likeArea{clear:both;float:left;width:100%;margin-top:10px;border-top:1px solid #ccc;border-bottom:1px solid #ccc}
+.likeArea{clear:both;float:left;width:100%;margin-top:10px;border-top:1px solid #ccc}
 .likeArea div{padding:5px 0;text-align:center}
 .likeNum{clear:both;float:left;width:100%;border-bottom:1px solid #ccc}
 .likeBtn{float:left;width:50%;border-right:1px solid #ccc}
@@ -33,10 +33,10 @@
 
 .myCommentArea{float:left;width:100%}
 .myCommentArea img{float:left;width:25px;margin:2px}
-.commentBox{clear:both;flex:1;float:left;width:98%;padding:1%;font-size:1.2em}
+.commentBox{clear:both;float:left;width:98%;padding:1%;margin-bottom:4px;font-size:0.9em}
 .comment{float:left}
-.commentPoster, .writtenComment{float:left;font-size:1.2em}
-.commentBox .commentPoster{color:#64cbf9;margin-right:10px}
+.commentPoster, .writtenComment{float:left;font-size:1.5em} 
+.commentBox .commentPoster{color:#64cbf9;margin-right:10px;font-size:0.9em}
 
 .inputBox{float:left;width:100%;margin-top:16px;border-top:1px solid #ccc}
 .inputBox img{float:left;width:25px;margin:2px 2px 2px 11px}
@@ -60,5 +60,5 @@
 /* pc */
 @media screen and (min-width:1200px) {
    #timeLine{width:80%}
-   #advertiseBox{display:block;float:right;width:19%;height:580px;background:#64cbf9;margin-top:100px;position:fixed;right:0;color:#fff;font-size:3em}
+   #advertiseBox{display:block;float:right;width:19%;height:580px;background:rgb(169,245,188);margin-top:100px;position:fixed;right:0;color:#fff;font-size:3em}
 }
