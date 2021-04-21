@@ -26,10 +26,11 @@ public class ContentsWriteDAO {
       
       return conn;
    }
-      public int Insert(Connection conn, Contents contents) {
-            
-            String sql = "INSERT INTO contents (contentsid, mymemberid, content, regtime) " +
-            "VALUES (?, ?, ?, ?)";
+   
+  public int Insert(Connection conn, Contents contents) {
+        
+        String sql = "INSERT INTO contents (contentsid, mymemberid, content, regtime) " +
+        "VALUES (?, ?, ?, ?)";
 
             try {
                PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -43,11 +44,11 @@ public class ContentsWriteDAO {
                pstmt.close();
             } catch (SQLException e) {
                // TODO Auto-generated catch block
-               e.printStackTrace();
-            }
+           e.printStackTrace();
+        }
 
-            return 0;
-         }
+        return 0;
+     }
    
 
    public Contents getContents(HttpServletRequest request, String today, String content, int myMemberID) {
@@ -113,6 +114,7 @@ public class ContentsWriteDAO {
       		+ "from likes , contents "
       		+ "where likes.contentsid=contents.contentsid "
       		+ "order by contentsid desc";
+      List<Contents> lst = new ArrayList<Contents>();
       try {
          PreparedStatement pstmt = conn.prepareStatement(sql);
          ResultSet rs = pstmt.executeQuery();
@@ -133,6 +135,33 @@ public class ContentsWriteDAO {
       //System.out.println("00000"+lst.size());
       return lst;
    }
+   
+   public List<Contents> getAllListOrderbyLikeSum(Connection conn){
+	      String sql  ="select likes.contentsid, likessum, mymemberid, content, regtime "
+	      		+ "from likes , contents "
+	      		+ "where likes.contentsid=contents.contentsid "
+	      		+ "order by likessum desc";
+	      List<Contents> lst = new ArrayList<Contents>();
+	      try {
+	         PreparedStatement pstmt = conn.prepareStatement(sql);
+	         ResultSet rs = pstmt.executeQuery();
+
+	         while(rs.next()) {
+	            Contents contents = new Contents();
+	            contents.setContentsid(rs.getInt(1));
+	            contents.setLikesSum(rs.getInt(2));
+	            contents.setMymemberid(rs.getInt(3));
+	            contents.setContent(rs.getString(4));
+	            contents.setRegtime(rs.getString(5));
+
+	            lst.add(contents);
+	         }
+	         rs.close();
+	         pstmt.close();
+	      } catch (SQLException e) {         e.printStackTrace();      }
+	      //System.out.println("00000"+lst.size());
+	      return lst;
+	   }
    
    public List<Contents> getLikeList(Connection conn){
 	      String sql  ="select likes.contentsid, likessum, mymemberid, content, regtime "

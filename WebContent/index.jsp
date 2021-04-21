@@ -26,6 +26,10 @@
     		pageName = "/membership/memberForm.jsp";
     else if("logout".contentEquals(currentPage))
         pageName = "/membership/memberForm.jsp";
+    else if("allOrderbyLikesSum".contentEquals(currentPage))
+        pageName = "/all/allOrderbyLikesSum.jsp";
+    else if("likesProc2".contentEquals(currentPage))
+        pageName = "/all/allOrderbyLikesSum.jsp";
 %>
 
 <!DOCTYPE html>

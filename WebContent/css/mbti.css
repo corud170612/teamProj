@@ -70,5 +70,5 @@
  @media screen and (min-width:1200px) {
    #timeLine{width:70%}
    #categoryBox{display:block;float:left;flex:1;width:15%}
-   #advertiseBox{display:block;float:right;width:15%;height:580px;background:#64cbf9;margin-top:100px;position:fixed;right:0;color:#fff;font-size:3em}
+   #advertiseBox{display:block;float:right;width:15%;height:580px;background:rgb(169,245,188);margin-top:100px;position:fixed;right:0;color:#fff;font-size:3em}
 } 

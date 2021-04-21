@@ -7,10 +7,11 @@ d<%@page import="com.jjj.likes.LikesDAO"%>
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	int myMemberId=2;
-	if(session.getAttribute("myMemberId")!=null) {
-		myMemberId=(Integer)session.getAttribute("myMemberId");
+	int mymemberId = 0;
+	if(session.getAttribute("mymemberId")!=null) {
+		mymemberId=(Integer)session.getAttribute("mymemberId");
 	 }
+	System.out.println(mymemberId+"회원번호임.");
 	
 	Date now = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy년MM월dd일 E요일 a hh:mm:ss");
@@ -21,7 +22,7 @@ d<%@page import="com.jjj.likes.LikesDAO"%>
 	
 	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
 	Connection conn = contentsDao.getConn();
-	Contents contents = contentsDao.getContents(request, today, content, myMemberId);
+	Contents contents = contentsDao.getContents(request, today, content, mymemberId);
 	contentsDao.Insert(conn, contents);
 	
 	
