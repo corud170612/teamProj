@@ -1,51 +1,20 @@
 @charset "UTF-8";
-/* 로그인 후 요소 안보이게 처리 */
-/* #viewType{display:none}
-#myName{display:none} 
-#loginForm{_display:none} */
 /* common */
-header{clear:both; float:left; width:100%; background:rgba(85,191,247,0.7)}
+header{clear:both; float:left; width:100%; background:rgb(169,245,188)}
 #loginForm form{float:left;width:100%}
 
-#viewType{clear:both; width:100px; height:25px; margin: 0 auto; border-left:1px solid #ccc;
+#viewType{clear:both; width:300px; height:25px; margin: 0 auto; border-left:1px solid #ccc;
 border-right:1px solid #ccc}
-#meLink{float:left; width:33%; height:17px; border-right:1px solid #ccc; text-align:center;
+#meLink{float:left; width:33%; height:30px; font-size: 16px; border-right:1px solid #ccc; text-align:center;
 padding:8px 0 0 0; color:#aaa}
-#allLink{float:left; width:33%; height:17px; border-right:1px solid #ccc; text-align:center; padding:8px 0 0 0; color:#aaa}
-#mbtiLink{float:left; width:33%; height:17px; text-align:center; padding:8px 0 0 0; color:#aaa}
-
-/* mobile */
-
-/* @media screen and (min-width:0px) and (max-width:1199px){
-#myService{float: left; color: #fff; width: 100%; font-size: 2rem; text-align: center;
-margin-bottom: 1rem}
-
-#loginForm{clear: both}
-#loginEmailArea, #loginPwArea{clear: both; float: left; width: 100%}
-#loginPwArea{margin-top: 0.4rem}
-.loginInputBox{float: left; width: 59%; border: 1px solid #ccc; background: #fff}
-#loginEmailArea label, #loginPwArea label{float: left; width: 25%; padding-left: 1rem;
-font-size: 1.5rem; color: #fff}
-#loginEmailArea input, #loginPwArea input{float: left; width: 100%; padding-left: 0.5rem;
-font-size: 1.5rem; border: none; background: #fff}
-.loginSubmitBox{clear: both; float: left; background: #fff; border: 1px solid #ccc; 
-margin: 0.5rem 0 1rem 2rem; padding: 0.3rem}
-#loginSubmit{clear: both; float: left; width: 100%; background: none; border: none; color: #000;
-font-size: 1rem}
-
-#myName{float: left; width: 100%; background: #fff; border-bottom: 1px solid #ccc;
-padding: 0.3rem 0 0.3rem 0}
-#myName p{float: left; margin-left: 2%; font-size: 1rem}
-#logoutBox{float:right;margin-right:5%;border:1px solid #ccc;margin-top:1px}
-#logoutBox input{border: none; background: none; padding: 0.1rem 0.3rem;
-margin-top: 1px; cursor: pointer; font-size: 0.5rem}
-} */
+#allLink{float:left; width:33%; height:30px; font-size: 16px; border-right:1px solid #ccc; text-align:center; padding:8px 0 0 0; color:#aaa}
+#mbtiLink{float:left; width:33%; height:30px; font-size: 16px; text-align:center; padding:8px 0 0 0; color:#aaa}
 
 /* pc */
 @media screen and (min-width:1200px){
 	#myService{float:left; color:#fff; font-size:2rem; text-align:left; margin:10px}
 	#myName{float:right; color:#fff; margin-right:1%; margin-top:20px}
-	#myName p{float:left; width:250px; font-size:1rem}
+	#myName p{float:left; width:250px; font-size:1.5rem}
 	#logoutBox{float:left; border:1px solid #ccc; margin-top:1px}
 	#logoutBox a{border:none; background:none; padding: 0.1rem 0.3rem;
 	margin-top:1px; cursor:pointer; font-size:0.5rem; background:#fff}
@@ -57,7 +26,7 @@ margin-top: 1px; cursor: pointer; font-size: 0.5rem}
 	.loginInputBox{float:left; border:1px solid #ccc; background:#fff}
 	#loginEmailArea input, #loginPwArea input{float:left; padding-left:0.5rem;
 	font-size:1.3em; border:none; background: #fff}
-	.loginSubmitBox{float: right; width: 50px; background: #fff; border: 1px solid #ccc;
+	.loginSubmitBox{float: inherit; width: 50px; background: #fff; border: 1px solid #ccc;
 	margin-left: 5px; padding: 0.1em}
 	#loginSubmit{clear:both; float: left; width: 100%; background: none; border: none; color: #aaa;
 	font-size: 0.7rem}

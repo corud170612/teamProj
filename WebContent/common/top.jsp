@@ -11,16 +11,16 @@
    System.out.println("현재 접속중인 id :" + name);  
 
 %>
-<script  src='<%=request.getContextPath()%>/js/loginForm.js' type="text/javascript"></script>
-<head>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/cssReset.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/header.css" />
+<script  src='<%=request.getContextPath()%>/js/loginForm.js' type="text/javascript"></script>
+<head>
 
 <meta name="viewport" content="width=device-width" charset="UTF-8">
 <title>MBTI 커뮤니티</title>
 </head>
 
-<div id="viwType" align="center">
+<div id="viewType" align="center">
    <a href="<%=Currentpath %>me" id="meLink">ME</a>
    <a href="<%=Currentpath %>all" id="allLink">ALL</a>
    <a href="<%=Currentpath %>mbti" id="mbtiLink">MBTI</a>
@@ -45,15 +45,12 @@
             <div class="loginInputBox">
                <input type="password" name="pw" id="pw" placeholder="비밀번호 8자 이상 입력"/>
             </div>
-            <a id="kakao-login-btn"></a>
          </div>
          <div class="loginSubmitBox">
             <input type="submit" id="loginSubmit" value="로그인"/> 
          </div>
+            <a id="kakao-login-btn"></a>
       </form>
-      
-      
-      
    </div>
    <%
    } else {

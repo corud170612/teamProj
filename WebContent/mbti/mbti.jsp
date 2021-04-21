@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+int myMemberId=0;
+if(session.getAttribute("mymemberId")!=null) {
+	myMemberId=(Integer)session.getAttribute("mymemberId");
+}
+String userMbti = (String)session.getAttribute("userMbti");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +20,6 @@
 <script type="text/javascript" src=<%=request.getContextPath() %>/js/all.js></script>
 </head>
 <body>
-
 <div id="categoryBox">
 <section class="asideContent">
 	<ul class="categories">
