@@ -54,5 +54,4 @@ public class Contents implements Serializable{
 	public void setLikesSum(Integer likesSum) {
 		this.likesSum = likesSum;
 	}
-
 }

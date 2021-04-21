@@ -113,7 +113,6 @@ public class ContentsWriteDAO {
       		+ "from likes , contents "
       		+ "where likes.contentsid=contents.contentsid "
       		+ "order by contentsid desc";
-      List<Contents> lst = new ArrayList<Contents>();
       try {
          PreparedStatement pstmt = conn.prepareStatement(sql);
          ResultSet rs = pstmt.executeQuery();
@@ -161,7 +160,6 @@ public class ContentsWriteDAO {
 	      //System.out.println("00000"+lst.size());
 	      return lst;
 	   }
-   
    /*
      private void getMultiReq(HttpServletRequest request) { String uploadFilePath
      = request.getServletContext().getRealPath("uploadFile"); int maxSize =
