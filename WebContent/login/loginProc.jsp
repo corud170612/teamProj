@@ -21,7 +21,6 @@
 	Mymember mymember = new Mymember();
 	mymember = loginDao.LoginProc(conn, login);
 	
-	String filePath = request.getContextPath() + "/top.jsp";
 	if (mymember.getEmail() == null) {
 		session.setAttribute("YN", "N");
 	} else {

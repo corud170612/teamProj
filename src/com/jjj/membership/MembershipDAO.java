@@ -6,15 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.jjj.login.Login;
+
 public class MembershipDAO {
-	private PreparedStatement pstmt;
-	private Connection conn;
-	private ResultSet rs;
-	
 	public Connection getConn() {
 		String url="jdbc:oracle:thin:@localhost:1521:xe";
 		String user="c##jjj";
 		String pass="jjj123";
+		Connection conn = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn= DriverManager.getConnection(url, user, pass);
@@ -22,15 +21,13 @@ public class MembershipDAO {
 		
 		return conn;
 	}
-	
-	public void Insert(Mymember mymember) {
+	public void Insert(Connection conn, Mymember mymember) {
 		String sql="INSERT INTO MyMember(mymemberid, userName, email, pw, gender, mbti) "
 				+ "VALUES(?, ?, ?, ?, ?, ?)";
-		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, getAI("MyMember"));
+			pstmt.setInt(1, getAI(getConn(), "MyMember"));
 			pstmt.setString(2, mymember.getUsername());
 			pstmt.setString(3, mymember.getEmail());
 			pstmt.setString(4, mymember.getPw());
@@ -46,13 +43,13 @@ public class MembershipDAO {
 		
 	}
 	
-	public int getAI(String tn) {
+	public int getAI(Connection conn, String tn) {
 	      String sql="select nvl(max(mymemberid), 0)+1 from "+tn;
 	      int maxNum=0;
 	      try {
-	         pstmt = conn.prepareStatement(sql);
+	         PreparedStatement pstmt = conn.prepareStatement(sql);
 	         
-	         rs = pstmt.executeQuery();
+	         ResultSet rs = pstmt.executeQuery();
 	         if(rs.next())
 	            maxNum =rs.getInt(1);
 	         rs.close();
@@ -62,23 +59,4 @@ public class MembershipDAO {
 	      }
 	      return maxNum;
 	   }
-	
-	public void emailCheck(Mymember mymember) {
-		String sql="select * from mymember "
-				+ "where email = ?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, mymember.getEmail());
-			
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return false;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 }
