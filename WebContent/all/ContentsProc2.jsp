@@ -1,4 +1,5 @@
-d<%@page import="java.util.List"%>
+d<%@page import="com.jjj.likes.LikesDAO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.jjj.Contents.ContentsWriteDAO"%>
@@ -22,7 +23,12 @@ d<%@page import="java.util.List"%>
 	Connection conn = contentsDao.getConn();
 	Contents contents = contentsDao.getContents(request, today, content, myMemberId);
 	contentsDao.Insert(conn, contents);
-
+	
+	
+	
+	LikesDAO likesDao = new LikesDAO();
+	Connection conn2 = likesDao.getConn();
+    likesDao.Insert(conn2, contents);
 %>
 <jsp:forward page="../index.jsp">
 <jsp:param value="all" name="currentPage"/>

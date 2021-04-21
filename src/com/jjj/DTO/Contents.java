@@ -2,21 +2,18 @@ package com.jjj.DTO;
 
 import java.io.Serializable;
 
-// 게시물 등록 
 @SuppressWarnings("serial")
 public class Contents implements Serializable{
 
-    // 게시물 번호 
     private Integer contentsid;
 
-    // 작성한 고객번호 
     private Integer mymemberid;
 
-    // 게시물 내용 
     private String content;
 
-    // 등록시간 
     private String regtime;
+    
+    private Integer likesSum;
 
     public Integer getContentsid() {
         return contentsid;
@@ -50,12 +47,12 @@ public class Contents implements Serializable{
         this.regtime = regtime;
     }
 
-    // Contents 모델 복사
-    public void CopyData(Contents param)
-    {
-        this.contentsid = param.getContentsid();
-        this.mymemberid = param.getMymemberid();
-        this.content = param.getContent();
-        this.regtime = param.getRegtime();
-    }
+	public Integer getLikesSum() {
+		return likesSum;
+	}
+
+	public void setLikesSum(Integer likesSum) {
+		this.likesSum = likesSum;
+	}
+
 }

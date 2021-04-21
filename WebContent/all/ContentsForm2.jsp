@@ -17,7 +17,7 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
    <%@ include file="../common/top.jsp" %>
 </header>
 <center>
-<form action="<%=request.getContextPath() %>/all/ContentsProc2.jsp" >
+<form action="<%=request.getContextPath() %>/all/ContentsProc2.jsp" method="post">
 <table style="width: 650px; ">
 
 	<tr>

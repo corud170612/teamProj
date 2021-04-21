@@ -26,17 +26,26 @@
  	List<Contents> lst = contentsDao.getAllList(conn);
 	session.setAttribute("contentsLst", lst);
 	List<Contents> contentsLst = (List<Contents>)session.getAttribute("contentsLst");
+	
+ 	List<Contents> lst3 = contentsDao.getAllList(conn);
+	session.setAttribute("likesLst", lst3);
+	List<Contents> likesLst = (List<Contents>)session.getAttribute("likesLst");
 
 	CommentsDAO commentsDao = new CommentsDAO();
 	Connection conn2 = commentsDao.getConn();
 	//List<Comments> lst2 = commentsDao.getCommentsList(conn2);
 	//session.setAttribute("commentsLst", lst2);
-	//List<Comments> commentsLst = (List<Comments>)session.getAttribute("commentsLst");
+	
+/* 	LikesDAO likesDao = new LikesDAO();
+	Connection conn3 = likesDao.getConn();
+	List<Likes> likesLst = likesDao.getLikesList(conn3, (Integer)session.getAttribute("likesNum"));
+	 */
 	int count = 1;
 	int count2 = 1;
 	int count3 = 1;
-	session.setAttribute("asd", contentsLst.size());
-	
+	int count4 = 1;
+	session.setAttribute("contentsLstSize", contentsLst.size());
+	System.out.println(session.getAttribute("likesNum")+";;;;;;;;;;");
 %>
 <!DOCTYPE html>
 <html>
@@ -73,24 +82,24 @@
 		<span class="content"><%=t.getContent() %></span>
 		
 		<div class="likeArea">
-			<div class="likeNum" style="background:#fff">공감수 : <%=session.getAttribute("likesNum") %></div>
-			<div class="likeBtn" ><input type="button" onclick="formSubmit('frm','/20210406/all/likesProc.jsp')" name="likeBtn" value="공감하기"/></div>
 			<div class="contentsID"> 콘텐츠 번호: <%=t.getContentsid() %></div>
-		<input type="hidden" name="contentsid<%=count++ %>" value="<%=t.getContentsid() %>" />
-		
-</div>
+			<input type="hidden" name="contentsid<%=count++ %>" value="<%=t.getContentsid() %>" />
+			<div class="likeBtn" >
+				<a href="<%=request.getContextPath() %>/all/likesProc.jsp?likeBtn<%=count4++ %>=<%=t.getContentsid() %>">공감하기</a>
+			</div>		
+			<div class="likeNum" style="background:#fff">공감수 : <%=t.getLikesSum() %></div>
+		</div>
 		<div class="myCommentArea">
 <%
 	List<Comments> lst2 = commentsDao.getCommentsList(conn2, t.getContentsid());
 	session.setAttribute("commentsLst", lst2);
 	List<Comments> commentsLst = (List<Comments>)session.getAttribute("commentsLst");
 	
-	System.out.println(lst2.size()+" : lst2사이즈");
+	//System.out.println(lst2.size()+" : lst2사이즈");
 
 		for(Comments c : commentsLst) {
-				System.out.println(t.getContentsid()+"글번호");
-				System.out.println(c.getContentsid()+"댓글번호");
-				session.setAttribute("qwe", contentsLst.size());
+				//System.out.println(t.getContentsid()+"글번호");
+				//System.out.println(c.getContentsid()+"댓글번호");
 %>		
 		
 			<div class="commentBox">
