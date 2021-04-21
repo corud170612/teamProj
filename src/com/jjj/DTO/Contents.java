@@ -47,12 +47,11 @@ public class Contents implements Serializable{
         this.regtime = regtime;
     }
 
-   public Integer getLikesSum() {
-      return likesSum;
-   }
+	public Integer getLikesSum() {
+		return likesSum;
+	}
 
-   public void setLikesSum(Integer likesSum) {
-      this.likesSum = likesSum;
-   }
-
+	public void setLikesSum(Integer likesSum) {
+		this.likesSum = likesSum;
+	}
 }
