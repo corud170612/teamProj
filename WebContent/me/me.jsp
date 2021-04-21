@@ -10,6 +10,8 @@
 <%@page import="com.jjj.DTO.Contents"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
 <%
    //out.print(request.getParameter("contents"));
     String content = request.getParameter("contents");
@@ -49,6 +51,20 @@
       af = new AttachFile();
    }
 %>
+<style type="text/css">
+a:link{color:white;font-family:sans-serif;text-decoration:none;}
+a:visited{color:white;font-family:sans-serif;text-decoration:none;}
+a:hover{color:#cc3300; font-weight:bold; }
+a:active{color:#ff00cc; text-decoration:underline; }
+#myProfilePhoto{
+	/* background-image: url('pro.PNG'); */
+	background-color: #A9F5BC;
+	width:100%;height:100px;
+	
+	/* border: 1px solid red; */
+	border-collapse: collapse;
+}
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,8 +86,12 @@ function formSubmit(frmId, nextPath){
 
 <style>
 
-#myWallPhoto{background:url('/20210406/myMemberProfilePhoto/<%=af.getAttachedfile1()%>');background-size:cover;
-background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
+#myWallPhoto{
+	background:url('/20210406/myMemberProfilePhoto/<%=af.getAttachedfile1()%>');
+	background-size:cover;
+	background-color: #A9F5BC;
+	background-repeat:no-repeat;background-position:50% 50%
+}
 </style>
 </head>
 <body>
@@ -82,7 +102,6 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
       <div id="myProfilePhoto">
         <%-- <img src="<%=request.getContextPath() %>/images/me/pro.PNG" /> --%>
         <img src="/20210406/myMemberProfilePhoto/<%=af.getAttachedfile2() %>" />
-      
       </div>
       <p id="name">라이언</p>
 <!--       <div class="myButtonBox">
