@@ -1,5 +1,5 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="com.jjj.membership.MembershipDAO"%>
+<%@page import="com.jjj.membership.Mymember"%>
 <%@page import="com.jjj.Contents.FileuploadDAO"%>
 <%@page import="com.jjj.DTO.AttachFile"%>
 <%@page import="java.util.List"%>
@@ -11,43 +11,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	//out.print(request.getParameter("contents"));
- 	String content = request.getParameter("contents");
-	Date now = new Date();
-	SimpleDateFormat sf = new SimpleDateFormat("yyyy년MM월dd일 E요일 a hh:mm:ss");
-	String today = sf.format(now);
-	int myMemberId=123;
-	if(session.getAttribute("myMemberId")!=null) {
-		myMemberId=(Integer)session.getAttribute("myMemberId");
-	 }
-	ContentsWriteDAO contentsDao = new ContentsWriteDAO();
-	//Contents contents = contentsDao.getContents(request, myMemberId, content, today);
-	Contents contents = contentsDao.getContents(request, today, content, myMemberId);
-	Connection conn = contentsDao.getConn();
-	contentsDao.Insert(conn, contents); 
-	//List<Contents> boardLst = (List<Contents>)request.getAttribute("boardLst");
-	
-	List<Contents> lst = contentsDao.getBoardList(conn, myMemberId);
-	session.setAttribute("contentsLst", lst);
+   //out.print(request.getParameter("contents"));
+    String content = request.getParameter("contents");
+   Date now = new Date();
+   SimpleDateFormat sf = new SimpleDateFormat("yyyy년MM월dd일 E요일 a hh:mm:ss");
+   String today = sf.format(now);
+   int myMemberId=123;
+   if(session.getAttribute("myMemberId")!=null) {
+      myMemberId=(Integer)session.getAttribute("myMemberId");
+    }
+   ContentsWriteDAO contentsDao = new ContentsWriteDAO();
+   //Contents contents = contentsDao.getContents(request, myMemberId, content, today);
+   Contents contents = contentsDao.getContents(request, today, content, myMemberId);
+   Connection conn = contentsDao.getConn();
+   contentsDao.Insert(conn, contents); 
+   //List<Contents> boardLst = (List<Contents>)request.getAttribute("boardLst");
+   
+   List<Contents> lst = contentsDao.getBoardList(conn, myMemberId);
+   session.setAttribute("contentsLst", lst);
 
-	List<Contents> boardLst = (List<Contents>)session.getAttribute("contentsLst");
-	
-	//String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
-	// 사진이 저장되는 경로
-	// 폴더 명 + 사진이 저장되는 경로
+   List<Contents> boardLst = (List<Contents>)session.getAttribute("contentsLst");
+   
+   //String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
+   // 사진이 저장되는 경로
+   // 폴더 명 + 사진이 저장되는 경로
 
-	AttachFile attachFile = new AttachFile(); // 
-	FileuploadDAO fileuploadDAO = new FileuploadDAO();
- 	Connection connection = fileuploadDAO.getConn();
- 	
-	//String profpath = request.getContextPath()+"/myMemberProfilePhoto/" + myCoverPhoto;
-	
-	////String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
-	/* System.out.print("파일 경로 : " +(AttachFile)session.getAttribute("af") + "<br/>"); */
-	AttachFile af = (AttachFile)session.getAttribute("af");
-	if(af == null) {
-		af = new AttachFile();
-	}
+   AttachFile attachFile = new AttachFile(); // 
+   FileuploadDAO fileuploadDAO = new FileuploadDAO();
+    Connection connection = fileuploadDAO.getConn();
+    
+   //String profpath = request.getContextPath()+"/myMemberProfilePhoto/" + myCoverPhoto;
+   
+   ////String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
+   /* System.out.print("파일 경로 : " +(AttachFile)session.getAttribute("af") + "<br/>"); */
+   AttachFile af = (AttachFile)session.getAttribute("af");
+   if(af == null) {
+      af = new AttachFile();
+   }
 %>
 <!DOCTYPE html>
 <html>
@@ -62,16 +62,14 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/me.js"></script>
 <script type="text/javascript">
 function formSubmit(frmId, nextPath){
-	   let frm = document.getElementById(frmId);
-	   frm.action = nextPath;
-	   frm.submit();
-	}
+      let frm = document.getElementById(frmId);
+      frm.action = nextPath;
+      frm.submit();
+   }
 </script>
 
 <style>
-/* <img id="myWallPhoto">  */
 
-/* #myWallPhoto{background:url('/20210406/images/me/back.PNG');background-size:cover; */
 #myWallPhoto{background:url('/20210406/myMemberProfilePhoto/<%=af.getAttachedfile1()%>');background-size:cover;
 background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid #ccc}
 </style>
@@ -137,21 +135,21 @@ background-repeat:no-repeat;background-position:50% 50%;border-bottom:1px solid 
          
 
          <%
-			for(Contents c : boardLst){
-		 %>
+         for(Contents c : boardLst){
+       %>
          
-		<div class="reading">
-			<div class="writerArea">
-				<img src="/20210406/myMemberProfilePhoto/<%=af.getAttachedfile2() %>" />
-				<div class="writingInfo">
-				<p>라이언  </p>
-				<div class="writingDate"></div>
-			</div>
-		</div>
-			<%=c.getRegtime() %>		
-		<span class="content">	
-			<%=c.getContent() %>
-		</span>
+      <div class="reading">
+         <div class="writerArea">
+            <img src="/20210406/myMemberProfilePhoto/<%=af.getAttachedfile2() %>" />
+            <div class="writingInfo">
+            <p>라이언  </p>
+            <div class="writingDate"></div>
+         </div>
+      </div>
+         <%=c.getRegtime() %>      
+      <span class="content">   
+         <%=c.getContent() %>
+      </span>
       
       
 <!--       <div class="likeArea">
