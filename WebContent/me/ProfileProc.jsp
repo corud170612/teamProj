@@ -9,7 +9,6 @@
    //fileuploadDAO.getMultiReq(request); 
    //System.out.println("여기는 몇번째?");
    attachFile = fileuploadDAO.getAttachFile(request, attachFile);
-   //System.out.println("그럼 여기는 몇번째?");
 
    int result = fileuploadDAO.mem(conn, 123);
    String sql = fileuploadDAO.takePic(conn, result);
