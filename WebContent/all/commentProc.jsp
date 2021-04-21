@@ -21,19 +21,18 @@
 	Connection conn = commentsDao.getConn();
 	
 	String reply="";
-	for(int i=1; i<=(Integer)session.getAttribute("asd"); i++){
+	for(int i=1; i<=(Integer)session.getAttribute("contentsLstSize"); i++){
 			if(request.getParameter("commentcontents"+i)!=null) {
 				reply = request.getParameter("commentcontents"+i);
 				int contentsid = Integer.parseInt(request.getParameter("contentsid"+i));
-				System.out.println(reply+"AAAAAAAAAAA");
 				Comments comments = commentsDao.getComments(request, nowdate, reply, contentsid, myMemberId);
 				commentsDao.Insert(conn, comments);
 			}
 		}
 	
 
-	session.getAttribute("asd");
-	System.out.println(session.getAttribute("asd"));
+	session.getAttribute("contentsLstSize");
+	System.out.println(session.getAttribute("contentsLstSize"));
 	
 /* 	 */
 	/*  */

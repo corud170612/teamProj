@@ -75,13 +75,9 @@ public class CommentsDAO {
    Comments comments =   new Comments();
    comments.setCommentsid(getAI(getConn(), "Comments"));
    comments.setContentsid(contentsid);
-      System.out.println(contentsid);
    comments.setMymemberid(myMemberID);
-      System.out.println(myMemberID);
    comments.setReply(reply);
-   System.out.println(reply);
    comments.setRegtime(nowdate);
-   System.out.println(nowdate);
      
    return comments; 
    }
