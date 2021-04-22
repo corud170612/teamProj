@@ -30,7 +30,9 @@
 	AttachFile attachFile = new AttachFile();
    FileuploadDAO FileuploadDao = new FileuploadDAO();
    Connection conn2 = FileuploadDao.getConn();
-   FileuploadDao.Insert(conn2, attachFile);
+   int getAI = membership.getAI(conn, "MyMember");
+   int mymemberId = getAI;
+   FileuploadDao.Insert(conn2, attachFile, mymemberId);
 %>
 <jsp:forward page="/index.jsp">
 <jsp:param value="memberForm" name="currentPage"/>
