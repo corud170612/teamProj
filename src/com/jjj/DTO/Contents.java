@@ -14,6 +14,8 @@ public class Contents implements Serializable{
     private String regtime;
     
     private Integer likesSum;
+    
+    private String userName;
 
     public Integer getContentsid() {
         return contentsid;
@@ -54,4 +56,13 @@ public class Contents implements Serializable{
 	public void setLikesSum(Integer likesSum) {
 		this.likesSum = likesSum;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUsername(String userName) {
+		this.userName = userName;
+	}
+	
 }
