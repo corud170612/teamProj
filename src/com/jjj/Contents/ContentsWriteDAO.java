@@ -128,7 +128,7 @@ public class ContentsWriteDAO {
             contents.setMymemberid(rs.getInt(3));
             contents.setContent(rs.getString(4));
             contents.setRegtime(rs.getString(5));
-            contents.setUsername(rs.getString(6));
+            contents.setUserName(rs.getString(6));
 
             lst.add(contents);
          }
@@ -157,7 +157,7 @@ public class ContentsWriteDAO {
 	            contents.setMymemberid(rs.getInt(3));
 	            contents.setContent(rs.getString(4));
 	            contents.setRegtime(rs.getString(5));
-	            contents.setUsername(rs.getString(6));
+	            contents.setUserName(rs.getString(6));
 
 	            lst.add(contents);
 	         }
@@ -168,14 +168,18 @@ public class ContentsWriteDAO {
 	      return lst;
 	   }
    
-   public List<Contents> getLikeList(Connection conn){
-	      String sql  ="select likes.contentsid, likessum, mymemberid, content, regtime "
-	      		+ "from likes , contents "
-	      		+ "where likes.contentsid=contents.contentsid "
-	      		+ "order by likessum desc";
+   		public List<Contents> getMBTIAllList(Connection conn, String mbti){
+	      String sql  ="select likes.contentsid, likessum, contents.mymemberid, content, regtime, username, mbti "
+	      		+ "from likes "
+	      		+ "inner join contents on likes.contentsid = contents.contentsid "
+	      		+ "left outer join mymember on contents.mymemberid= mymember.mymemberid "
+	      		+ "where mbti = ? "
+	      		+ "order by contents.contentsid desc";
 	      List<Contents> lst = new ArrayList<Contents>();
 	      try {
 	         PreparedStatement pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, mbti);
+	         
 	         ResultSet rs = pstmt.executeQuery();
 
 	         while(rs.next()) {
@@ -185,6 +189,8 @@ public class ContentsWriteDAO {
 	            contents.setMymemberid(rs.getInt(3));
 	            contents.setContent(rs.getString(4));
 	            contents.setRegtime(rs.getString(5));
+	            contents.setUserName(rs.getString(6));
+	            contents.setMbti(rs.getString(7));
 
 	            lst.add(contents);
 	         }
@@ -194,6 +200,57 @@ public class ContentsWriteDAO {
 	      //System.out.println("00000"+lst.size());
 	      return lst;
 	   }
+   
+   	   public List<Contents> getMBTIAllListOrderbyLikeSum(Connection conn, String mbti){
+ 	      String sql  ="select likes.contentsid, likessum, contents.mymemberid, content, regtime, username, mbti "
+ 	      		+ "from likes "
+ 	      		+ "inner join contents on likes.contentsid = contents.contentsid "
+ 	      		+ "left outer join mymember on contents.mymemberid= mymember.mymemberid "
+ 	      		+ "where mbti = ? "
+ 	      		+ "order by likessum desc";
+ 	      List<Contents> lst = new ArrayList<Contents>();
+ 	      try {
+ 	         PreparedStatement pstmt = conn.prepareStatement(sql);
+ 	        pstmt.setString(1, mbti);
+ 	         
+ 	         ResultSet rs = pstmt.executeQuery();
+
+ 	         while(rs.next()) {
+ 	            Contents contents = new Contents();
+ 	            contents.setContentsid(rs.getInt(1));
+ 	            contents.setLikesSum(rs.getInt(2));
+ 	            contents.setMymemberid(rs.getInt(3));
+ 	            contents.setContent(rs.getString(4));
+ 	            contents.setRegtime(rs.getString(5));
+ 	            contents.setUserName(rs.getString(6));
+ 	            contents.setMbti(rs.getString(7));
+
+ 	            lst.add(contents);
+ 	         }
+ 	         rs.close();
+ 	         pstmt.close();
+ 	      } catch (SQLException e) {         e.printStackTrace();      }
+ 	      //System.out.println("00000"+lst.size());
+ 	      return lst;
+ 	   }
+   
+		/*
+		 * public List<Contents> getLikeList(Connection conn){ String sql
+		 * ="select likes.contentsid, likessum, mymemberid, content, regtime " +
+		 * "from likes , contents " + "where likes.contentsid=contents.contentsid " +
+		 * "order by likessum desc"; List<Contents> lst = new ArrayList<Contents>(); try
+		 * { PreparedStatement pstmt = conn.prepareStatement(sql); ResultSet rs =
+		 * pstmt.executeQuery();
+		 * 
+		 * while(rs.next()) { Contents contents = new Contents();
+		 * contents.setContentsid(rs.getInt(1)); contents.setLikesSum(rs.getInt(2));
+		 * contents.setMymemberid(rs.getInt(3)); contents.setContent(rs.getString(4));
+		 * contents.setRegtime(rs.getString(5));
+		 * 
+		 * lst.add(contents); } rs.close(); pstmt.close(); } catch (SQLException e) {
+		 * e.printStackTrace(); } //System.out.println("00000"+lst.size()); return lst;
+		 * }
+		 */
    /*
      private void getMultiReq(HttpServletRequest request) { String uploadFilePath
      = request.getServletContext().getRealPath("uploadFile"); int maxSize =
