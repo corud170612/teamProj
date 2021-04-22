@@ -16,6 +16,8 @@ public class Contents implements Serializable{
     private Integer likesSum;
     
     private String userName;
+    
+    private String mbti;
 
     public Integer getContentsid() {
         return contentsid;
@@ -60,9 +62,17 @@ public class Contents implements Serializable{
 	public String getUserName() {
 		return userName;
 	}
-
-	public void setUsername(String userName) {
+	
+	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getMbti() {
+		return mbti;
+	}
+
+	public void setMbti(String mbti) {
+		this.mbti = mbti;
 	}
 	
 }

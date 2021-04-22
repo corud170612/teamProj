@@ -13,7 +13,7 @@
     else if("all".contentEquals(currentPage))
        pageName = "/all/all.jsp";
     else if("mbti".contentEquals(currentPage))
-       pageName = "/mbti/"+mbti+"/"+mbti+".jsp";
+       pageName = "/"+mbti+"/"+mbti+".jsp";
     else if("memberForm".contentEquals(currentPage))
       pageName = "/membership/memberForm.jsp";
     else if("commentProc".contentEquals(currentPage))
@@ -33,6 +33,16 @@
         pageName = "/all/allOrderbyLikesSum.jsp";
     else if("commentProc2".contentEquals(currentPage))
         pageName = "/all/allOrderbyLikesSum.jsp";
+    
+    else if("ENTP".contentEquals(currentPage))
+        pageName = "/ENTP/ENTP.jsp";
+    else if("ENTPOrderbyLikesSum".contentEquals(currentPage))
+        pageName = "/ENTP/ENTPOrderbyLikesSum.jsp";
+    
+    else if("ESTP".contentEquals(currentPage))
+        pageName = "/ESTP/ESTP.jsp";
+    else if("ESTPOrderbyLikesSum".contentEquals(currentPage))
+        pageName = "/ESTP/ESTPOrderbyLikesSum.jsp";
 %>
 
 <!DOCTYPE html>
