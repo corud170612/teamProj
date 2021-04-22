@@ -65,7 +65,7 @@
 			<div class="contentsID"> 콘텐츠 번호: <%=t.getContentsid() %></div>
 			<input type="hidden" name="contentsid<%=count++ %>" value="<%=t.getContentsid() %>" />
 			<div class="likeBtn" >
-				<a href="<%=request.getContextPath() %>/all/likesProc.jsp?likeBtn<%=count4++ %>=<%=t.getContentsid() %>">공감하기</a>
+				<a href="<%=request.getContextPath() %>/all/likesProc.jsp?likeBtn<%=count4++ %>=<%=t.getContentsid() %>" style="color:black;">공감하기</a>
 			</div>		
 			<div class="likeNum" style="background:#fff">공감수 : <%=t.getLikesSum() %></div>
 		</div>
