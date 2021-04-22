@@ -86,14 +86,14 @@ public class FileuploadDAO { ////
             return af;
          }
       
-	   public int Insert(Connection conn2, AttachFile attachFile) {
-		      String sql = "INSERT INTO upload (mymemberid, attachedfile1, filepath1, attachedfile2, filepath2) \n"
+	   public int Insert(Connection conn2, AttachFile attachFile, int mymemberId) {
+		      String sql = "INSERT INTO upload (mymemberid, attachedfile1, filepath1, attachedfile2, filepath2) "
 		      		+ "VALUES (?,null,null,null,null)";
 		      
 		      try {
 		         PreparedStatement pstmt = conn2.prepareStatement(sql);
 		         
-		         pstmt.setInt(1, attachFile.getMymemberid()); 
+		         pstmt.setInt(1, mymemberId); 
 		         
 		         pstmt.executeUpdate();
 		         pstmt.close();
