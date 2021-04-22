@@ -3,7 +3,6 @@
 #introSite{display:none}
 
 /* common */
-#siteComment{border:3px solid #A9F5BC; padding:1rem; font-size: 2rem; color: #A9F5BC;}
 
 #signupCenter{margin:0 auto}
 #signUpForm{float: left; width:98%; margin: 40px 0 40px 0; padding-top: 1rem; border: 1px solid #ccc;
@@ -24,8 +23,7 @@ background-position: 90% 5px; width: 90%; margin-left: 5px; font-size: 1rem}
 .selectBoxMargin{margin-left: 2%; margin-right: 2%}
 .genderRow input{width: 15px; margin-left: 10%; position: relative; top: 4px}
 
-#valueError{float: left; width: 100%; text-align: center; color: red; font-size: 2em}
-#siteComment{border: 3px solid #A9F5BC; padding: 1rem; font-size: 2rem; color: #A9F5BC;}
+#siteComment{border: 3px solid #A9F5BC; padding: 1rem; font-size: 2rem; color: #aaa;}
 
 .submitBox{clear: both; float: left; width: 25%; padding: 0.4rem; background: #A9F5BC;
 margin-left: 5%; border-radius: 10px}
@@ -36,16 +34,12 @@ font-size: 1rem}
 background: #A9F5BC; cursor: pointer; text-align: center; border-radius: 10px}
 #mbtiGo {font-size: 1rem; color: #fff; position: relative; top: 5px}
 
-#goToLoginBtn{clear: both; width: 30%; height: 30px; padding: 0.4rem; margin: 0 auto 20px;
-background: #A9F5BC; cursor: pointer; text-align: center; border-radius: 10px}
-#goToLoginBtn p{font-size: 1rem; color: #fff; text-align:center; position: relative; top: 5px}
-
 
 /* desktop css source */
 @media screen and (min-width:1200px){
 	#loginForm{display: block}
 	#container{float: left; width: 100%; min-height: 75%;
-	background: url('/myservice/images/index/bgImage.jpg');	background-size: cover}
+	background: url('/myservice/images/index/img.png');	background-size: cover}
 	#siteComment{margin: 2% auto 0; width: 210px; background: rgba(255, 255, 255, 0.4)}
 	#introSite{display: block}
 	#signUpBtn, #goToLoginBtn{display: none}
