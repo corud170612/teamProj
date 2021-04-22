@@ -12,8 +12,8 @@ String pro = request.getParameter("profilePhoto");
 String cover = request.getParameter("coverPhoto");
 
 //String Photo = (String)session.getAttribute("userName");
-   
-   
+	
+	
 if (name == null)
    name = "";
 if (email == null)

@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
     
 <% 
+	String mbti = (String)session.getAttribute("userMbti");
 	String currentPage = request.getParameter("currentPage");
     String pageName = "/index.jsp";
     if(currentPage==null)
@@ -12,7 +13,7 @@
     else if("all".contentEquals(currentPage))
        pageName = "/all/all.jsp";
     else if("mbti".contentEquals(currentPage))
-       pageName = "/mbti/mbti.jsp";
+       pageName = "/mbti/"+mbti+"/"+mbti+".jsp";
     else if("memberForm".contentEquals(currentPage))
       pageName = "/membership/memberForm.jsp";
     else if("commentProc".contentEquals(currentPage))
@@ -29,6 +30,8 @@
     else if("allOrderbyLikesSum".contentEquals(currentPage))
         pageName = "/all/allOrderbyLikesSum.jsp";
     else if("likesProc2".contentEquals(currentPage))
+        pageName = "/all/allOrderbyLikesSum.jsp";
+    else if("commentProc2".contentEquals(currentPage))
         pageName = "/all/allOrderbyLikesSum.jsp";
 %>
 

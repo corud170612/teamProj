@@ -48,8 +48,8 @@ public class CommentsDAO {
 
    public int Insert(Connection conn, Comments comments) {
       // 뙎湲   옉 꽦 떆 db   옣  븯 뒗 硫붿냼 뱶
-      String sql = "INSERT INTO comments (commentsID, contentsID, myMemberID, reply, regTime) " +
-      "VALUES (?, ?, ?, ?, ?)";
+      String sql = "INSERT INTO comments (commentsID, contentsID, myMemberID, reply, regTime, userName) " +
+      "VALUES (?, ?, ?, ?, ?, ?)";
 
       try {
          PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -59,6 +59,7 @@ public class CommentsDAO {
          pstmt.setInt(3,   comments.getMymemberid()); 
          pstmt.setString(4, comments.getReply());
          pstmt.setString(5, comments.getRegtime());
+         pstmt.setString(6, comments.getUserName());
          
          pstmt.executeUpdate();
          pstmt.close();
@@ -70,7 +71,7 @@ public class CommentsDAO {
       return 0;
    }
 
-   public Comments getComments(HttpServletRequest request, String nowdate, String reply, int contentsid, int myMemberID) {
+   public Comments getComments(HttpServletRequest request, String nowdate, String reply, int contentsid, int myMemberID, String userName) {
       System.out.println("용용");
    Comments comments =   new Comments();
    comments.setCommentsid(getAI(getConn(), "Comments"));
@@ -78,33 +79,36 @@ public class CommentsDAO {
    comments.setMymemberid(myMemberID);
    comments.setReply(reply);
    comments.setRegtime(nowdate);
+   comments.setUserName(userName);
      
    return comments; 
    }
    
-      public List<Comments> getCommentsList(Connection conn, int contentsNo){
+      public List<Comments> getCommentsList(Connection conn, int contentsid){
          //  뙎湲 紐⑸줉 異쒕젰 븯 뒗 硫붿냼 뱶 (List濡  諛섑솚 떆 궡)
          //String sql  ="select m.commentsid,m.mymemberid,m.reply,m.regtime,m.contentsid "
          //      + "from contents n, comments m ";
          
          
-         String sql="select m.commentsid,m.mymemberid,m.reply,m.regtime,m.contentsid "
-               + "from contents n, comments m "
-               + "where n.contentsid=m.contentsid "
-               + "and n.contentsid=?";
+         String sql="select comments.commentsid, comments.contentsid, comments.mymemberid, comments.regtime, comments.reply, comments.username "
+         		+ "from comments "
+         		+ "inner join contents on comments.contentsid=contents.contentsid "
+         		+ "where comments.contentsid=? "
+         		+ "order by comments.commentsid";
          List<Comments> lst = new ArrayList<Comments>();
 
          try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, contentsNo);
+            pstmt.setInt(1, contentsid);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {
                Comments comments = new Comments();
                comments.setCommentsid(rs.getInt(1));
-               comments.setMymemberid(rs.getInt(2));
-               comments.setReply(rs.getString(3));
+               comments.setContentsid(rs.getInt(2));
+               comments.setMymemberid(rs.getInt(3));
                comments.setRegtime(rs.getString(4));
-               comments.setContentsid(rs.getInt(5));
+               comments.setReply(rs.getString(5));
+               comments.setUserName(rs.getString(6));
                lst.add(comments);
                
             }

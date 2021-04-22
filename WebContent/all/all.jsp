@@ -55,7 +55,7 @@
 		<div class="writerArea">
 			<img src="<%=request.getContextPath() %>/images/me/happyCat.png" />
 			<div class="writingInfo">
-				<p><%=t.getMymemberid() %></p>
+				<p><%=t.getUserName() %></p>
 			</div>
 		</div>
 		
@@ -86,7 +86,7 @@
 			<div class="commentBox">
 				<input type="hidden" name="commentsid<%=count3++ %>" value="<%=c.getCommentsid() %>" />
 				<img src="<%=request.getContextPath() %>/images/me/niniz.PNG" />
-				<p class="commentPoster"><%=c.getMymemberid() %></p> 
+				<p class="commentPoster"><%=c.getUserName() %></p> 
 				<p class="commentRegTime"><%=c.getRegtime() %></p>
 				<p class="writtenComment"><%=c.getReply() %></p> 
 			</div>

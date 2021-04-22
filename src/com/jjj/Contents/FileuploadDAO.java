@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.jjj.DTO.AttachFile;
 import com.jjj.DTO.Contents;
+import com.jjj.comment.Comments;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -43,7 +44,7 @@ public class FileuploadDAO { ////
             
            }
       
-      public AttachFile getAttachFile(HttpServletRequest request, AttachFile attachFile) {
+      public AttachFile getAttachFile(HttpServletRequest request, AttachFile attachFile, int mymemberId) {
             AttachFile af = new AttachFile();
             //getConn();
 //            System.out.println("오리지널 파일네임 1 : " + multiReq.getOriginalFileName("myProfilePhoto"));
@@ -52,17 +53,17 @@ public class FileuploadDAO { ////
             //System.out.println(multiReq.getFilesystemName("uploadFile")); ////
             //System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+ "==전==");
             getMultiReq(request); 
-            System.out.println("11111111111111111111111111111111111111111111111111111111111111111111");
-            System.out.println(multiReq.getFilesystemName("uploadFile")); // null 값 출력
-            System.out.println("22222222222222222222222222222222222222222222222222222222222222222222");
-            System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+ "==후=="); // 선택한 사진 이름 출력
-            System.out.println("33333333333333333333333333333333333333333333333333333333333333333333");
+            //System.out.println("11111111111111111111111111111111111111111111111111111111111111111111");
+            //System.out.println(multiReq.getFilesystemName("uploadFile")); // null 값 출력
+            //System.out.println("22222222222222222222222222222222222222222222222222222222222222222222");
+            //System.out.println(multiReq.getOriginalFileName("myProfilePhoto")+ "==후=="); // 선택한 사진 이름 출력
+            //System.out.println("33333333333333333333333333333333333333333333333333333333333333333333");
 
 //            System.out.println(multiReq.toString()); // 출력 
            // System.out.println("=======================================================================");
             //String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
             //System.out.println(request.getContextPath()+"/myMemberProfilePhoto/" + uploadFilePath);
-            af.setMymemberid(123); //af.getMymmemberid 
+            af.setMymemberid(mymemberId); //af.getMymmemberid 
 
             af.setAttachedfile1(multiReq.getOriginalFileName("myProfilePhoto"));
             //System.out.println("1111111111"+multiReq.getOriginalFileName("myProfilePhoto")+"1111111111");
@@ -85,6 +86,25 @@ public class FileuploadDAO { ////
             return af;
          }
       
+	   public int Insert(Connection conn2, AttachFile attachFile) {
+		      String sql = "INSERT INTO upload (mymemberid, attachedfile1, filepath1, attachedfile2, filepath2) \n"
+		      		+ "VALUES (?,null,null,null,null)";
+		      
+		      try {
+		         PreparedStatement pstmt = conn2.prepareStatement(sql);
+		         
+		         pstmt.setInt(1, attachFile.getMymemberid()); 
+		         
+		         pstmt.executeUpdate();
+		         pstmt.close();
+		      } catch (SQLException e) {
+		         // TODO Auto-generated catch block
+		         e.printStackTrace();
+		      }
+		      
+		      return 0;
+		   }
+      
       public String takePic(Connection conn, int result) {
          String insertSql = "INSERT INTO upload (mymemberid, attachedFile1, filepath1, attachedFile2,  filepath2) "
                   + "VALUES(?, ?,  ?,  ?, ?)";
@@ -104,6 +124,52 @@ public class FileuploadDAO { ////
          }
          return sql;
       }   
+      
+      public String getProfilephoto(Connection conn, int memberId) {
+          String memaql = "SELECT profilephoto FROM mymember " +
+                         "where mymemberid=  ?";
+         String result="";
+          try {
+          PreparedStatement pstmt = conn.prepareStatement(memaql);
+          pstmt.setInt(1, memberId);
+          ResultSet rs = pstmt.executeQuery();
+
+          if(rs.next()) {
+             result =rs.getString(1);
+          }
+          
+          rs.close();
+          pstmt.close();
+          } catch (SQLException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+          }
+       return result;
+    
+       }
+      
+      public String getCoverphoto(Connection conn, int memberId) {
+          String memaql = "SELECT coverphoto FROM mymember " +
+                         "where mymemberid=  ?";
+         String result="";
+          try {
+          PreparedStatement pstmt = conn.prepareStatement(memaql);
+          pstmt.setInt(1, memberId);
+          ResultSet rs = pstmt.executeQuery();
+
+          if(rs.next()) {
+             result =rs.getString(1);
+          }
+          
+          rs.close();
+          pstmt.close();
+          } catch (SQLException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+          }
+       return result;
+    
+       }
       
       public int mem (Connection conn, int memberId) {
          String memaql = "SELECT mymemberId FROM upload " +

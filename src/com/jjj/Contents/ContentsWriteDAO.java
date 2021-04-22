@@ -83,7 +83,8 @@ public class ContentsWriteDAO {
 
    public List<Contents> getBoardList(Connection conn, int myMemberid){
       String sql  ="select contentsid,mymemberid,content,regtime from contents "
-            + "where mymemberid = ? ";
+            + "where mymemberid = ? "
+            + "order by contentsid desc";
       List<Contents> lst = new ArrayList<Contents>();
       try {
          PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -110,9 +111,10 @@ public class ContentsWriteDAO {
    }
    
    public List<Contents> getAllList(Connection conn){
-      String sql  ="select likes.contentsid, likessum, mymemberid, content, regtime "
-      		+ "from likes , contents "
-      		+ "where likes.contentsid=contents.contentsid "
+      String sql  ="select likes.contentsid, likessum, contents.mymemberid, content, regtime, username  "
+      		+ "from likes "
+      		+ "inner join contents on likes.contentsid = contents.contentsid "
+      		+ "left outer join mymember on contents.mymemberid= mymember.mymemberid "
       		+ "order by contentsid desc";
       List<Contents> lst = new ArrayList<Contents>();
       try {
@@ -126,6 +128,7 @@ public class ContentsWriteDAO {
             contents.setMymemberid(rs.getInt(3));
             contents.setContent(rs.getString(4));
             contents.setRegtime(rs.getString(5));
+            contents.setUsername(rs.getString(6));
 
             lst.add(contents);
          }
@@ -137,9 +140,10 @@ public class ContentsWriteDAO {
    }
    
    public List<Contents> getAllListOrderbyLikeSum(Connection conn){
-	      String sql  ="select likes.contentsid, likessum, mymemberid, content, regtime "
-	      		+ "from likes , contents "
-	      		+ "where likes.contentsid=contents.contentsid "
+	      String sql  ="select likes.contentsid, likessum, contents.mymemberid, content, regtime, username "
+	      		+ "from likes "
+	      		+ "inner join contents on likes.contentsid = contents.contentsid "
+	      		+ "left outer join mymember on contents.mymemberid= mymember.mymemberid "
 	      		+ "order by likessum desc";
 	      List<Contents> lst = new ArrayList<Contents>();
 	      try {
@@ -153,6 +157,7 @@ public class ContentsWriteDAO {
 	            contents.setMymemberid(rs.getInt(3));
 	            contents.setContent(rs.getString(4));
 	            contents.setRegtime(rs.getString(5));
+	            contents.setUsername(rs.getString(6));
 
 	            lst.add(contents);
 	         }
