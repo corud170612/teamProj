@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.jjj.login.Login;
+import com.oreilly.servlet.MultipartRequest;
 
 public class MembershipDAO {
+	/* private MultipartRequest multiReq; */
 	public Connection getConn() {
 		String url="jdbc:oracle:thin:@localhost:1521:xe";
 		String user="c##jjj";
@@ -22,8 +24,8 @@ public class MembershipDAO {
 		return conn;
 	}
 	public void Insert(Connection conn, Mymember mymember) {
-		String sql="INSERT INTO MyMember(mymemberid, userName, email, pw, gender, mbti) "
-				+ "VALUES(?, ?, ?, ?, ?, ?)";
+		String sql="INSERT INTO MyMember(mymemberid, userName, email, pw, gender, mbti, profilePhoto, coverPhoto) "
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
@@ -33,6 +35,8 @@ public class MembershipDAO {
 			pstmt.setString(4, mymember.getPw());
 			pstmt.setString(5, mymember.getGender());
 			pstmt.setString(6, mymember.getMbti());
+			pstmt.setString(7, mymember.getProfilePhoto());
+			pstmt.setString(8, mymember.getCoverPhoto());
 			
 			pstmt.executeUpdate();
 			pstmt.close();

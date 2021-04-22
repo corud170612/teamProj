@@ -14,22 +14,28 @@
 
 <%
    //out.print(request.getParameter("contents"));
-    String content = request.getParameter("contents");
+
+//System.out.println(profilePhoto);
+  //System.out.println(coverPhoto);
+
+   String content = request.getParameter("contents");
    Date now = new Date();
    SimpleDateFormat sf = new SimpleDateFormat("yyyy년MM월dd일 E요일 a hh:mm:ss");
    String today = sf.format(now);
-   int myMemberId=123;
-   if(session.getAttribute("myMemberId")!=null) {
-      myMemberId=(Integer)session.getAttribute("myMemberId");
+   
+   int mymemberId=0;
+   if(session.getAttribute("mymemberId")!=null) {
+      mymemberId=(Integer)session.getAttribute("mymemberId");
     }
+
    ContentsWriteDAO contentsDao = new ContentsWriteDAO();
    //Contents contents = contentsDao.getContents(request, myMemberId, content, today);
-   Contents contents = contentsDao.getContents(request, today, content, myMemberId);
+   Contents contents = contentsDao.getContents(request, today, content, mymemberId);
    Connection conn = contentsDao.getConn();
    contentsDao.Insert(conn, contents); 
    //List<Contents> boardLst = (List<Contents>)request.getAttribute("boardLst");
    
-   List<Contents> lst = contentsDao.getBoardList(conn, myMemberId);
+   List<Contents> lst = contentsDao.getBoardList(conn, mymemberId);
    session.setAttribute("contentsLst", lst);
 
    List<Contents> boardLst = (List<Contents>)session.getAttribute("contentsLst");
@@ -41,7 +47,7 @@
    AttachFile attachFile = new AttachFile(); // 
    FileuploadDAO fileuploadDAO = new FileuploadDAO();
     Connection connection = fileuploadDAO.getConn();
-    
+
    //String profpath = request.getContextPath()+"/myMemberProfilePhoto/" + myCoverPhoto;
    
    ////String uploadFilePath = request.getServletContext().getRealPath("myMemberProfilePhoto");
@@ -50,6 +56,24 @@
    if(af == null) {
       af = new AttachFile();
    }
+    
+    String coverPhoto = "";
+    if(af.getAttachedfile1()==null) {
+    	coverPhoto="/20210406"+fileuploadDAO.getCoverphoto(conn, mymemberId);
+    } else {
+    	coverPhoto="/20210406/myMemberProfilePhoto/"+af.getAttachedfile1();
+    }
+    String profilePhoto = "";
+    if(af.getAttachedfile1()==null) {
+    	profilePhoto="/20210406"+fileuploadDAO.getProfilephoto(conn, mymemberId);
+    } else {
+    	profilePhoto="/20210406/myMemberProfilePhoto/"+af.getAttachedfile2();
+    }
+    
+/*     String coverphoto = fileuploadDAO.getCoverphoto(conn, mymemberId);
+    System.out.println(coverphoto+"jjjjjjjjjjjjjjj");
+    String profilephoto = fileuploadDAO.getProfilephoto(conn, mymemberId);
+    System.out.println(profilephoto+"jjjjjjjjjjjjjjj"); */
 %>
 <style type="text/css">
 a:link{color:white;font-family:sans-serif;text-decoration:none;}
@@ -57,12 +81,12 @@ a:visited{color:white;font-family:sans-serif;text-decoration:none;}
 a:hover{color:#cc3300; font-weight:bold; }
 a:active{color:#ff00cc; text-decoration:underline; }
 #myProfilePhoto{
-	/* background-image: url('pro.PNG'); */
-	background-color: #A9F5BC;
-	width:100%;height:100px;
-	
-	/* border: 1px solid red; */
-	border-collapse: collapse;
+   /* background-image: url('pro.PNG'); */
+   background-color: #A9F5BC;
+   width:100%;height:100px;
+   
+   /* border: 1px solid red; */
+   border-collapse: collapse;
 }
 </style>
 <!DOCTYPE html>
@@ -87,10 +111,10 @@ function formSubmit(frmId, nextPath){
 <style>
 
 #myWallPhoto{
-	background:url('/20210406/myMemberProfilePhoto/<%=af.getAttachedfile1()%>');
-	background-size:cover;
-	background-color: #A9F5BC;
-	background-repeat:no-repeat;background-position:50% 50%
+   background:url('<%=coverPhoto%>');
+   background-size:cover;
+   background-color: #A9F5BC;
+   background-repeat:no-repeat;background-position:50% 50%
 }
 </style>
 </head>
@@ -101,9 +125,9 @@ function formSubmit(frmId, nextPath){
       <div id="myWallPhoto"></div>
       <div id="myProfilePhoto">
         <%-- <img src="<%=request.getContextPath() %>/images/me/pro.PNG" /> --%>
-        <img src="/20210406/myMemberProfilePhoto/<%=af.getAttachedfile2() %>" />
+        <img src="<%=profilePhoto%>" />
       </div>
-      <p id="name">라이언</p>
+      <p id="name"><%=session.getAttribute("userName") %></p>
 <!--       <div class="myButtonBox">
          <form id="frm" name="photo" method="post" enctype="multipart/form-data">
             
@@ -159,9 +183,9 @@ function formSubmit(frmId, nextPath){
          
       <div class="reading">
          <div class="writerArea">
-            <img src="/20210406/myMemberProfilePhoto/<%=af.getAttachedfile2() %>" />
+            <img src="<%=profilePhoto %>" />
             <div class="writingInfo">
-            <p>라이언  </p>
+            <p><%=session.getAttribute("userName") %></p>
             <div class="writingDate"></div>
          </div>
       </div>

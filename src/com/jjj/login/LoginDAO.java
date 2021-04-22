@@ -67,6 +67,8 @@ public class LoginDAO {
 				mymember.setPw(rs.getString(4));
 				mymember.setGender(rs.getString(5));
 				mymember.setMbti(rs.getString(6));
+				mymember.setProfilePhoto(rs.getString(7));
+				mymember.setCoverPhoto(rs.getString(8));
 			}
 			pstmt.close();
 		} catch (SQLException e) {

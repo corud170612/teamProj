@@ -1,8 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	request.setCharacterEncoding("UTF-8");
+   request.setCharacterEncoding("UTF-8");
    String name = (String)session.getAttribute("userName");
    String YN = (String)session.getAttribute("YN");
+
 /*    int contentsid = (Integer) */
  
    String contextPath =request.getContextPath();
