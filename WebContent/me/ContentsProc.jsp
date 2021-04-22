@@ -1,3 +1,4 @@
+<%@page import="com.jjj.likes.LikesDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -26,9 +27,10 @@
    
    List<Contents> lst = contentsDao.getBoardList(conn, myMemberId);
    session.setAttribute("contentsLst", lst);
-   /*    파일 첨부
-   AttachFile attachFile = boardDao.getAttachFile(request, board.getNo());
-   boardDao.Insert(conn, attachFile); */
+
+   LikesDAO likesDao = new LikesDAO();
+   Connection conn2 = likesDao.getConn();
+   likesDao.Insert(conn2, contents);
 %>
 <jsp:forward page="../index.jsp">
 <jsp:param value="me" name="currentPage"/>

@@ -44,5 +44,5 @@
 
 %>
 <jsp:forward page="../index.jsp">
-<jsp:param value="commentProc" name="currentPage"/>
+<jsp:param value="commentProc2" name="currentPage"/>
 </jsp:forward>
