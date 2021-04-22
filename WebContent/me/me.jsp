@@ -75,20 +75,7 @@
     String profilephoto = fileuploadDAO.getProfilephoto(conn, mymemberId);
     System.out.println(profilephoto+"jjjjjjjjjjjjjjj"); */
 %>
-<style type="text/css">
-a:link{color:white;font-family:sans-serif;text-decoration:none;}
-a:visited{color:white;font-family:sans-serif;text-decoration:none;}
-a:hover{color:#cc3300; font-weight:bold; }
-a:active{color:#ff00cc; text-decoration:underline; }
-#myProfilePhoto{
-   /* background-image: url('pro.PNG'); */
-   background-color: #A9F5BC;
-   width:100%;height:100px;
-   
-   /* border: 1px solid red; */
-   border-collapse: collapse;
-}
-</style>
+
 <!DOCTYPE html>
 <html>
 <head>
