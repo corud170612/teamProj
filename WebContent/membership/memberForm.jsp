@@ -2,12 +2,18 @@
 <%@page import="com.jjj.membership.MembershipDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
+
 String name = request.getParameter("userName");
 String email = request.getParameter("userEmail");
 String pw = request.getParameter("userPw");
 String gender = request.getParameter("gender");
 String mbti = request.getParameter("userMbti");
+String pro = request.getParameter("profilePhoto");
+String cover = request.getParameter("coverPhoto");
 
+//String Photo = (String)session.getAttribute("userName");
+	
+	
 if (name == null)
 	name = "";
 if (email == null)
@@ -31,6 +37,8 @@ if ("w".contentEquals(gender)) {
 	
 }
 
+
+
 %>
 
 <link rel="stylesheet"
@@ -39,6 +47,8 @@ if ("w".contentEquals(gender)) {
 <form id="frm" name="frm" method="post"
 	action="<%=request.getContextPath()%>/membership/membershipProc.jsp">
 	<input type="hidden" value="memberForm" name="currentPage" />
+	<input type="hidden" value="/images/me/pro.PNG" name="profilePhoto"/>
+	<input type="hidden" value="/images/me/back.PNG" name="coverPhoto"/>
 	<div id="container">
 		<section id="introSite">
 			<div id="siteComment">

@@ -19,8 +19,30 @@ public class Mymember {
 
  // MBTI 
  private String mbti;
+ 
+ // 프로필사진 
+ private String profilePhoto;
 
- public Integer getMymemberid() {
+ // 커버사진 
+ private String coverPhoto;
+
+ public String getProfilePhoto() {
+	return profilePhoto;
+}
+
+public void setProfilePhoto(String profilePhoto) {
+	this.profilePhoto = profilePhoto;
+}
+
+public String getCoverPhoto() {
+	return coverPhoto;
+}
+
+public void setCoverPhoto(String coverPhoto) {
+	this.coverPhoto = coverPhoto;
+}
+
+public Integer getMymemberid() {
      return mymemberid;
  }
 

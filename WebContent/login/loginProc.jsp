@@ -30,12 +30,17 @@
 				session.setAttribute("userName", mymember.getUsername());
 				session.setAttribute("mymemberId", mymember.getMymemberid());
 				session.setAttribute("userMbti", mymember.getMbti());
+				session.setAttribute("profilePhoto",mymember.getProfilePhoto());
+				session.setAttribute("coverPhoto", mymember.getCoverPhoto());
+				
 			}
 		} else if (type.equals("kakao")) {
 			session.setAttribute("YN", "Y");
 			session.setAttribute("userName", mymember.getUsername());
 			session.setAttribute("mymemberId", mymember.getMymemberid());
 			session.setAttribute("userMbti", mymember.getMbti());
+			session.setAttribute("profilePhoto",mymember.getProfilePhoto());
+			session.setAttribute("coverPhoto", mymember.getCoverPhoto());
 		}
 	}
 %>
