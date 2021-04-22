@@ -3,7 +3,7 @@
 header{clear:both; float:left; width:100%; background:rgb(169,245,188)}
 #loginForm form{float:left;width:100%}
 
-#viewType{clear:both; width:300px; height:25px; margin: 0 auto; border-left:1px solid #ccc;
+#viewType{clear:both; width:300px; height:35px; margin: 0 auto; border-left:1px solid #ccc;
 border-right:1px solid #ccc}
 #meLink{float:left; width:33%; height:30px; font-size: 16px; border-right:1px solid #ccc; text-align:center;
 padding:8px 0 0 0; color:#aaa}
@@ -15,14 +15,14 @@ padding:8px 0 0 0; color:#aaa}
 	#myService{float:left; color:#fff; font-size:2rem; text-align:left; margin:10px}
 	#myName{float:right; color:#fff; margin-right:1%; margin-top:20px}
 	#myName p{float:left; width:250px; font-size:1.5rem}
-	#logoutBox{float:left; border:1px solid #ccc; margin-top:1px}
-	#logoutBox a{border:none; background:none; padding: 0.1rem 0.3rem;
-	margin-top:1px; cursor:pointer; font-size:0.5rem; background:#fff}
+	#logoutBox{float:left; border:1px solid #ccc; margin-top:10px}
+	#logoutBox a{border:none; background:none; padding: 0.25rem 0.5rem;
+	margin-top:1px; font-size:0.5rem; background:#fff}
 	
 	#loginForm{float:right; margin:20px 5px 0 0}
 	#loginEmailArea, #loginPwArea{float:left}
 	#loginEmailArea label, #loginPwArea label{float:left; padding-left:1rem;
-	font-size:1.3em; color:#fff; margin-right:5px}
+	font-size:1.3em; color:#aaa; margin-right:5px}
 	.loginInputBox{float:left; border:1px solid #ccc; background:#fff}
 	#loginEmailArea input, #loginPwArea input{float:left; padding-left:0.5rem;
 	font-size:1.3em; border:none; background: #fff}

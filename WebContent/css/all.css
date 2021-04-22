@@ -42,7 +42,7 @@
 .inputBox img{float:left;width:25px;margin:2px 2px 2px 11px}
 .inputComment{float:left;width:70%;height:26px;margin-left:10px;border:none;background:#fff}
 
-.regCommentBox{float:right;width:9%;height:29px;border-left:1px solid #ccc;background:#fff}
+.regCommentBox{float:right;width:9%;height:29px;border-left:1px solid #ccc; border-right:1px solid #ccc; background:#fff}
 .regCommentBtn{float:left;width:100%;border:none;color:#000;border:none;color:#000;background:none;margin-top:8px;cursor:pointer}
 
 #advertiseBox{display:none}
@@ -52,7 +52,7 @@
 /* mobile base */
 @media screen and (min-width:500px) {
 	.likeNum{clear:none;width:33%;border:none}
-	.likeBtn{width:33%;cursor:pointer;border-left:1px solid #ccc;border-right:1px solid #ccc}
+	.likeBtn{width:33%;cursor:pointer;border-left:1px solid #ccc;border-right:1px solid #ccc;}
 	.contentsID{width:33%;cursor:pointer}
 }
 

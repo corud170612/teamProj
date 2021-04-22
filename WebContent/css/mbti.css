@@ -53,7 +53,7 @@
 .asideContent .categories li{line-height:55px;padding: 0 22px;border-bottom:1px solid #ccc;text-align:center; position:relative;color:#fff;font-size:1.2em}
 .asideContent {flex:1;}
 
-#categoryBox{display:none}
+#categoryBox{border: 1px solid #ccc;}
 #advertiseBox{display:block;float:right;width:19%;height:580px;background:#64cbf9;margin-top:100px;position:fixed;right:0;color:#fff;font-size:3em}
 #noContents{clear:both;float:left;width:100%;text-align:center;padding:10px 0 10px 0;display:none}
 
